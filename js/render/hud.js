@@ -13,6 +13,10 @@ import { MOBILE } from "../core/platform.js";
 
 // What starts the match, in the words of this build's controls.
 const START = MOBILE ? "tap START" : "ENTER start · ESC pause & keys";
+// ...and the same, big, on the card shown before the bell.
+const READY = MOBILE ? "Tap <b>START</b> to fight" : "Press <b>ENTER</b> to start";
+const READY_NOTE = MOBILE ? "Pause (❚❚) shows these again, with the settings, any time."
+  : "Esc pauses the fight and shows these again, with the settings.";
 
 /**
  * @param corners  { [botId]: { corner: "red"|"blue", assembled, driver } } -
@@ -23,8 +27,8 @@ export function makeHud(root, { assembled, opponent: oppA = null, rules, cameraR
   // Two slim cards - yours on the left, the opponent's on the right - with
   // only what matters mid-fight: overall health, the weapon, and the worst
   // damaged parts once something is actually hurt. The build sheet (weight,
-  // top speed, push) belongs to the workshop; the keys live on the pause
-  // screen (controlsHtml).
+  // top speed, push) belongs to the workshop; the keys are on the card
+  // before the bell and on the pause screen (controlsHtml).
   const card = (side, a) => `
       <div class="panel bot-card ${side}" id="hud-${side}">
         <div class="panel-title"><span class="bc-name">${esc(a.name)} <span class="num">#${a.number}</span></span><span class="bc-tag" id="hud-${side}-tag"></span></div>
@@ -46,6 +50,12 @@ export function makeHud(root, { assembled, opponent: oppA = null, rules, cameraR
     <div class="hud-left">${card("me", assembled)}</div>
     <div class="hud-right">${oppA ? card("opp", oppA) : ""}</div>
 
+    <div class="hud-ready" id="hud-ready">
+      <div class="ready-go">${READY}</div>
+      <div class="ready-title">Controls</div>
+      <div class="keys ready-keys">${controlsHtml(twoPlayer)}</div>
+      <div class="ready-note">${READY_NOTE}</div>
+    </div>
     <div class="hud-banner" id="hud-banner"></div>
     <div class="hud-count" id="hud-count"></div>
     <div class="hud-intro" id="hud-intro"></div>
@@ -61,6 +71,7 @@ export function makeHud(root, { assembled, opponent: oppA = null, rules, cameraR
   const $cam = el("hud-cam"), $banner = el("hud-banner");
   const $replay = el("hud-replay"), $scrub = el("hud-scrub");
   const $count = el("hud-count"), $intro = el("hud-intro"), $results = el("hud-results");
+  const $ready = el("hud-ready");
   const nameOf = (id) => corners[id]?.assembled.name ?? id;
   const cornerOf = (id) => corners[id]?.corner ?? "";
   const cardEls = (side) => el(`hud-${side}`) && {
@@ -237,6 +248,9 @@ export function makeHud(root, { assembled, opponent: oppA = null, rules, cameraR
       : match.phase === "ended"     ? "FINAL"
       : "LIVE";
 
+      // Before the bell: how to start, and the controls.
+      $ready.classList.toggle("show", match.phase === "idle" && !replay.playing);
+
       // Intro cards from the moment the match is called until the bell, then
       // a beat of FIGHT!
       const showIntro = match.phase === "countdown";
@@ -280,8 +294,20 @@ export function makeHud(root, { assembled, opponent: oppA = null, rules, cameraR
   };
 }
 
-/** Every key, for the pause screen (main.js) - the fight itself shows none. */
+/**
+ * Every control, for the card before the bell and the pause screen (main.js):
+ * the keys, or on the phone build the touch controls (mobile/touch.js).
+ */
 export function controlsHtml(twoPlayer = false) {
+  if (MOBILE) return twoPlayer ? `
+    <div class="keys-p p1"><b>RED</b> &nbsp; left edge: a thumb anywhere there drives, <b>WEAPON</b> and <b>BRAKE</b> beside it</div>
+    <div class="keys-p p2"><b>BLUE</b> &nbsp; right edge: the same, the other way round</div>
+    <div>Drive: slide up to go forward, down to reverse, sideways to turn &nbsp; <b>WEAPON</b> hold to spin up / fire &nbsp; <b>BRAKE</b> hold to stop</div>
+    <div><b>❚❚</b> pause &amp; settings &nbsp; <b>CAM</b> next camera &nbsp; <b>♪</b> sound</div>` : `
+    <div><b>DRIVE</b> &nbsp; put a thumb anywhere on the left half and slide it: up goes forward, down reverses, sideways turns</div>
+    <div><b>WEAPON</b> &nbsp; hold to spin up / fire &nbsp; <b>BRAKE</b> &nbsp; hold to stop dead</div>
+    <div><b>❚❚</b> pause &amp; settings &nbsp; <b>CAM</b> next camera &nbsp; <b>♪</b> sound</div>
+    <div class="dim">The pause menu also hands your robot to the AI, taps out, or quits.</div>`;
   return twoPlayer ? `
     <div class="keys-p p1"><b>RED</b> &nbsp; <b>W A S D</b> drive &nbsp; <b>Space</b> weapon &nbsp; <b>L Shift</b> brake &nbsp; <b>T T</b> tap out</div>
     <div class="keys-p p2"><b>BLUE</b> &nbsp; <b>arrows</b> drive &nbsp; <b>R Shift</b> or <b>/</b> weapon &nbsp; <b>.</b> brake &nbsp; <b>⌫ ⌫</b> tap out</div>

@@ -23,7 +23,6 @@ html, body {
 .bc-row .value { font-size: 10px; }
 .hud-left { top: calc(max(8px, env(safe-area-inset-top)) + 40px); }   /* under the touch bar */
 .hud-cam { font-size: 10px; }
-#pause-overlay .po-controls { display: none; }         /* the touch buttons say it */
 .clock-time { font-size: 30px; }
 .hud-tag { max-width: 46vw; font-size: 11px; }
 .hud-tag b { font-size: 11px; }
@@ -33,6 +32,11 @@ html, body {
 .booth-root { bottom: 96px !important; }
 #pause-overlay .po-keys { display: none; }
 #pause-overlay .po-card { max-height: 86vh; overflow-y: auto; -webkit-overflow-scrolling: touch; touch-action: pan-y; }
+/* The card before the bell: above the START button, clear of the cards. */
+.hud-ready { top: 47%; width: min(560px, 64vw); padding: 10px 16px 9px; gap: 5px; }
+.hud-ready .ready-go { font-size: 32px; }
+.hud-ready .ready-keys { font-size: 12px; line-height: 1.5; }
+.hud-ready .ready-note { font-size: 10.5px; }
 
 /* ---------------------------------------------------------------- the controls */
 #touch { position: fixed; inset: 0; z-index: 30; pointer-events: none; }
@@ -105,4 +109,8 @@ html, body {
   .hud-intro { transform: translate(-50%, -50%) scale(0.6); }
   .hud-results { transform: translate(-50%, -50%) scale(0.62) !important; }
   .booth-root { bottom: 84px !important; }
+  .hud-ready { top: 45%; gap: 3px; padding: 8px 14px 7px; }
+  .hud-ready .ready-go { font-size: 26px; }
+  .hud-ready .ready-title { display: none; }
+  .hud-ready .ready-keys { font-size: 11px; line-height: 1.4; }
 }

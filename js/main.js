@@ -491,7 +491,7 @@ async function boot() {
   const overlay = document.createElement("div");
   overlay.id = "pause-overlay";
   overlay.innerHTML = `<div class="po-card"><div class="po-head"><div class="po-title">PAUSED</div>
-    <div class="po-keys"><b>Esc</b> resume &nbsp; <b>M</b> ${CAREER ? "back to your career" : "menu"}</div></div><div class="po-controls keys">${controlsHtml(TWO_PLAYER)}</div><div id="po-settings"></div></div>`;
+    <div class="po-keys"><b>Esc</b> resume &nbsp; <b>M</b> ${CAREER ? "back to your career" : "menu"}</div></div><div class="po-sub">Controls</div><div class="po-controls keys">${controlsHtml(TWO_PLAYER)}</div><div id="po-settings"></div></div>`;
   document.body.appendChild(overlay);
   let overlayOpen = false;
   function toggleOverlay() {

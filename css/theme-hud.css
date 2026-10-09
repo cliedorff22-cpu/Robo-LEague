@@ -147,3 +147,10 @@ html, body { font-family: var(--cond); font-size: 14px; }
 .hud-tag { margin-top: 8px; text-align: center; font-family: var(--cond, "Barlow Condensed", sans-serif); background: rgba(10, 12, 16, 0.78); border-left: 4px solid #f0c419; padding: 4px 12px; max-width: 70vw; }
 .hud-tag b { display: block; letter-spacing: 0.12em; font-size: 14px; color: #f0c419; }
 .hud-tag span { display: block; font-size: 13px; color: #c8cfda; }
+
+/* The card before the bell. */
+.hud-ready { border-radius: 0; background: var(--bolts), var(--panel); clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px); box-shadow: inset 0 4px 0 var(--accent); }
+.ready-go { font: italic 600 44px/1 var(--display); letter-spacing: 0.05em; }
+.ready-go b { font-weight: 600; padding: 0 0.28em 0; border-radius: 0; }
+.ready-title { font: 700 12px/1 var(--cond); letter-spacing: 0.3em; }
+.ready-note { font-family: var(--cond); letter-spacing: 0.03em; }

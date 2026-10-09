@@ -19,6 +19,7 @@ import {
   BODY_STYLE,
 } from "./robot_parts.js";
 import { MOBILE } from "../core/platform.js";
+import { convexFaces } from "../core/hull.js";
 
 export function buildRobotView(scene, assembled, sim, mats) {
   const group = new THREE.Group();
@@ -46,17 +47,14 @@ export function buildRobotView(scene, assembled, sim, mats) {
 
   // The paint job, where there is a canvas to paint it on (not in the
   // headless checks, which fall back to flat livery colours).
-  let paint = null, bodyBounds = null;
+  let paint = null, bodyBounds = null, sheets = null;
   if (!classic && typeof document !== "undefined" && typeof mats.robotPaint === "function") {
     bodyBounds = boundsOf(shape.pieces.filter(isHull).flatMap((p) => p.points));
     const sheet = (size) => { const c = document.createElement("canvas"); c.width = c.height = size; return c; };
     const canvas = sheet(ATLAS.size);
     // The surface maps: full size on desktop, half on the phone build.
     const relief = fine ? { height: sheet(ATLAS.size / (MOBILE ? 2 : 1)), finish: sheet(ATLAS.size / (MOBILE ? 2 : 1)) } : null;
-    paintLivery(canvas, {
-      id: assembled.id, name: assembled.name ?? assembled.def?.name, livery,
-      template: shape.template, bounds: bodyBounds, relief,
-    });
+    sheets = { canvas, relief };
     paint = mats.robotPaint(canvas, relief);
     owned.push(paint, paint.map);
     if (paint.bumpMap) owned.push(paint.bumpMap);
@@ -99,6 +97,7 @@ export function buildRobotView(scene, assembled, sim, mats) {
     mesh.castShadow = true;
     mesh.receiveShadow = true;
     group.add(mesh);
+    mesh.userData.hull = true;          // its faces are in the paint's own picture already
     tag(mesh, piece.slot === "weapon" || piece.id.startsWith("weapon:") ? "weapon" : key || "chassis");
     // Armour and weapon pieces dent and darken as their fitting takes damage.
     if (key && key !== "chassis" && piece.id !== "core") {
@@ -349,6 +348,48 @@ export function buildRobotView(scene, assembled, sim, mats) {
     const k = (0.35 - t) / 0.35;
     const s = seedOf(key);
     mesh.rotation.set((s - 0.5) * 0.5 * k, 0, (s < 0.5 ? -1 : 1) * (0.12 + 0.18 * k));
+  }
+
+  // Now the paint job, last, once everything that could hide it is built:
+  // it is told which faces wear the paint, where the wheels sit and what the
+  // weapon covers, so the name lands on a flat panel it fits (livery.js).
+  if (sheets) {
+    const faces = [];
+    shape.pieces.forEach((piece, pi) => {
+      const usesPaint = materialFor(piece, sim.routes.get(piece.id)) === paint;
+      const { points, faces: fs } = convexFaces(piece.points);
+      for (const f of fs) faces.push({ n: f.n, ring: f.ring.map((i) => points[i]), paint: usesPaint, piece: pi });
+    });
+    const wheelR = assembled.stats.wheelRadiusM;
+    const wheelW = assembled.parts.wheel ? inToM(assembled.parts.wheel.spec.widthIn) : 0;
+    const wheels = wheelW ? sim.wheels.map((wh, i) => {
+      const anchor = sim.wheelAnchor ? sim.wheelAnchor(i) : wh.anchor;
+      const drop = sim.suspension.restLength * (1 - (sim.telemetry?.[i]?.compression ?? 0));
+      return { x: anchor.x, y: anchor.y - drop, z: anchor.z, r: wheelR, w: wheelW };
+    }) : [];
+    // The weapon's own parts (arms, uprights, rotors), as triangles in body
+    // space: a flat list of x, y, z, three corners a triangle.
+    group.updateMatrixWorld(true);
+    const toBody = new THREE.Matrix4().copy(group.matrixWorld).invert();
+    const tris = [], v = new THREE.Vector3(), m = new THREE.Matrix4();
+    for (const obj of partObjects.get("weapon") || []) {
+      obj.traverse((o) => {
+        if (!o.isMesh || o.userData.hull) return;
+        m.multiplyMatrices(toBody, o.matrixWorld);
+        const pos = o.geometry.attributes.position, idx = o.geometry.index;
+        const n = idx ? idx.count : pos.count;
+        for (let i = 0; i < n; i++) {
+          v.fromBufferAttribute(pos, idx ? idx.getX(i) : i).applyMatrix4(m);
+          tris.push(v.x, v.y, v.z);
+        }
+      });
+    }
+    const blockers = tris.length ? [tris] : [];
+    paintLivery(sheets.canvas, {
+      id: assembled.id, name: assembled.name ?? assembled.def?.name, livery,
+      template: shape.template, bounds: bodyBounds, relief: sheets.relief, faces, wheels, blockers,
+    });
+    for (const t of [paint.map, paint.bumpMap, paint.roughnessMap]) if (t) t.needsUpdate = true;
   }
 
   return {

@@ -430,6 +430,10 @@ a { color: var(--accent); }
 .ws-colors { display: flex; gap: 14px; font-size: 12px; color: var(--dim); }
 .ws-colors label { display: flex; align-items: center; gap: 6px; }
 .ws-colors input { width: 34px; height: 24px; border: 1px solid var(--line); border-radius: 4px; background: none; padding: 0; }
+.ws-colors .tiny:disabled { opacity: 0.4; cursor: default; }
+.ws-range { display: flex; align-items: center; gap: 10px; }
+.ws-field .ws-range input[type=range] { flex: 1; padding: 0; border: 0; background: none; accent-color: var(--accent, #f0c419); min-height: 28px; }
+.ws-range b { min-width: 7.5em; font-weight: 600; color: var(--text); font-size: 12px; }
 .ws-ask { display: flex; gap: 8px; align-items: stretch; margin: 8px 0; }
 .ws-ask textarea { flex: 1; resize: vertical; }
 .ws-ask-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }

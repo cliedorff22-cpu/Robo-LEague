@@ -9,8 +9,11 @@
 // What a robot file can say (all optional):
 //
 //   "livery": { "primary": "#16171a", "secondary": "#b3121b", "accent": "#c9ced6",
-//               "pattern": "flames", "decal": "TOMBSTONE", "text": "#ffffff" }
+//               "pattern": "flames", "decal": "TOMBSTONE", "text": "#ffffff",
+//               "nameSize": 0.8 }
 //
+// `text` is the name's colour (picked for contrast when left out) and
+// `nameSize` shrinks the name from the largest that fits its panel (1).
 // Patterns are cosmetic only. With none named, one is picked from the id, so
 // a new robot still gets something better than a flat colour.
 //
@@ -57,10 +60,21 @@ export function atlasUV(p, n, b) {
   return [(R.x + cl(u) * R.w) / ATLAS.size, (R.y + cl(v) * R.h) / ATLAS.size];
 }
 
+/** The colour the name is painted in: the robot's own, or one picked to stand out. */
+export function nameColour(livery = {}) {
+  if (livery.text) return livery.text;
+  return pickText({ primary: livery.primary || "#b8babf", secondary: livery.secondary || "#202227", accent: livery.accent || "#f0c419" });
+}
+
 /**
  * Paint the atlas.
  * @param canvas  a 1024x1024 canvas
- * @param opts    { name, id, number, livery, template, bounds, origin, relief }
+ * @param opts    { name, id, number, livery, template, bounds, origin, relief, faces, wheels }
+ *
+ * `faces` ([{ n, ring: [points], paint, piece }], every flat face of the
+ * body, whether it wears this paint, and which piece it belongs to), `wheels` ([{ x, y, z, r, w }]) and
+ * `blockers` (flat [x, y, z, ...] triangle lists - the weapon) let the name find a
+ * flat panel it fits on, in plain view; without them it goes in fixed spots.
  *
  * `relief` ({ height, finish }, canvases of any square size) asks for the
  * surface detail as well: the same seams, bolts, scrapes and chipped edges
@@ -123,6 +137,8 @@ export function paintLivery(canvas, opts) {
   // the rest of the paint job exactly as it was.
   if (ctx.surface) ctx.plan = surfacePlan(ctx);
   const decal = lv.decal ?? (opts.name || "").toUpperCase();
+  // The name picks its panel first; the hatch then keeps out of its way.
+  if (decal && typeof g.measureText === "function") ctx.nameSpots = nameSpots(ctx, decal, g);
   panelWork(ctx);
   if (ctx.surface) fittings(ctx);
   nameDecals(ctx, decal);
@@ -584,8 +600,7 @@ function surfacePlan(ctx) {
 
 /** The hatch and the cooling slots. */
 function fittings(ctx, L = ctx.L) {
-  const { S } = ctx, g = L.g;
-  const inset = Math.min(0.022, S.z * 0.05);
+  const g = L.g;
   const rrect = (x, y, w, h, r) => (gg) => {
     gg.moveTo(x + r, y); gg.arcTo(x + w, y, x + w, y + h, r); gg.arcTo(x + w, y + h, x, y + h, r);
     gg.arcTo(x, y + h, x, y, r); gg.arcTo(x, y, x + w, y, r); gg.closePath();
@@ -595,9 +610,9 @@ function fittings(ctx, L = ctx.L) {
   // Access hatch on top, in the bay behind the cross seam (the name decal
   // sits in front of it).
   inRegions(ctx, ["top"], (A, B) => {
-    const w = Math.min(0.11, A * 0.34 - inset * 3), h = Math.min(0.12, B * 0.36);
-    if (w < 0.05 || h < 0.05) return;
-    const x = A * 0.17 - w / 2, y = B / 2 - h / 2;
+    const hatch = hatchRect(ctx);
+    if (!hatch) return;
+    const { x, y, w, h } = hatch;
     const panel = rrect(x, y, w, h, 0.008);
     fill(panel, { color: "rgba(0,0,0,0.07)", height: "rgb(121,121,121)", finish: "rgb(0,150,24)" }[L.kind]);
     groove(L, 0.003, "rgba(8,8,10,0.55)", panel);
@@ -624,6 +639,22 @@ function fittings(ctx, L = ctx.L) {
       }
     }
   }, L);
+}
+
+/** The top hatch, in top-region metres, or null where there is no room. */
+function hatchRect(ctx) {
+  const { spanA: A, spanB: B } = ctx.regions.top;
+  const inset = Math.min(0.022, ctx.S.z * 0.05);
+  const w = Math.min(0.11, A * 0.34 - inset * 3), h = Math.min(0.12, B * 0.36);
+  if (w < 0.05 || h < 0.05) return null;
+  const rect = { x: A * 0.17 - w / 2, y: B / 2 - h / 2, w, h };
+  // Left off where the name sits.
+  const pad = 0.01;
+  for (const sp of ctx.nameSpots || []) {
+    if (sp.region !== "top") continue;
+    if (rect.x < sp.a + sp.w / 2 + pad && rect.x + w > sp.a - sp.w / 2 - pad && rect.y < sp.b + sp.h / 2 + pad && rect.y + h > sp.b - sp.h / 2 - pad) return null;
+  }
+  return rect;
 }
 
 /** Paint chipped off the edges, down to bare steel. */
@@ -672,19 +703,22 @@ function paintRelief(ctx, relief, decal) {
 // ---------------------------------------------------------------- name decals
 
 function nameDecals(ctx, name, L = ctx.L) {
-  const { S, C, regions, template } = ctx;
+  const { C, regions } = ctx;
   const g = L.g, k = L.s;
   if (!name || typeof g.measureText !== "function") return;
+  // Where the name goes was worked out once (paintLivery), so every layer
+  // puts it in the same place.
+  if (!ctx.nameSpots) return;
   // On the finish map the decal is just its outline: glossy vinyl.
   const vinyl = L.kind === "finish" ? "rgb(0,120,22)" : null;
-  const decal = (r, centreA, centreB, maxW, maxH, rotate = 0) => {
+  const decal = (r, centreA, centreB, maxW, maxH, lines = [name], rotate = 0) => {
     // Size the text in pixels, then draw it unmirrored at the right spot.
     const [px, py] = r.px(centreA, centreB);
     const kW = (rotate ? r.ky : r.kx) * k, kH = (rotate ? r.kx : r.ky) * k;
-    let size = Math.max(8 * k, maxH * kH);
+    let size = Math.max(8 * k, (maxH * kH) / (lines.length * LINE));
     g.setTransform(1, 0, 0, 1, 0, 0);
     g.font = fontAt(size);
-    const w = g.measureText(name).width || name.length * size * 0.7;
+    const w = Math.max(...lines.map((t) => g.measureText(t).width || t.length * size * 0.7));
     if (w > maxW * kW) { size *= (maxW * kW) / w; g.font = fontAt(size); }
     g.save();
     g.translate(px * k, py * k);
@@ -693,19 +727,256 @@ function nameDecals(ctx, name, L = ctx.L) {
     g.textBaseline = "middle";
     g.lineJoin = "round";
     g.lineWidth = Math.max(2 * k, size * 0.16);
+    const y0 = (-(lines.length - 1) / 2) * size * LINE;
     g.strokeStyle = vinyl || shade(C.text, -0.85);
-    g.strokeText(name, 0, 0);
+    lines.forEach((t, i) => g.strokeText(t, 0, y0 + i * size * LINE));
     g.fillStyle = vinyl || C.text;
-    g.fillText(name, 0, 0);
+    lines.forEach((t, i) => g.fillText(t, 0, y0 + i * size * LINE));
     g.restore();
   };
-  // Sides: rear-biased on wedges, where the body is still tall.
-  const midA = template === "wedge" ? S.x * 0.36 : S.x * 0.5;
-  if (template !== "round") {
-    for (const side of SIDES) decal(regions[side], midA, S.y * 0.56, S.x * (template === "wedge" ? 0.5 : 0.62), S.y * 0.4);
+  for (const sp of ctx.nameSpots) decal(regions[sp.region], sp.a, sp.b, sp.w, sp.h, sp.lines);
+}
+
+// ---------------------------------------------------------------- name placement
+//
+// A name only reads on a flat painted panel you can see: not wrapped down a
+// slope or over a rounded edge, not under a steel plate, not behind a wheel.
+// Given the body's faces (opts.faces) and wheels (opts.wheels), each decal
+// region gets a grid of where that is true, and the name is set as large as
+// fits in it, as near its usual spot as it can be. `livery.nameSize` (0.4-1)
+// scales it down from there.
+
+const CELL = 0.006;          // metres per grid cell
+const MARGIN = 0.016;        // clear of every edge, most of the way off the rounds
+const LINE = 1.08;           // line height, in letter sizes
+const NAME_MIN = 0.014;      // smaller than this does not read: leave it off
+
+function nameSpots(ctx, name, g) {
+  const { S, template, opts } = ctx;
+  const size = Math.min(1, Math.max(0.4, Number(opts.livery?.nameSize) || 1));
+  g.setTransform(1, 0, 0, 1, 0, 0);
+  g.font = fontAt(100);
+  const widthOf = (t) => ((g.measureText(t).width || t.length * 70) / 100) * 1.06;
+  // One line, or two split at the space nearest the middle (a long name on a
+  // short, deep panel reads far bigger that way).
+  const layouts = [[name]];
+  const words = name.split(" ");
+  if (words.length > 1) {
+    let best = null;
+    for (let i = 1; i < words.length; i++) {
+      const two = [words.slice(0, i).join(" "), words.slice(i).join(" ")];
+      const w = Math.max(...two.map(widthOf));
+      if (!best || w < best.w) best = { two, w };
+    }
+    layouts.push(best.two);
   }
-  // Top: along the length, reading from the left side.
-  decal(regions.top, S.x * 0.6, S.z * 0.5, Math.min(S.x * 0.5, 0.5), Math.min(S.z * 0.2, 0.09));
+  // Box aspect (width / height) of each layout, height = lines x LINE x size.
+  const shapes = layouts.map((lines) => ({ lines, aspect: Math.max(...lines.map(widthOf)) / (lines.length * LINE) }));
+  const aspect = shapes[0].aspect;
+  const midA = template === "wedge" ? S.x * 0.36 : S.x * 0.5;
+  // [region, preferred centre a, b, tallest the letters may be]
+  const wants = [
+    ...(template === "round" ? [] : SIDES.map((side) => [side, midA, S.y * 0.56, Math.min(S.y * 0.5, 0.1)])),
+    ["top", S.x * 0.6, S.z * 0.5, Math.min(S.z * 0.22, 0.09)],
+  ];
+  // Strictly first: flat, in plain view. If that finds nowhere at all, once
+  // more looser - slopes too - so every painted robot it can carries its name.
+  for (const loose of opts.faces ? [false, true] : [false]) {
+    const spots = placeName(loose);
+    if (spots.length) return spots;
+  }
+  return [];
+
+  function placeName(loose) {
+    const spots = [];
+    for (const [region, pa, pb, hMax] of wants) {
+      let spot;
+      if (opts.faces) {
+        // Whichever layout gives the bigger letters (two lines must win clearly).
+        const grid = flatPaint(ctx, region, loose);
+        for (const sh of shapes) {
+          const lines = sh.lines.length, tall = lines * LINE;      // box height per letter size
+          const f = fitName(grid, sh.aspect, pa, pb, hMax * tall, NAME_MIN * tall);
+          const letter = f ? f.h / tall : 0;
+          const bestLetter = spot ? spot.h / (spot.lines.length * LINE) : 0;
+          if (f && letter > bestLetter * (lines > 1 ? 1.15 : 1)) spot = { ...f, lines: sh.lines };
+        }
+      } else {
+        // No geometry to go on (old callers): the fixed spots.
+        const { spanA: A } = ctx.regions[region];
+        const maxW = region === "top" ? Math.min(A * 0.5, 0.5) : A * (template === "wedge" ? 0.5 : 0.62);
+        const h = Math.min(hMax * LINE, maxW / aspect);
+        spot = { a: pa, b: pb, w: h * aspect, h, lines: [name] };
+      }
+      if (spot) spots.push({ region, a: spot.a, b: spot.b, w: spot.w * size, h: spot.h * size, lines: spot.lines });
+    }
+    return spots;
+  }
+}
+
+/**
+ * What each region's viewer sees, cell by cell: the outermost face (or a
+ * wheel, -2, or the weapon, -3) and its depth. Every face, wheel and weapon
+ * triangle is drawn into a depth buffer looking in at that side. Worked out
+ * once per region and kept on ctx; flatPaint() reads it.
+ */
+function sightOf(ctx, region) {
+  ctx.sight ??= {};
+  if (ctx.sight[region]) return ctx.sight[region];
+  const { opts } = ctx, bb = opts.bounds;
+  const { spanA: A, spanB: B } = ctx.regions[region];
+  const nx = Math.max(1, Math.ceil(A / CELL)), ny = Math.max(1, Math.ceil(B / CELL));
+  const depth = new Float64Array(nx * ny).fill(-Infinity);
+  const owner = new Int32Array(nx * ny).fill(-1);
+  // A body point as (a, b, how far out towards the viewer).
+  const top = region === "top", sgn = region === "left" ? 1 : -1;
+  const toA = (x) => x - bb.min.x;
+  const toB = (y, z) => (top ? bb.max.z - z : y - bb.min.y);
+  const toW = (y, z) => (top ? y : sgn * z);
+  const put = (c, w, id) => { if (w > depth[c]) { depth[c] = w; owner[c] = id; } };
+  const lo = (v) => Math.max(0, Math.floor(v / CELL)), hi = (v, n) => Math.min(n, Math.ceil(v / CELL));
+
+  opts.faces.forEach((f, fi) => {
+    const facing = top ? f.n.y : sgn * f.n.z;
+    if (facing < 0.05 || f.ring.length < 3) return;
+    const ring = f.ring.map((p) => [toA(p.x), toB(p.y, p.z), toW(p.y, p.z)]);
+    // The face's plane as depth = pa*a + pb*b + pc, from three spread corners.
+    const [p, q, r] = [ring[0], ring[Math.floor(ring.length / 3)], ring[Math.floor((2 * ring.length) / 3)]];
+    const det = (q[0] - p[0]) * (r[1] - p[1]) - (r[0] - p[0]) * (q[1] - p[1]);
+    if (Math.abs(det) < 1e-12) return;
+    const pa = ((q[2] - p[2]) * (r[1] - p[1]) - (r[2] - p[2]) * (q[1] - p[1])) / det;
+    const pb = ((r[2] - p[2]) * (q[0] - p[0]) - (q[2] - p[2]) * (r[0] - p[0])) / det;
+    let a0 = Infinity, a1 = -Infinity, b0 = Infinity, b1 = -Infinity;
+    for (const v of ring) { a0 = Math.min(a0, v[0]); a1 = Math.max(a1, v[0]); b0 = Math.min(b0, v[1]); b1 = Math.max(b1, v[1]); }
+    for (let j = lo(b0), jEnd = hi(b1, ny); j < jEnd; j++) {
+      const b = (j + 0.5) * CELL;
+      cell: for (let i = lo(a0), iEnd = hi(a1, nx); i < iEnd; i++) {
+        const a = (i + 0.5) * CELL;
+        // inside the convex outline? (either winding)
+        let pos = false, neg = false;
+        for (let k = 0; k < ring.length; k++) {
+          const u = ring[k], v = ring[(k + 1) % ring.length];
+          const c = (v[0] - u[0]) * (b - u[1]) - (v[1] - u[1]) * (a - u[0]);
+          if (c > 1e-12) pos = true; else if (c < -1e-12) neg = true;
+          if (pos && neg) continue cell;
+        }
+        put(j * nx + i, p[2] + pa * (a - p[0]) + pb * (b - p[1]), fi);
+      }
+    }
+  });
+  for (const wh of opts.wheels || []) {
+    if (top) {
+      const a0 = toA(wh.x - wh.r), a1 = toA(wh.x + wh.r), b0 = bb.max.z - wh.z - wh.w / 2, b1 = bb.max.z - wh.z + wh.w / 2;
+      for (let j = lo(b0); j < hi(b1, ny); j++) for (let i = lo(a0); i < hi(a1, nx); i++) put(j * nx + i, wh.y + wh.r, -2);
+    } else {
+      const ca = toA(wh.x), cb = wh.y - bb.min.y, out = sgn * wh.z + wh.w / 2;
+      for (let j = lo(cb - wh.r); j < hi(cb + wh.r, ny); j++) {
+        for (let i = lo(ca - wh.r); i < hi(ca + wh.r, nx); i++) {
+          if (Math.hypot((i + 0.5) * CELL - ca, (j + 0.5) * CELL - cb) <= wh.r) put(j * nx + i, out, -2);
+        }
+      }
+    }
+  }
+  // The weapon's arms, uprights and rotors: each triangle covers the cells
+  // it lies over (at its outermost corner's depth - near enough for a mask).
+  for (const t of opts.blockers || []) {
+    for (let k = 0; k + 8 < t.length; k += 9) {
+      const xa = toA(t[k]), ya = toB(t[k + 1], t[k + 2]);
+      const xb = toA(t[k + 3]), yb = toB(t[k + 4], t[k + 5]);
+      const xc = toA(t[k + 6]), yc = toB(t[k + 7], t[k + 8]);
+      const w = Math.max(toW(t[k + 1], t[k + 2]), toW(t[k + 4], t[k + 5]), toW(t[k + 7], t[k + 8]));
+      const i0 = lo(Math.min(xa, xb, xc)), i1 = Math.min(nx - 1, Math.floor(Math.max(xa, xb, xc) / CELL));
+      const j0 = lo(Math.min(ya, yb, yc)), j1 = Math.min(ny - 1, Math.floor(Math.max(ya, yb, yc) / CELL));
+      if (i0 > i1 || j0 > j1) continue;
+      if (i0 === i1 && j0 === j1) { put(j0 * nx + i0, w, -3); continue; }     // inside one cell
+      const area = (xb - xa) * (yc - ya) - (xc - xa) * (yb - ya);
+      for (let j = j0; j <= j1; j++) {
+        const b = (j + 0.5) * CELL;
+        for (let i = i0; i <= i1; i++) {
+          const a = (i + 0.5) * CELL;
+          const s0 = (xb - xa) * (b - ya) - (yb - ya) * (a - xa);
+          const s1 = (xc - xb) * (b - yb) - (yc - yb) * (a - xb);
+          const s2 = (xa - xc) * (b - yc) - (ya - yc) * (a - xc);
+          if (area > 0 ? s0 >= 0 && s1 >= 0 && s2 >= 0 : s0 <= 0 && s1 <= 0 && s2 <= 0) put(j * nx + i, w, -3);
+        }
+      }
+      // its corners too, so a sliver thinner than a cell still counts
+      for (const [x, y] of [[xa, ya], [xb, yb], [xc, yc]]) {
+        const i = Math.floor(x / CELL), j = Math.floor(y / CELL);
+        if (i >= 0 && i < nx && j >= 0 && j < ny) put(j * nx + i, w, -3);
+      }
+    }
+  }
+  return (ctx.sight[region] = { depth, owner, nx, ny, top, sgn });
+}
+
+/**
+ * Where a region shows flat paint, as a grid of cells (1 = usable): the
+ * outermost thing there is a painted face turned squarely to the viewer,
+ * and not at a join between pieces.
+ */
+function flatPaint(ctx, region, loose = false) {
+  const { owner, nx, ny, top, sgn } = sightOf(ctx, region);
+  const faces = ctx.opts.faces;
+  // Strict: within ~23 degrees of square on. Loose: up to ~53 (an A-frame's
+  // flanks), where the letters stretch a little but still read.
+  const minFacing = loose ? 0.6 : 0.92;
+  const usable = faces.map((f) => f.paint && (top ? f.n.y : sgn * f.n.z) > minFacing);
+  // Where one piece meets another is an edge, even level with it: every
+  // piece is drawn with rounded edges, so there is a groove or a step there
+  // and the name must not run across it. Within a piece, only a real crease
+  // is: a lofted side made of many slightly turned facets reads as one panel.
+  const crease = Math.cos(((loose ? 20 : 10) * Math.PI) / 180);
+  const split = (p, q) => {
+    if (p === q) return false;
+    if (p < 0 || q < 0) return true;
+    const F = faces[p], G = faces[q];
+    return F.piece === undefined || F.piece !== G.piece || F.n.x * G.n.x + F.n.y * G.n.y + F.n.z * G.n.z < crease;
+  };
+  const ok = new Uint8Array(nx * ny);
+  for (let c = 0; c < ok.length; c++) ok[c] = owner[c] >= 0 && usable[owner[c]] ? 1 : 0;
+  for (let j = 0; j < ny; j++) {
+    for (let i = 0; i < nx; i++) {
+      const c = j * nx + i;
+      if (i + 1 < nx && split(owner[c + 1], owner[c])) ok[c] = ok[c + 1] = 0;
+      if (j + 1 < ny && split(owner[c + nx], owner[c])) ok[c] = ok[c + nx] = 0;
+    }
+  }
+  return { ok, nx, ny };
+}
+
+/** The biggest name box (aspect w/h) that fits the grid, nearest (pa, pb), or null. */
+function fitName({ ok, nx, ny }, aspect, pa, pb, hMax, hMin = NAME_MIN) {
+  // Summed-area table: any rectangle's usable-cell count in four lookups.
+  const W = nx + 1, sat = new Int32Array(W * (ny + 1));
+  for (let j = 0; j < ny; j++) {
+    for (let i = 0; i < nx; i++) sat[(j + 1) * W + i + 1] = ok[j * nx + i] + sat[j * W + i + 1] + sat[(j + 1) * W + i] - sat[j * W + i];
+  }
+  const full = (i, j, w, h) => sat[(j + h) * W + i + w] - sat[j * W + i + w] - sat[(j + h) * W + i] + sat[j * W + i] === w * h;
+  const m = Math.ceil(MARGIN / CELL);
+  const dims = (h) => [Math.ceil((h * aspect) / CELL) + 2 * m, Math.ceil(h / CELL) + 2 * m];
+  const anyFit = (wc, hc) => {
+    if (wc > nx || hc > ny) return false;
+    for (let j = 0; j + hc <= ny; j++) for (let i = 0; i + wc <= nx; i++) if (full(i, j, wc, hc)) return true;
+    return false;
+  };
+  // A box that fits also fits smaller, so halve the gap to the largest.
+  if (!anyFit(...dims(hMin))) return null;
+  let good = hMin, bad = hMax * 1.0001;
+  if (anyFit(...dims(hMax))) good = hMax;
+  else while (bad / good > 1.03) { const h = Math.sqrt(good * bad); if (anyFit(...dims(h))) good = h; else bad = h; }
+  // Then the spot nearest the usual one, at that size.
+  const [wc, hc] = dims(good);
+  let best = null, bestD = Infinity;
+  for (let j = 0; j + hc <= ny; j++) {
+    for (let i = 0; i + wc <= nx; i++) {
+      if (!full(i, j, wc, hc)) continue;
+      const a = (i + wc / 2) * CELL, b = (j + hc / 2) * CELL;
+      const d = (a - pa) ** 2 + (b - pb) ** 2;
+      if (d < bestD) { bestD = d; best = { a, b }; }
+    }
+  }
+  return { a: best.a, b: best.b, w: good * aspect, h: good };
 }
 
 const fontAt = (px) => `italic 900 ${Math.round(px)}px "Arial Black", Impact, "Helvetica Neue", system-ui, sans-serif`;

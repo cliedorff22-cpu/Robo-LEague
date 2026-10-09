@@ -23,7 +23,7 @@ import { assembleRobot } from "../logic/build.js";
 import { buildShape, routeFittings } from "../logic/shape.js";
 import { wheelLayout } from "../sim/wheel_model.js";
 import { WEAPON_NAMES } from "../logic/catalog.js";
-import { PATTERNS } from "../render/livery.js";
+import { PATTERNS, nameColour } from "../render/livery.js";
 import { loadSettings } from "./settings_ui.js";
 
 const money = (n) => `${n < 0 ? "-" : ""}$${Math.abs(Math.round(n)).toLocaleString()}`;
@@ -382,8 +382,19 @@ export function makeWorkshop(ctx) {
         <label>Trim <input type="color" id="ws-c2" value="${lv.secondary || "#202227"}"></label>
         <label>Accent <input type="color" id="ws-c3" value="${lv.accent || "#f0c419"}"></label>
       </div>
-      <label class="ws-field">Pattern <select id="ws-pattern">${PATTERNS.map((p) => `<option value="${p}"${(lv.pattern || "") === p ? " selected" : ""}>${p}</option>`).join("")}</select></label>`;
+      <label class="ws-field">Pattern <select id="ws-pattern">${PATTERNS.map((p) => `<option value="${p}"${(lv.pattern || "") === p ? " selected" : ""}>${p}</option>`).join("")}</select></label>
+      <div class="scout-sub">Name on the robot</div>
+      <div class="ws-colors">
+        <label>Colour <input type="color" id="ws-ctext" value="${nameColour(lv)}"></label>
+        <button class="ghost tiny" id="ws-ctext-auto"${lv.text ? "" : " disabled"} title="Pick a colour that stands out on the paint">Auto</button>
+      </div>
+      <label class="ws-field">Size <span class="ws-range"><input type="range" id="ws-namesize" min="40" max="100" step="5" value="${namePct(lv)}"><b id="ws-namesize-v">${namePctLabel(namePct(lv))}</b></span></label>
+      <p class="muted small">The name finds the biggest flat panel it fits on by itself; the slider only makes it smaller.</p>`;
   }
+
+  /** The name size slider: 100 is the largest that fits. */
+  function namePct(lv) { return Math.round(Math.min(1, Math.max(0.4, Number(lv.nameSize) || 1)) * 100); }
+  function namePctLabel(p) { return p >= 100 ? "largest that fits" : `${p}%`; }
 
   function advisorHtml() {
     const c = career();
@@ -500,6 +511,30 @@ export function makeWorkshop(ctx) {
     };
     for (const id of ["ws-c1", "ws-c2", "ws-c3"]) on(id, "input", paint);
     on("ws-pattern", "change", paint);
+    // The name's colour and size redraw only the robot, so a drag on the
+    // slider (or the colour picker) is not cut short by the panel redrawing.
+    const repaint = () => {
+      clearTimeout(paintT);
+      paintT = setTimeout(() => { if (stage) { ctx.showDef("ws-stage", def(), STAGE_OPTS(pickPart)); buildHotspots(); } footHtml(); }, 120);
+    };
+    on("ws-ctext", "input", (e) => {
+      draft = { ...draft, livery: { ...draft.livery, text: e.target.value } };
+      const auto = document.getElementById("ws-ctext-auto");
+      if (auto) auto.disabled = false;
+      repaint();
+    });
+    on("ws-ctext-auto", "click", () => {
+      const { text, ...rest } = draft.livery || {};
+      draft = { ...draft, livery: rest };
+      refresh();
+    });
+    on("ws-namesize", "input", (e) => {
+      const pct = Number(e.target.value);
+      const { nameSize, ...rest } = draft.livery || {};
+      draft = { ...draft, livery: pct >= 100 ? rest : { ...rest, nameSize: pct / 100 } };
+      document.getElementById("ws-namesize-v").textContent = namePctLabel(pct);
+      repaint();
+    });
     on("ws-brief", "input", (e) => { brief = e.target.value; });
     el.querySelectorAll("[data-ask]").forEach((b) => b.addEventListener("click", () => actions.ask(b.dataset.ask)));
     el.querySelectorAll("[data-load]").forEach((b) => b.addEventListener("click", () => actions.load(b.dataset.load)));
