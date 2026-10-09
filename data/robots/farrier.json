@@ -1,0 +1,47 @@
+{
+  "schema": "robot/1",
+  "id": "farrier",
+  "name": "Farrier",
+  "number": 56,
+  "origin": "parody",
+  "archetype": "hammer",
+  "league": "elite",
+  "rating": 58,
+  "personality": "opportunistic",
+  "team": "Grease Combat",
+  "inspiredBy": "Blacksmith",
+  "livery": {
+    "primary": "#212121",
+    "secondary": "#ff6d00",
+    "accent": "#bdbdbd",
+    "pattern": "flames"
+  },
+  "body": {
+    "template": "hex",
+    "params": {
+      "chamferFront": 0.2,
+      "corner": 0.3,
+      "endWidth": 0.45
+    },
+    "mount": "top",
+    "extras": [
+      {
+        "type": "stack",
+        "heightIn": 5
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_tall_box",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_light",
+    "weapon": "hammer_sledge",
+    "armor": [
+      "armor_ti_front"
+    ]
+  }
+}

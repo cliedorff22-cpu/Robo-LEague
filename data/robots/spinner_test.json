@@ -1,0 +1,24 @@
+{
+  "schema": "robot/1",
+  "id": "spinner_test",
+  "name": "Grinder",
+  "number": 7,
+  "origin": "original",
+  "archetype": "spinner_h",
+  "league": "rookie",
+  "rating": 45,
+  "personality": "aggressive",
+  "team": "Test Bench",
+  "livery": { "primary": "#e4b43c", "secondary": "#1a1a1e", "accent": "#d8232a" },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "spinner_h_disc",
+    "armor": ["armor_ar500_front"]
+  }
+}

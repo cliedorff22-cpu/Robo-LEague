@@ -1,0 +1,46 @@
+{
+  "schema": "robot/1",
+  "id": "shenanigan",
+  "name": "Shenanigan",
+  "number": 32,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "elite",
+  "rating": 77,
+  "personality": "opportunistic",
+  "team": "Shrapnel Motorworks",
+  "inspiredBy": "Hijinx",
+  "livery": {
+    "primary": "#ff7f11",
+    "secondary": "#6a1b9a",
+    "accent": "#ffffff",
+    "pattern": "spots"
+  },
+  "body": {
+    "template": "slab",
+    "params": {
+      "chamfer": 0.3
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "forks",
+        "count": 3,
+        "lengthIn": 5
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_slab_ti",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_8_foam",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_heavy",
+    "weapon": "spinner_h_bar_small",
+    "armor": [
+      "armor_ti_front"
+    ]
+  }
+}

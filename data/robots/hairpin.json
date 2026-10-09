@@ -1,0 +1,48 @@
+{
+  "schema": "robot/1",
+  "id": "hairpin",
+  "name": "Hairpin",
+  "number": 42,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "elite",
+  "rating": 69,
+  "personality": "defensive",
+  "team": "Iron Collective",
+  "inspiredBy": "Switchback",
+  "livery": {
+    "primary": "#e53935",
+    "secondary": "#fafafa",
+    "accent": "#212121",
+    "pattern": "chevron"
+  },
+  "body": {
+    "template": "tent",
+    "params": {
+      "slope": 0.7,
+      "ridge": 0.25,
+      "chamferFront": 0.6
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "forks",
+        "count": 2,
+        "lengthIn": 7
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_long",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_heavy",
+    "weapon": "spinner_v_bar",
+    "armor": [
+      "armor_ti_front"
+    ]
+  }
+}

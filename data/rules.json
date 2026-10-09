@@ -1,0 +1,291 @@
+{
+  "schema": "rules/1",
+  "units": {
+    "weight": "lb",
+    "time": "s"
+  },
+  "weightClass": {
+    "id": "heavyweight",
+    "cap": 250,
+    "tolerance": 0.5
+  },
+  "match": {
+    "durationS": 180,
+    "countdownS": 3,
+    "immobilizationCountS": 10,
+    "tapOutAllowed": true,
+    "countGraceS": 1.0,
+    "recoverS": 0.4,
+    "pinLimitS": 10,
+    "pinReleaseS": 3,
+    "_comment": "Referee. immobilizationCountS is the count; countGraceS how long a robot must look stuck before it starts (absorbs hazard bounces). Robots parked by choice, shoving, or pinned are never counted. pinLimitS before RELEASE!, then pinReleaseS before a control penalty.",
+    "separateAfterS": 6,
+    "_separate": "Two robots locked together (in contact, both trying to drive, neither moving) for separateAfterS seconds are pulled apart by the referee, as on the show. Found by tools/stress.js: two spinners hooked together for 150 s."
+  },
+  "judging": {
+    "categories": [
+      {
+        "id": "damage",
+        "points": 5
+      },
+      {
+        "id": "aggression",
+        "points": 3
+      },
+      {
+        "id": "control",
+        "points": 3
+      }
+    ],
+    "judges": 3,
+    "judgeLean": 0.06,
+    "failureBonusHp": 35,
+    "hazardCreditS": 2.0,
+    "_comment": "Each judge splits each category's points by share; judgeLean is how far one judge's read can drift (seeded). Keep the total points odd so a card cannot tie."
+  },
+  "legality": {
+    "bannedWeaponClasses": [
+      "fire",
+      "liquid",
+      "entanglement",
+      "projectile",
+      "emp",
+      "rf_jamming"
+    ],
+    "maxWeaponTipSpeedMps": 170,
+    "maxWeaponEnergyJ": 40000,
+    "requireRemovableLink": true,
+    "requirePowerSwitch": true,
+    "maxBatteryVoltageNominal": 60,
+    "minGroundClearanceIn": 0.0
+  },
+  "damage": {
+    "comment": "All damage balance lives here, never in code. hpPerKilojoule sets the global scale: a part's hp is in the same currency, so a 640 hp bar hitting an 820 hp AR500 plate is a readable trade. Tune this block first; it is the only place that decides how long a fight lasts.",
+    "hpPerKilojoule": 11.0,
+    "_transfer": "Fraction of a weapon's stored energy actually delivered by one hit. A spinner almost never lands a square hit; this is the biggest source of fight-to-fight variance.",
+    "transfer": {
+      "min": 0.12,
+      "max": 0.85,
+      "squareHitBonus": 1.15
+    },
+    "_severity": "Thresholds as a fraction of the struck part's full hp, for choosing effects and commentary.",
+    "severity": {
+      "glance": 0.04,
+      "hit": 0.12,
+      "heavy": 0.3,
+      "catastrophic": 0.6
+    },
+    "_armor": "While a panel still has condition, only this fraction of damage reaches what is behind it. Once the panel is gone, everything does.",
+    "armorPassThrough": 0.22,
+    "_pierce": "Extra pass-through per unit of weapon concentration above 1.5 - hammers and crushers punch through armour a wide bar only dents.",
+    "pierce": 0.3,
+    "_classScale": "Per weapon class multiplier on the hp a hit does - the balance pass's lever, set in physics with tools/balance.sh. Missing means 1.",
+    "classScale": {
+      "spinner_h": 0.75,
+      "spinner_v": 0.85,
+      "drum": 1.0,
+      "hammer": 1.0,
+      "flipper": 1.0,
+      "lifter": 1.0,
+      "crusher": 1.8,
+      "static": 1.0
+    },
+    "deflectionImpulseFraction": 0.45,
+    "_vulnerability": "Per-category multiplier on damage reaching a part. Electronics and batteries hate shock; wheels get torn off; the chassis is the last thing to go.",
+    "vulnerability": {
+      "armor": 1.0,
+      "chassis": 0.75,
+      "weapon": 0.9,
+      "weaponMotor": 1.15,
+      "wheel": 1.7,
+      "motor": 1.2,
+      "drive": 1.1,
+      "electronics": 2.3,
+      "battery": 1.9,
+      "srimech": 1.3
+    },
+    "_condition": "Condition bands. A part is impaired below `impaired`, barely working below `critical`, dead at zero.",
+    "thresholds": {
+      "impaired": 0.6,
+      "critical": 0.25,
+      "failed": 0.0
+    },
+    "_degrade": "What a part at ZERO condition still delivers, as a fraction of its rated figure. Linear between there and 1.0. Only the weapon and armour drop to nothing.",
+    "degrade": {
+      "wheelGrip": 0.4,
+      "driveTorque": 0.2,
+      "motorTorque": 0.15,
+      "batteryPower": 0.35,
+      "weaponOutput": 0.0,
+      "armorProtection": 0.0
+    },
+    "_electronics": "A failing radio/ESC drops out intermittently before it dies. Dropouts per second at zero condition.",
+    "electronicsDropoutHz": 1.6,
+    "electronicsDropoutS": 0.45,
+    "_ko": "A bot is out when its chassis is destroyed, or when it cannot move and is counted out.",
+    "chassisKillsBot": true,
+    "selfDamageOnHit": true,
+    "rammingHpPerKilojoule": 9,
+    "minRamEnergyJ": 120
+  },
+  "weapons": {
+    "_comment": "What each weapon class does to what it hits beyond hp (js/sim/combat.js): the throw, the flip, the lift, the grip. The balance pass (Stage 6, tools/balance.sh) tunes these in physics, then the resolver is re-fitted to match.",
+    "_kinetic": "A rotor's hit throws the victim through the struck point: kineticImpulsePerKJ N*s per kJ delivered, kineticLift the upward share by class (verticals launch), recoil the share the spinner takes back.",
+    "kineticImpulsePerKJ": 12,
+    "kineticLift": {
+      "spinner_h": 0.2,
+      "spinner_v": 1.2,
+      "drum": 0.9
+    },
+    "recoil": {
+      "spinner_h": 0.7,
+      "spinner_v": 0.35,
+      "drum": 0.3
+    },
+    "_rotorSpend": "The least share of its stored energy a rotor loses on any landed hit - a bar that connects stops, and has to spool again. Drums keep the most.",
+    "rotorSpend": {
+      "spinner_h": 0.65,
+      "spinner_v": 0.5,
+      "drum": 0.35
+    },
+    "_wedgeDeflect": "A rotor striking a wedge, fork or plow glances off it: only transfer[class] of its energy goes in (a horizontal bar rides straight up a wedge; a vertical's tooth bites the lip), and a horizontal is thrown up by liftAttacker of the throw.",
+    "wedgeDeflect": {
+      "transfer": {
+        "spinner_h": 0.3,
+        "drum": 0.6,
+        "spinner_v": 0.75
+      },
+      "liftAttacker": 0.6
+    },
+    "_zones": "Hammers, flippers, lifters and crushers act on whatever is in the volume they sweep while they fire, not on their parked collider.",
+    "zoneMarginM": 0.06,
+    "hammerSquareness": 0.85,
+    "flipperLaunch": 0.42,
+    "flipperForward": 0.35,
+    "lifterLift": 0.55,
+    "crusherHold": 0.5,
+    "crusherLift": 0.35
+  },
+  "pit": {
+    "_comment": "Stage 7 - js/logic/pit.js. Damage stays on a robot between fights; the pit window (minutes until its next fight, by stage) times the crew size is the crew-minutes it gets. Repair minutes and cost per hp come from parts.json; labour from economy.json repairs. Tuned with tools/pitcheck.js: a light fight is fixed with time to spare, a heavy one forces choices.",
+    "windows": {
+      "group": 25,
+      "final": 15,
+      "giantNutGroup": 20,
+      "giantNutFinal": 12
+    },
+    "_windows": "Wall-clock minutes between a robot's fights at each stage.",
+    "patchTo": 0.6,
+    "patchMinutesFactor": 0.55,
+    "_patch": "A patch brings a part back to patchTo of its hp in patchMinutesFactor of the minutes a proper repair of the same hp would take.",
+    "totaledBelow": 0.1,
+    "totaledRepairCostRatio": 0.75,
+    "_totaled": "A part below totaledBelow is mangled past repairing: replace it or fight without it. One whose full repair would cost totaledRepairCostRatio of a new one can be repaired, but the pit flags a replacement as the better buy (and the crew's plan takes it).",
+    "salvageCreditFraction": 0.4,
+    "replaceMinutes": {
+      "chassis": 120,
+      "drive": 35,
+      "motor": 25,
+      "battery": 8,
+      "electronics": 15,
+      "wheel": 10,
+      "weaponMotor": 25,
+      "weapon": 20,
+      "srimech": 15,
+      "armor": 12
+    },
+    "_replaceMinutes": "Crew-minutes to swap in a fresh part, by category.",
+    "aiCrew": {
+      "rookie": 2,
+      "pro": 3,
+      "elite": 4,
+      "world": 5
+    },
+    "offseasonRepairRate": 0.5,
+    "_offseason": "Between seasons every robot is rebuilt; the player pays this share of the full repair bill (no pit clock, no overtime)."
+  },
+  "resolver": {
+    "_comment": "The fast fight resolver (js/logic/resolver.js), for AI-vs-AI fights in a season. Calibrated against real physics bouts: tools/physdata.js records a dataset, tools/fitresolver.js scores the resolver against it. Tune here, never in code.",
+    "engageRate": 0.272,
+    "hitBase": 0.45,
+    "flipChance": {
+      "flipper": 0.4,
+      "lifter": 0.09,
+      "spinner_v": 0.04,
+      "drum": 0.02,
+      "hammer": 0.048
+    },
+    "classEdge": {
+      "spinner_h": 0.78,
+      "spinner_v": 0.288,
+      "drum": 0.36,
+      "hammer": 0.25,
+      "flipper": 0.64,
+      "lifter": 0.32,
+      "crusher": 0.18,
+      "static": 1,
+      "none": 0.6
+    },
+    "beachChance": {
+      "static": 0.086,
+      "flipper": 0.188,
+      "lifter": 0.2,
+      "spinner_h": 0.006,
+      "drum": 0.004,
+      "spinner_v": 0.015,
+      "hammer": 0.002,
+      "crusher": 0.024,
+      "none": 0.02
+    },
+    "beachEscape": 0.085,
+    "wedgePushS": 1.8,
+    "multibotEdge": 0.5,
+    "multibotExposure": 2.2,
+    "_multibot": "Multibot units land less (multibotEdge) and are easier to hit, beach and flip (multibotExposure). Physics fights a multibot as its main unit, so these are set to put multibots near an even record, not fitted."
+  },
+  "limits": {
+    "_comment": "Sanity limits on a robot body, applied every physics step (js/sim/robot_sim.js). Real fights never reach them; they catch solver glitches - a robot squeezed between a hazard and another robot once left the arena at 20 m/s.",
+    "maxSpeedMps": 12,
+    "maxUpMps": 6.5,
+    "maxSpinRadS": 28
+  },
+  "difficulty": {
+    "_comment": "Settings -> Difficulty, changeable at any time (js/logic/settings.js). skillBonus is added to the AI driver's skill (0..1) in fights against you; adaptOptions is how many pre-fight setups an opponent tests against you (0 = it never adapts) and adaptFights how many trial fights each; learnRate scales how fast every AI learns from its fights (in the fight, between fights, in the pit and the off-season); aiBudget scales the AI teams' off-season money; purse scales what you earn.",
+    "easy": {
+      "label": "Easy",
+      "skillBonus": -0.18,
+      "adaptOptions": 0,
+      "adaptFights": 0,
+      "learnRate": 0.35,
+      "aiBudget": 0.75,
+      "purse": 1.25
+    },
+    "medium": {
+      "label": "Medium",
+      "skillBonus": 0,
+      "adaptOptions": 3,
+      "adaptFights": 12,
+      "learnRate": 0.7,
+      "aiBudget": 1.0,
+      "purse": 1.0
+    },
+    "hard": {
+      "label": "Hard",
+      "skillBonus": 0.1,
+      "adaptOptions": 6,
+      "adaptFights": 20,
+      "learnRate": 1.0,
+      "aiBudget": 1.25,
+      "purse": 0.9
+    },
+    "ultimate": {
+      "label": "Ultimate",
+      "skillBonus": 0.2,
+      "adaptOptions": 10,
+      "adaptFights": 30,
+      "learnRate": 1.4,
+      "aiBudget": 1.6,
+      "purse": 0.8
+    }
+  }
+}

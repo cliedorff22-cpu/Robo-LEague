@@ -1,0 +1,48 @@
+{
+  "schema": "robot/1",
+  "id": "pennywhistle",
+  "name": "Pennywhistle",
+  "number": 111,
+  "origin": "original",
+  "archetype": "drum",
+  "league": "rookie",
+  "rating": 31,
+  "personality": "defensive",
+  "team": "Rivet Racing",
+  "livery": {
+    "primary": "#00897b",
+    "secondary": "#b87333",
+    "accent": "#e0f2f1",
+    "pattern": "band"
+  },
+  "body": {
+    "template": "slab",
+    "params": {
+      "chamfer": 0.3
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "fin",
+        "heightIn": 2
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_slab_ti",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_8_foam",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "drum_kinetic",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top",
+      "armor_uhmw_side",
+      "armor_uhmw_side",
+      "armor_uhmw_rear"
+    ]
+  }
+}

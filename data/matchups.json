@@ -1,0 +1,287 @@
+{
+  "schema": "matchups/1",
+  "comment": "Weapon class against weapon class in real refereed physics, measured by tools/balance.sh during the Stage 6 balance pass. vs[a][b] is how often class a beats class b; wins/losses say how. Written by tools/balance_report.py --write; the build advisor (js/logic/advisor.js) reasons from it. Regenerate after any balance change.",
+  "bouts": 896,
+  "overall": {
+    "lifter": 0.594,
+    "flipper": 0.58,
+    "spinner_h": 0.54,
+    "hammer": 0.487,
+    "spinner_v": 0.482,
+    "crusher": 0.469,
+    "drum": 0.464,
+    "static": 0.384
+  },
+  "vs": {
+    "lifter": {
+      "flipper": 0.594,
+      "spinner_h": 0.562,
+      "hammer": 0.531,
+      "spinner_v": 0.719,
+      "crusher": 0.438,
+      "drum": 0.406,
+      "static": 0.906
+    },
+    "flipper": {
+      "lifter": 0.406,
+      "spinner_h": 0.625,
+      "hammer": 0.531,
+      "spinner_v": 0.719,
+      "crusher": 0.562,
+      "drum": 0.688,
+      "static": 0.531
+    },
+    "spinner_h": {
+      "lifter": 0.438,
+      "flipper": 0.375,
+      "hammer": 0.469,
+      "spinner_v": 0.594,
+      "crusher": 0.656,
+      "drum": 0.719,
+      "static": 0.531
+    },
+    "hammer": {
+      "lifter": 0.469,
+      "flipper": 0.469,
+      "spinner_h": 0.531,
+      "spinner_v": 0.562,
+      "crusher": 0.344,
+      "drum": 0.406,
+      "static": 0.625
+    },
+    "spinner_v": {
+      "lifter": 0.281,
+      "flipper": 0.281,
+      "spinner_h": 0.406,
+      "hammer": 0.438,
+      "crusher": 0.562,
+      "drum": 0.719,
+      "static": 0.688
+    },
+    "crusher": {
+      "lifter": 0.562,
+      "flipper": 0.438,
+      "spinner_h": 0.344,
+      "hammer": 0.656,
+      "spinner_v": 0.438,
+      "drum": 0.312,
+      "static": 0.531
+    },
+    "drum": {
+      "lifter": 0.594,
+      "flipper": 0.312,
+      "spinner_h": 0.281,
+      "hammer": 0.594,
+      "spinner_v": 0.281,
+      "crusher": 0.688,
+      "static": 0.5
+    },
+    "static": {
+      "lifter": 0.094,
+      "flipper": 0.469,
+      "spinner_h": 0.469,
+      "hammer": 0.375,
+      "spinner_v": 0.312,
+      "crusher": 0.469,
+      "drum": 0.5
+    }
+  },
+  "n": {
+    "lifter": {
+      "flipper": 32,
+      "spinner_h": 32,
+      "hammer": 32,
+      "spinner_v": 32,
+      "crusher": 32,
+      "drum": 32,
+      "static": 32
+    },
+    "flipper": {
+      "lifter": 32,
+      "spinner_h": 32,
+      "hammer": 32,
+      "spinner_v": 32,
+      "crusher": 32,
+      "drum": 32,
+      "static": 32
+    },
+    "spinner_h": {
+      "lifter": 32,
+      "flipper": 32,
+      "hammer": 32,
+      "spinner_v": 32,
+      "crusher": 32,
+      "drum": 32,
+      "static": 32
+    },
+    "hammer": {
+      "lifter": 32,
+      "flipper": 32,
+      "spinner_h": 32,
+      "spinner_v": 32,
+      "crusher": 32,
+      "drum": 32,
+      "static": 32
+    },
+    "spinner_v": {
+      "lifter": 32,
+      "flipper": 32,
+      "spinner_h": 32,
+      "hammer": 32,
+      "crusher": 32,
+      "drum": 32,
+      "static": 32
+    },
+    "crusher": {
+      "lifter": 32,
+      "flipper": 32,
+      "spinner_h": 32,
+      "hammer": 32,
+      "spinner_v": 32,
+      "drum": 32,
+      "static": 32
+    },
+    "drum": {
+      "lifter": 32,
+      "flipper": 32,
+      "spinner_h": 32,
+      "hammer": 32,
+      "spinner_v": 32,
+      "crusher": 32,
+      "static": 32
+    },
+    "static": {
+      "lifter": 32,
+      "flipper": 32,
+      "spinner_h": 32,
+      "hammer": 32,
+      "spinner_v": 32,
+      "crusher": 32,
+      "drum": 32
+    }
+  },
+  "winsBy": {
+    "lifter": {
+      "ko:beached": 83,
+      "ko:flipped": 43,
+      "decision": 6,
+      "ko:disabled": 1
+    },
+    "flipper": {
+      "ko:beached": 69,
+      "ko:flipped": 55,
+      "ko:stuck": 4,
+      "decision": 1,
+      "ko:disabled": 1
+    },
+    "spinner_h": {
+      "ko:disabled": 68,
+      "decision": 33,
+      "tapout": 6,
+      "ko:beached": 6,
+      "ko:flipped": 5,
+      "ko:stuck": 3
+    },
+    "hammer": {
+      "ko:disabled": 91,
+      "decision": 8,
+      "ko:beached": 5,
+      "tapout": 2,
+      "ko:stuck": 2,
+      "ko:flipped": 1
+    },
+    "spinner_v": {
+      "ko:disabled": 67,
+      "decision": 17,
+      "ko:flipped": 11,
+      "tapout": 7,
+      "ko:beached": 5,
+      "ko:stuck": 1
+    },
+    "crusher": {
+      "ko:disabled": 80,
+      "ko:flipped": 9,
+      "decision": 6,
+      "ko:beached": 5,
+      "ko:stuck": 3,
+      "tapout": 2
+    },
+    "drum": {
+      "ko:disabled": 63,
+      "decision": 20,
+      "tapout": 9,
+      "ko:beached": 7,
+      "ko:stuck": 3,
+      "ko:flipped": 2
+    },
+    "static": {
+      "ko:beached": 72,
+      "decision": 5,
+      "ko:flipped": 5,
+      "ko:stuck": 3,
+      "ko:disabled": 1
+    }
+  },
+  "lossesBy": {
+    "lifter": {
+      "ko:disabled": 55,
+      "ko:beached": 11,
+      "decision": 10,
+      "ko:flipped": 7,
+      "tapout": 6,
+      "ko:stuck": 2
+    },
+    "flipper": {
+      "ko:disabled": 39,
+      "ko:beached": 28,
+      "decision": 20,
+      "ko:flipped": 5,
+      "tapout": 2
+    },
+    "spinner_h": {
+      "ko:flipped": 40,
+      "ko:disabled": 29,
+      "ko:beached": 22,
+      "decision": 10,
+      "ko:stuck": 2
+    },
+    "hammer": {
+      "ko:disabled": 53,
+      "ko:beached": 45,
+      "ko:flipped": 11,
+      "decision": 6
+    },
+    "spinner_v": {
+      "ko:disabled": 38,
+      "ko:beached": 33,
+      "ko:flipped": 27,
+      "decision": 9,
+      "ko:stuck": 7,
+      "tapout": 2
+    },
+    "crusher": {
+      "ko:disabled": 48,
+      "ko:beached": 48,
+      "decision": 12,
+      "ko:flipped": 9,
+      "tapout": 1,
+      "ko:stuck": 1
+    },
+    "drum": {
+      "ko:disabled": 46,
+      "ko:beached": 34,
+      "ko:flipped": 20,
+      "decision": 11,
+      "tapout": 6,
+      "ko:stuck": 3
+    },
+    "static": {
+      "ko:disabled": 64,
+      "ko:beached": 31,
+      "decision": 18,
+      "ko:flipped": 12,
+      "tapout": 9,
+      "ko:stuck": 4
+    }
+  }
+}

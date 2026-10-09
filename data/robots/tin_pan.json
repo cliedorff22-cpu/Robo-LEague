@@ -1,0 +1,48 @@
+{
+  "schema": "robot/1",
+  "id": "tin_pan",
+  "name": "Tin Pan",
+  "number": 81,
+  "origin": "original",
+  "archetype": "drum",
+  "league": "pro",
+  "rating": 46,
+  "personality": "defensive",
+  "team": "Rust Racing",
+  "livery": {
+    "primary": "#a7adb4",
+    "secondary": "#1565c0",
+    "accent": "#fafafa",
+    "pattern": "stripes"
+  },
+  "body": {
+    "template": "cab",
+    "params": {
+      "chamferFront": 0.3,
+      "deck": 0.6,
+      "cabLength": 0.35
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "stack",
+        "heightIn": 4,
+        "radiusIn": 2.5
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "drum_kinetic",
+    "armor": [
+      "armor_ar500_front",
+      "armor_poly_top"
+    ]
+  }
+}

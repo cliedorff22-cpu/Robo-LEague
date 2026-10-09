@@ -1,0 +1,42 @@
+{
+  "schema": "robot/1",
+  "id": "opal",
+  "name": "Opal",
+  "number": 84,
+  "origin": "parody",
+  "archetype": "drum",
+  "league": "pro",
+  "rating": 44,
+  "personality": "defensive",
+  "team": "Night Heavy Industries",
+  "inspiredBy": "Jasper",
+  "livery": {
+    "primary": "#f0f4f3",
+    "secondary": "#26a69a",
+    "accent": "#ce93d8",
+    "pattern": "camo"
+  },
+  "body": {
+    "template": "slab",
+    "params": {
+      "chamfer": 0.3
+    },
+    "mount": "front",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_slab_ti",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_8_foam",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "drum_eggbeater",
+    "armor": [
+      "armor_ar500_front",
+      "armor_poly_top",
+      "armor_uhmw_rear"
+    ]
+  }
+}

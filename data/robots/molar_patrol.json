@@ -1,0 +1,52 @@
+{
+  "schema": "robot/1",
+  "id": "molar_patrol",
+  "name": "Molar Patrol",
+  "number": 12,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "world",
+  "rating": 86,
+  "personality": "defensive",
+  "team": "Shrapnel Collective",
+  "inspiredBy": "Bite Force",
+  "livery": {
+    "primary": "#5b6066",
+    "secondary": "#d32f2f",
+    "accent": "#eeeeee",
+    "pattern": "teeth"
+  },
+  "body": {
+    "template": "hex",
+    "params": {
+      "slope": 0.7,
+      "weaponBay": 0.18,
+      "corner": 0.15,
+      "endWidth": 0.7,
+      "chamferFront": 0.3
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "forks",
+        "count": 2,
+        "lengthIn": 7
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_v_disc",
+    "srimech": "srimech_pneumatic",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "robot/1",
+  "id": "gyrator",
+  "name": "Gyrator",
+  "number": 10,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "world",
+  "rating": 88,
+  "personality": "aggressive",
+  "team": "Torque Labs",
+  "inspiredBy": "Rotator",
+  "livery": {
+    "primary": "#f57c00",
+    "secondary": "#1a1a1a",
+    "accent": "#ffd54f",
+    "pattern": "stripes"
+  },
+  "body": {
+    "template": "round",
+    "params": {
+      "sides": 8,
+      "wall": 0.55,
+      "top": "cone"
+    },
+    "mount": "overhead",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_round",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_h_disc",
+    "armor": [
+      "armor_hardox_front",
+      "armor_poly_top"
+    ]
+  }
+}

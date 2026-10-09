@@ -1,0 +1,50 @@
+{
+  "schema": "robot/1",
+  "id": "undertow",
+  "name": "Undertow",
+  "number": 53,
+  "origin": "parody",
+  "archetype": "lifter",
+  "league": "elite",
+  "rating": 61,
+  "personality": "opportunistic",
+  "team": "Cinder Fabrication",
+  "inspiredBy": "Overhaul",
+  "livery": {
+    "primary": "#1565c0",
+    "secondary": "#ff6f00",
+    "accent": "#e3f2fd",
+    "pattern": "stripes"
+  },
+  "body": {
+    "template": "cab",
+    "params": {
+      "chamferFront": 0.2,
+      "deck": 0.5,
+      "cabLength": 0.5,
+      "rake": 0.5
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "plow",
+        "lengthIn": 7,
+        "overhangIn": 3
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_tall_box",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_light",
+    "weapon": "lifter_clamp",
+    "armor": [
+      "armor_ti_front",
+      "armor_uhmw_side"
+    ]
+  }
+}

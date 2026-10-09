@@ -1,0 +1,48 @@
+{
+  "schema": "robot/1",
+  "id": "red_dot",
+  "name": "Red Dot",
+  "number": 43,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "elite",
+  "rating": 68,
+  "personality": "aggressive",
+  "team": "Copper Machine Shop",
+  "inspiredBy": "Tracer",
+  "livery": {
+    "primary": "#d50000",
+    "secondary": "#111111",
+    "accent": "#ff8a80",
+    "pattern": "stripes"
+  },
+  "body": {
+    "template": "dart",
+    "params": {
+      "slope": 0.55,
+      "noseWidth": 0.4
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "fin",
+        "heightIn": 3,
+        "length": 0.4
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_v_small",
+    "armor": [
+      "armor_ti_front",
+      "armor_ti_top"
+    ]
+  }
+}

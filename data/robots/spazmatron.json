@@ -1,0 +1,46 @@
+{
+  "schema": "robot/1",
+  "id": "spazmatron",
+  "name": "Spazmatron",
+  "number": 110,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "rookie",
+  "rating": 32,
+  "personality": "opportunistic",
+  "team": "Torque Syndicate",
+  "inspiredBy": "Spaz",
+  "livery": {
+    "primary": "#ffeb3b",
+    "secondary": "#111111",
+    "accent": "#ff6d00",
+    "pattern": "spots"
+  },
+  "body": {
+    "template": "round",
+    "params": {
+      "sides": 8,
+      "wall": 0.5,
+      "top": "cone"
+    },
+    "mount": "overhead",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_round",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "spinner_h_disc",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_side",
+      "armor_ti_side",
+      "armor_poly_top",
+      "armor_ti_rear"
+    ]
+  }
+}

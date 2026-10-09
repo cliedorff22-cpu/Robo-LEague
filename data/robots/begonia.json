@@ -1,0 +1,47 @@
+{
+  "schema": "robot/1",
+  "id": "begonia",
+  "name": "Begonia",
+  "number": 80,
+  "origin": "parody",
+  "archetype": "drum",
+  "league": "pro",
+  "rating": 47,
+  "personality": "opportunistic",
+  "team": "Static Syndicate",
+  "inspiredBy": "Petunia",
+  "livery": {
+    "primary": "#f06292",
+    "secondary": "#43a047",
+    "accent": "#fff59d",
+    "pattern": "spots"
+  },
+  "body": {
+    "template": "round",
+    "params": {
+      "sides": 8,
+      "wall": 0.75
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "eyes",
+        "radiusIn": 1.8
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_round",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "drum_kinetic",
+    "armor": [
+      "armor_ar500_front",
+      "armor_uhmw_side"
+    ]
+  }
+}

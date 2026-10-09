@@ -1,0 +1,53 @@
+{
+  "schema": "robot/1",
+  "id": "labyrinth",
+  "name": "Labyrinth",
+  "number": 20,
+  "origin": "parody",
+  "archetype": "drum",
+  "league": "world",
+  "rating": 80,
+  "personality": "opportunistic",
+  "team": "Static Syndicate",
+  "inspiredBy": "Minotaur",
+  "livery": {
+    "primary": "#b0b6bd",
+    "secondary": "#1d1f22",
+    "accent": "#1e88e5",
+    "pattern": "band"
+  },
+  "body": {
+    "template": "slab",
+    "params": {
+      "chamfer": 0.3
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "spikes",
+        "count": 2,
+        "lengthIn": 3
+      },
+      {
+        "type": "horns",
+        "heightIn": 5,
+        "backIn": 6,
+        "forwardIn": 3,
+        "spread": 0.36
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_slab_ti",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_8_foam",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "drum_kinetic",
+    "armor": [
+      "armor_hardox_front"
+    ]
+  }
+}

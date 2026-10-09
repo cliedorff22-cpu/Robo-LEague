@@ -1,0 +1,49 @@
+{
+  "schema": "robot/1",
+  "id": "null_hypothesis",
+  "name": "Null Hypothesis",
+  "number": 9,
+  "origin": "original",
+  "archetype": "spinner_v",
+  "league": "world",
+  "rating": 89,
+  "personality": "defensive",
+  "team": "Sparkplug Heavy Industries",
+  "livery": {
+    "primary": "#e9e9e4",
+    "secondary": "#16181b",
+    "accent": "#00a3e0",
+    "pattern": "band"
+  },
+  "body": {
+    "template": "twin",
+    "params": {
+      "weaponBay": 0.28,
+      "chamfer": 0.2,
+      "pod": 0.25,
+      "bridge": 0.6
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "forks",
+        "count": 4,
+        "lengthIn": 5,
+        "spread": 0.9
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_slab_ti",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_8_foam",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_v_big",
+    "armor": [
+      "armor_ti_front"
+    ]
+  }
+}

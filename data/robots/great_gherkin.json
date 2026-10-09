@@ -1,0 +1,48 @@
+{
+  "schema": "robot/1",
+  "id": "great_gherkin",
+  "name": "Great Gherkin",
+  "number": 98,
+  "origin": "parody",
+  "archetype": "hammer",
+  "league": "rookie",
+  "rating": 40,
+  "personality": "opportunistic",
+  "team": "Tungsten Fabrication",
+  "inspiredBy": "Big Dill",
+  "livery": {
+    "primary": "#558b2f",
+    "secondary": "#c5e1a5",
+    "accent": "#33691e",
+    "pattern": "spots"
+  },
+  "body": {
+    "template": "bullet",
+    "params": {
+      "chamferFront": 0.5,
+      "chamferRear": 0.5,
+      "roundness": 0.35,
+      "tailRound": 0.35,
+      "noseDrop": 0.2
+    },
+    "mount": "top",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_long",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "hammer_spike",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top",
+      "armor_ti_side",
+      "armor_uhmw_side",
+      "armor_uhmw_rear"
+    ]
+  }
+}

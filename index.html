@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROBO LEAGUE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;1,700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Teko:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="css/menu.css">
+<link rel="stylesheet" href="css/theme-menu.css">
+<!--
+  The front end: main menu, Quick Fight, Settings, Credits, Career. The fight
+  itself is fight.html. Only Three.js is needed here - the robot previews are
+  posed from pure logic, so Rapier is not downloaded until you fight.
+-->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+  <div id="app">
+    <div class="loading" id="boot">
+      <div class="logo">ROBO<span>LEAGUE</span></div>
+      <p id="boot-status">loading...</p>
+    </div>
+  </div>
+  <script>
+  // Classic script: must work even when modules cannot load at all.
+  if (location.protocol === "file:") {
+    document.getElementById("boot").innerHTML =
+      "<div class='logo'>ROBO<span>LEAGUE</span></div>" +
+      "<p>Browsers refuse to load ES modules from <code>file://</code>.</p>" +
+      "<p>From the project folder run <code>tools/serve.sh</code>, then open " +
+      "<a href='http://localhost:8420/'>http://localhost:8420/</a></p>";
+  }
+  window.addEventListener("error", function (e) {
+    if (window.__MENU_BOOTED__) return;
+    document.getElementById("boot-status").textContent = "Failed to start: " + (e.message || e);
+  });
+  window.addEventListener("unhandledrejection", function (e) {
+    if (window.__MENU_BOOTED__) return;
+    var r = e.reason;
+    document.getElementById("boot-status").textContent = "Failed to start: " + ((r && (r.stack || r.message)) || r);
+  });
+  </script>
+  <script type="module" src="js/menu/menu.js"></script>
+</body>
+</html>

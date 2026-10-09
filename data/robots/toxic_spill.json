@@ -1,0 +1,49 @@
+{
+  "schema": "robot/1",
+  "id": "toxic_spill",
+  "name": "Toxic Spill",
+  "number": 89,
+  "origin": "parody",
+  "archetype": "lifter",
+  "league": "pro",
+  "rating": 41,
+  "personality": "opportunistic",
+  "team": "Sparkplug Robotics",
+  "inspiredBy": "BioHazard",
+  "livery": {
+    "primary": "#ffd600",
+    "secondary": "#1a1a1a",
+    "accent": "#76ff03",
+    "pattern": "hazard"
+  },
+  "body": {
+    "template": "hex",
+    "params": {
+      "height": 0.6,
+      "chamferFront": 0.3,
+      "corner": 0.15
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "fin",
+        "heightIn": 2
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "lifter_arm",
+    "armor": [
+      "armor_ar500_front",
+      "armor_uhmw_side",
+      "armor_uhmw_side"
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "schema": "robot/1",
+  "id": "t_plus",
+  "name": "T-Plus",
+  "number": 103,
+  "origin": "parody",
+  "archetype": "hammer",
+  "league": "rookie",
+  "rating": 37,
+  "personality": "aggressive",
+  "team": "Copper Machine Shop",
+  "inspiredBy": "T-Minus",
+  "livery": {
+    "primary": "#1565c0",
+    "secondary": "#ffffff",
+    "accent": "#ff1744",
+    "pattern": "stripes"
+  },
+  "body": {
+    "template": "dart",
+    "params": {
+      "chamferFront": 0.35,
+      "slope": 0.6,
+      "noseWidth": 0.4
+    },
+    "mount": "top",
+    "extras": [
+      {
+        "type": "forks",
+        "count": 2,
+        "lengthIn": 4
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_tall_box",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "hammer_sledge",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top",
+      "armor_uhmw_side",
+      "armor_uhmw_side",
+      "armor_uhmw_rear"
+    ]
+  }
+}

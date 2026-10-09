@@ -1,0 +1,50 @@
+{
+  "schema": "robot/1",
+  "id": "cathedral",
+  "name": "Cathedral",
+  "number": 14,
+  "origin": "original",
+  "archetype": "wedge",
+  "league": "world",
+  "rating": 85,
+  "personality": "opportunistic",
+  "team": "Hex Robotics",
+  "livery": {
+    "primary": "#4a2c6d",
+    "secondary": "#d4af37",
+    "accent": "#9fd3ff",
+    "pattern": "chevron"
+  },
+  "body": {
+    "template": "tent",
+    "params": {
+      "slope": 1.0,
+      "rearHeight": 1.0,
+      "ridge": 0.2,
+      "chamferFront": 0.1,
+      "chamferRear": 0.1
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "fin",
+        "heightIn": 5,
+        "length": 0.3
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weapon": "wedge_long",
+    "armor": [
+      "armor_hardox_front",
+      "armor_ti_side"
+    ],
+    "srimech": "srimech_arm"
+  }
+}

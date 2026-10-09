@@ -1,0 +1,47 @@
+{
+  "schema": "robot/1",
+  "id": "the_arbiter",
+  "name": "The Arbiter",
+  "number": 108,
+  "origin": "parody",
+  "archetype": "hammer",
+  "league": "rookie",
+  "rating": 33,
+  "personality": "defensive",
+  "team": "Basement Brigade",
+  "inspiredBy": "The Judge",
+  "livery": {
+    "primary": "#111111",
+    "secondary": "#f5f5f5",
+    "accent": "#d4af37",
+    "pattern": "stripes"
+  },
+  "body": {
+    "template": "cab",
+    "params": {
+      "chamferFront": 0.15,
+      "deck": 0.65,
+      "cabLength": 0.4,
+      "rake": 0.1
+    },
+    "mount": "top",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_tall_box",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "hammer_sledge",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top",
+      "armor_uhmw_side",
+      "armor_uhmw_side",
+      "armor_uhmw_rear"
+    ]
+  }
+}

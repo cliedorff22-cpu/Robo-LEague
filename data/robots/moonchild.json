@@ -1,0 +1,48 @@
+{
+  "schema": "robot/1",
+  "id": "moonchild",
+  "name": "Moonchild",
+  "number": 45,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "elite",
+  "rating": 67,
+  "personality": "defensive",
+  "team": "Voltage Foundry",
+  "inspiredBy": "Starchild",
+  "livery": {
+    "primary": "#c0c8d8",
+    "secondary": "#1a237e",
+    "accent": "#ffd54f",
+    "pattern": "spots"
+  },
+  "body": {
+    "template": "bullet",
+    "params": {
+      "slope": 0.65,
+      "roundness": 0.4
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "dome",
+        "size": 0.22,
+        "heightIn": 3
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_v_disc",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_top"
+    ]
+  }
+}

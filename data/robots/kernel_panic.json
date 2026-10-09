@@ -1,0 +1,46 @@
+{
+  "schema": "robot/1",
+  "id": "kernel_panic",
+  "name": "Kernel Panic",
+  "number": 7,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "world",
+  "rating": 90,
+  "personality": "aggressive",
+  "team": "Garage Garage",
+  "inspiredBy": "Glitch",
+  "livery": {
+    "primary": "#20d16b",
+    "secondary": "#0b0f0c",
+    "accent": "#9cff3d",
+    "pattern": "pixels"
+  },
+  "body": {
+    "template": "dart",
+    "params": {
+      "slope": 0.5,
+      "noseWidth": 0.6
+    },
+    "mount": "low",
+    "extras": [
+      {
+        "type": "fin",
+        "heightIn": 3
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_wide",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_heavy",
+    "weapon": "spinner_h_bar_small",
+    "armor": [
+      "armor_ti_front"
+    ]
+  }
+}

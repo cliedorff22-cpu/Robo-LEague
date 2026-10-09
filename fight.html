@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROBO LEAGUE - Fight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;1,700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@500;700&family=Teko:wght@500;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/theme-hud.css">
+
+<!--
+  Dependencies come from jsDelivr via an import map, so there is no build step
+  and no node_modules. `rapier3d-compat` is the build with the WebAssembly
+  inlined as base64, which means no separate .wasm fetch and no MIME-type
+  trouble on a plain static server.
+
+  To work offline, drop the two files into js/vendor/ and change these two
+  URLs to relative paths - nothing else in the codebase imports them directly.
+-->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/",
+    "rapier": "https://cdn.jsdelivr.net/npm/@dimforge/rapier3d-compat@0.21.0/dist/rapier.mjs"
+  }
+}
+</script>
+</head>
+<body>
+  <canvas id="view"></canvas>
+  <div id="hud"></div>
+
+  <div id="boot">
+    <h1>ROBO LEAGUE</h1>
+    <p class="sub">into the box...</p>
+    <p id="boot-status">loading...</p>
+    <p id="boot-hint" class="hint"></p>
+  </div>
+
+  <!--
+    A CLASSIC inline script, deliberately not a module.
+
+    Everything below has to work in the cases where js/main.js never runs at
+    all - and the most common one is opening this file directly, because
+    browsers refuse to load ES modules over file://. The old error handler
+    lived inside main.js, so in exactly that case it reported nothing and the
+    page sat on "loading..." forever with no explanation.
+  -->
+  <script>
+  (function () {
+    var statusEl = document.getElementById("boot-status");
+    var hintEl = document.getElementById("boot-hint");
+    var boot = document.getElementById("boot");
+
+    function fail(title, body) {
+      boot.classList.add("error");
+      boot.innerHTML = "<h1>" + title + "</h1>" + body;
+    }
+
+    // --- 1. file:// never works. Say so plainly instead of hanging.
+    if (location.protocol === "file:") {
+      fail("Serve this over HTTP", [
+        "<p>Browsers refuse to load ES modules from <code>file://</code>, so nothing can start.</p>",
+        "<p>From the project folder, run:</p>",
+        "<pre>tools/serve.sh</pre>",
+        "<p>then open <a href='http://localhost:8420/'>http://localhost:8420/</a></p>",
+        "<p class='muted'>Any static server works; this one just uses python3.</p>",
+      ].join(""));
+      return;
+    }
+
+    // --- 2. Surface early failures that happen before main.js installs its own
+    // handler - a bad import, a CDN block, a syntax error.
+    window.addEventListener("error", function (e) {
+      if (window.__ROBO_BOOTED__) return;
+      var msg = e.message || "";
+      var src = (e.filename || "") + (e.lineno ? ":" + e.lineno : "");
+      fail("Failed to start", "<pre>" + esc(msg + (src ? "\n" + src : "")) + "</pre>" + cdnHint(msg));
+    });
+    window.addEventListener("unhandledrejection", function (e) {
+      if (window.__ROBO_BOOTED__) return;
+      var r = e.reason;
+      fail("Failed to start", "<pre>" + esc((r && (r.stack || r.message)) || String(r)) + "</pre>" + cdnHint(String(r)));
+    });
+
+    function cdnHint(msg) {
+      if (/import|module|fetch|network|Failed to|dynamically/i.test(msg)) {
+        return "<p>Three.js and Rapier load from jsDelivr, so the first run needs "
+             + "a working connection. If you are offline or something is blocking "
+             + "the CDN, that is the likely cause.</p>";
+      }
+      return "";
+    }
+    function esc(s) {
+      return String(s).replace(/[&<>]/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c];
+      });
+    }
+
+    // --- 3. Watchdog. Rapier is a 4.3 MB download on a cold cache, so a slow
+    // first load is normal - but silence forever is not. Report where it stalled.
+    var t0 = Date.now();
+    var warned = false;
+    var timer = setInterval(function () {
+      if (window.__ROBO_BOOTED__) { clearInterval(timer); hintEl.textContent = ""; return; }
+      // main.js already reported a real error with a real stack. Leave it on
+      // screen - overwriting it with a guess is strictly worse.
+      if (window.__ROBO_FAILED__) { clearInterval(timer); return; }
+      var secs = Math.round((Date.now() - t0) / 1000);
+      if (secs >= 8 && !warned) {
+        warned = true;
+        hintEl.innerHTML = "still working - Three.js and Rapier are a ~5 MB first-time download";
+      }
+      if (secs >= 30) {
+        clearInterval(timer);
+        var step = statusEl ? statusEl.textContent : "?";
+        // Don't guess blindly: the step we reached already rules things out.
+        // Rapier is fetched during "starting physics", so anything past that
+        // proves the CDN is fine; the WebGL context is created during
+        // "building arena", so anything past THAT proves WebGL is fine. The
+        // old message blamed both regardless and sent people chasing ghosts.
+        var ranks = ["loading data", "starting physics", "building arena",
+                     "painting textures", "compiling shaders"];
+        var rank = -1;
+        for (var i = 0; i < ranks.length; i++) {
+          if (step.indexOf(ranks[i]) === 0) rank = i;
+        }
+        var diag;
+        if (rank >= 3) {
+          diag = "<p>The CDN and WebGL both already worked to get this far "
+               + "(Rapier downloaded during <code>starting physics</code>, the "
+               + "WebGL context was created during <code>building arena</code>), "
+               + "so this is a bug in the game itself, not your browser or "
+               + "network.</p>";
+        } else if (rank >= 2) {
+          diag = "<p>The CDN already worked to get this far, so this is most "
+               + "likely WebGL being unavailable, or a bug in the game.</p>";
+        } else {
+          diag = "<p>That is where to look. Most likely the CDN is unreachable, "
+               + "or WebGL is unavailable in this browser.</p>";
+        }
+        fail("Stuck while starting", [
+          "<p>Got as far as: <code>", esc(step), "</code></p>",
+          diag,
+          "<p>Open the browser console for the real error, and try ",
+          "<a href='selftest.html'>selftest.html</a>, which checks each layer in turn.</p>",
+        ].join(""));
+      }
+    }, 1000);
+  })();
+  </script>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

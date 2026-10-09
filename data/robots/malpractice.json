@@ -1,0 +1,50 @@
+{
+  "schema": "robot/1",
+  "id": "malpractice",
+  "name": "Malpractice",
+  "number": 8,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "world",
+  "rating": 89,
+  "personality": "opportunistic",
+  "team": "Basement Fabrication",
+  "inspiredBy": "Malice",
+  "livery": {
+    "primary": "#121212",
+    "secondary": "#c8102e",
+    "accent": "#ffffff",
+    "pattern": "teeth"
+  },
+  "body": {
+    "template": "hex",
+    "params": {
+      "chamferFront": 0.4,
+      "chamferRear": 0.3,
+      "corner": 0.22,
+      "endWidth": 0.6
+    },
+    "mount": "low",
+    "extras": [
+      {
+        "type": "spikes",
+        "count": 2,
+        "lengthIn": 3
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_wide",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_heavy",
+    "weapon": "spinner_h_undercutter",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_top"
+    ]
+  }
+}

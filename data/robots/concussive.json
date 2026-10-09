@@ -1,0 +1,51 @@
+{
+  "schema": "robot/1",
+  "id": "concussive",
+  "name": "Concussive",
+  "number": 94,
+  "origin": "parody",
+  "archetype": "wedge",
+  "league": "rookie",
+  "rating": 43,
+  "personality": "aggressive",
+  "team": "Hex Engineering",
+  "inspiredBy": "Shellshock",
+  "livery": {
+    "primary": "#556b2f",
+    "secondary": "#1b5e20",
+    "accent": "#d7ccc8",
+    "pattern": "camo"
+  },
+  "body": {
+    "template": "round",
+    "params": {
+      "sides": 8,
+      "wall": 0.5
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "dome",
+        "size": 0.3,
+        "heightIn": 2
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_round",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weapon": "wedge_static",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_side",
+      "armor_ti_side",
+      "armor_ar500_top",
+      "armor_ti_rear"
+    ],
+    "srimech": "srimech_arm"
+  }
+}

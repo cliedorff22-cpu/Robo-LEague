@@ -1,0 +1,97 @@
+/* mobile.css - the phone build's menus, layered over ../css/menu.css and
+   theme-menu.css. The desktop screens fill the window and scroll inside their
+   panels; on a phone every screen is one page that scrolls, its columns
+   stacked, its turntables smaller and its buttons big enough for a thumb. */
+
+html, body { height: auto; min-height: 100%; overflow: visible; }   /* the page itself scrolls */
+#app { overflow-x: clip; }
+body { -webkit-tap-highlight-color: transparent; padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left); }
+#app { height: auto; min-height: 100vh; }
+.screen { height: auto; min-height: 100vh; }
+.screen.career, .screen.workshop, .screen.pit { overflow: visible; }
+
+/* Keyboard hints mean nothing here. */
+.hint, .screen.quick .bar-hint, .screen.page .bar-hint { display: none; }
+
+/* Thumb-sized controls. */
+button, .chip, .seg, select, input { min-height: 34px; }
+.ghost.tiny { min-height: 30px; padding: 5px 10px; }
+.tab { min-height: 34px; padding: 6px 10px; }
+input, select, textarea { font-size: 16px !important; }   /* iPhone zooms into anything smaller */
+
+/* ---------------------------------------------------------------- the top bar */
+header.bar { position: sticky; top: 0; z-index: 5; flex-wrap: wrap; gap: 4px 10px; }
+.bar-title { font-size: 20px; }
+.nav-arrow { width: 40px; min-height: 36px; }
+.nav-arrows.floating { top: max(10px, env(safe-area-inset-top)); left: max(10px, env(safe-area-inset-left)); }
+
+/* ---------------------------------------------------------------- main menu */
+.screen.main { flex-direction: column; }
+.main-left { padding: 4vh 5vw 2vh; }
+.main-right { display: none; }                   /* the featured robot: a big screen's luxury */
+.menu-items { display: grid; grid-template-columns: 1fr; gap: 2px; }
+@media (orientation: landscape) {
+  .menu-items { grid-template-columns: 1fr 1fr; column-gap: 18px; }
+  .logo.big { font-size: 46px; }
+  .tagline { margin-bottom: 6px; }
+}
+.mi-title { font-size: 28px; }
+.mi-desc { font-size: 12.5px; }
+.install-hint { margin: 10px 5vw 18px; padding: 10px 12px; border-left: 4px solid var(--accent); background: rgba(255, 255, 255, 0.05); font-size: 13px; line-height: 1.4; }
+.install-hint button { margin-left: 8px; }
+
+/* ---------------------------------------------------------------- quick fight */
+.qf { display: flex; flex-direction: column; gap: 10px; overflow: visible; padding: 8px; }
+.corner { min-height: 0; }
+/* The turntable, then the spec card under it (on a big screen the card sits over it). */
+.corner .show { height: auto; min-height: 0; }
+.corner .show .stage { height: 150px; }
+.corner .card { position: static; padding: 4px 12px 8px; }
+.corner .card-name { font-size: 30px; }
+.corner .list { flex: none; max-height: 230px; }
+.vs { flex-direction: row; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px; padding: 6px 0; }
+.vs-text { font-size: 28px; }
+.vs .fight { font-size: 30px; padding: 8px 28px; width: auto; flex: 1 1 60%; }
+.vs .ghost { width: auto; flex: 1 1 30%; }
+.qf-where { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.qf-where .qf-blurb { grid-column: 1 / -1; }
+@media (orientation: landscape) {
+  .qf { display: grid; grid-template-columns: 1fr 1fr; }
+  .qf > .vs { grid-column: 1 / -1; order: 3; }
+}
+
+/* ---------------------------------------------------------------- career, tournament */
+.cr-main { display: flex; flex-direction: column; gap: 12px; padding: 8px; }
+.cr-left, .cr-right { overflow: visible; min-height: 0; }
+.cr-right .tab-body { overflow: visible; }
+.tabs { flex-wrap: wrap; }
+.next-show { grid-template-columns: 1fr; }
+.next-show .stage { width: 100%; height: 200px; }
+@media (orientation: landscape) { .next-show { grid-template-columns: 1fr 1.2fr; } }
+.tn-pair { height: 160px; }
+.career-new { flex-direction: column; gap: 14px; padding: 4vh 5vw; }
+.cn-right { width: 100%; height: 220px; }
+.groups { grid-template-columns: 1fr; }
+.table td, .table th { white-space: normal; }
+
+/* ---------------------------------------------------------------- workshop and pit */
+.ws-main { display: flex; flex-direction: column; overflow: visible; padding: 8px; }
+.ws-stage { min-height: 220px; height: 240px; }
+.pit-main { display: flex; flex-direction: column; overflow: visible; padding: 8px; }
+.pit-left, .pit-right { overflow: visible; }
+
+/* ---------------------------------------------------------------- pages */
+.page-body { padding: 3vh 4vw; overflow: visible; }
+.settings .set-row { flex-wrap: wrap; }
+.tn-setup { display: flex; flex-direction: column; gap: 16px; }
+.tn-col { min-width: 0; }
+.tn-player { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) auto; }
+.tn-player select, .tn-player input { min-width: 0; width: 100%; }
+
+/* The Market tab's bank: one lender to a block, not three cramped columns. */
+.mk-bank tr { display: block; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.mk-bank td { display: block; border: 0; padding: 2px 0; text-align: left !important; }
+.mk-act { justify-content: flex-start; }
+
+/* Turntables: a sideways swipe turns the robot, an up-down one scrolls the page. */
+canvas.stage { touch-action: pan-y; }

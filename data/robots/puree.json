@@ -1,0 +1,46 @@
+{
+  "schema": "robot/1",
+  "id": "puree",
+  "name": "Puree",
+  "number": 64,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "pro",
+  "rating": 58,
+  "personality": "aggressive",
+  "team": "Night Engineering",
+  "inspiredBy": "Blendo",
+  "livery": {
+    "primary": "#cfd8dc",
+    "secondary": "#1976d2",
+    "accent": "#ffeb3b",
+    "pattern": "spots"
+  },
+  "body": {
+    "template": "round",
+    "params": {
+      "sides": 12,
+      "wall": 0.35
+    },
+    "mount": "shell",
+    "extras": [],
+    "look": {
+      "shell": "saucer",
+      "teeth": 2
+    }
+  },
+  "build": {
+    "chassis": "chassis_round",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_brute",
+    "weapon": "spinner_h_shell",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top"
+    ]
+  }
+}

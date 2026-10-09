@@ -1,0 +1,56 @@
+{
+  "schema": "robot/1",
+  "id": "mallard",
+  "name": "Mallard",
+  "number": 91,
+  "origin": "parody",
+  "archetype": "wedge",
+  "league": "rookie",
+  "rating": 45,
+  "personality": "aggressive",
+  "team": "Rivet Works",
+  "inspiredBy": "Duck",
+  "livery": {
+    "primary": "#2e7d32",
+    "secondary": "#ffd600",
+    "accent": "#5d4037",
+    "pattern": "split"
+  },
+  "body": {
+    "template": "bullet",
+    "params": {
+      "slope": 0.5,
+      "roundness": 0.3,
+      "noseDrop": 0.3
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "plow",
+        "lengthIn": 8,
+        "overhangIn": 4
+      },
+      {
+        "type": "eyes",
+        "radiusIn": 1.6
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weapon": "wedge_static",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_side",
+      "armor_ti_side",
+      "armor_ti_top",
+      "armor_ti_rear"
+    ],
+    "srimech": "srimech_arm"
+  }
+}

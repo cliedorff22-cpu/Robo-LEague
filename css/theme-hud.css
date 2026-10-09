@@ -1,0 +1,149 @@
+/* theme-hud.css - the arena look for the fight's HUD, layered over style.css.
+   A fight-night broadcast package: a scoreboard clock in amber LEDs, bolted
+   gunmetal panels with cut corners, hazard stripes, tale-of-the-tape intro
+   cards in the red and blue squares, and heavy condensed italic type. */
+
+:root {
+  --panel: linear-gradient(180deg, rgba(38, 42, 49, 0.86), rgba(18, 20, 24, 0.9));
+  --panel-line: rgba(255, 255, 255, 0.13);
+  --text: #eceae4;
+  --dim: #8f939a;
+  --accent: #ffc81e;
+  --hot: #ff7a1a;
+  --display: "Teko", "Barlow Condensed", "Arial Narrow", sans-serif;
+  --cond: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --hazard: repeating-linear-gradient(-45deg, var(--accent) 0 8px, #111 8px 16px);
+  --cut: 10px;
+  --bolts:
+    radial-gradient(circle at 7px 7px, #9aa0a8 0 1.3px, #3a3e45 1.8px, transparent 2.8px),
+    radial-gradient(circle at calc(100% - 7px) 7px, #9aa0a8 0 1.3px, #3a3e45 1.8px, transparent 2.8px),
+    radial-gradient(circle at 7px calc(100% - 7px), #9aa0a8 0 1.3px, #3a3e45 1.8px, transparent 2.8px),
+    radial-gradient(circle at calc(100% - 7px) calc(100% - 7px), #9aa0a8 0 1.3px, #3a3e45 1.8px, transparent 2.8px);
+}
+html, body { font-family: var(--cond); font-size: 14px; }
+
+.panel {
+  background: var(--bolts), var(--panel);
+  border: 1px solid var(--panel-line);
+  border-radius: 0;
+  clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
+  padding: 10px 14px;
+}
+.panel-title { font: 700 12px/1.2 var(--cond); letter-spacing: 0.2em; color: var(--hot); }
+.panel-title .num { color: var(--accent); font-family: var(--mono); }
+.label { font: 600 12px/1 var(--cond); letter-spacing: 0.16em; }
+.value { font-family: var(--mono); font-size: 13px; }
+.meter, .dmg-bar { border-radius: 0; }
+.meter-fill, .dmg-bar i { border-radius: 0; }
+.dmg { font-family: var(--cond); font-size: 12px; letter-spacing: 0.04em; }
+.panel.opp { box-shadow: inset -3px 0 0 #2e86ff; }
+.panel.opp .panel-title { color: #6eaaff; }
+.keys { font-family: var(--cond); font-size: 13px; letter-spacing: 0.03em; }
+.panel.bot-card { padding: 7px 12px 8px; }
+.bot-card.me { box-shadow: inset 3px 0 0 #e5281f; }
+.bc-tag { font-family: var(--cond); font-weight: 700; }
+.hud-cam { font-family: var(--cond); font-weight: 700; letter-spacing: 0.24em; clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%); }
+.keys b { font-family: var(--mono); color: var(--accent); }
+
+/* ---------------------------------------------------------------- the scoreboard clock */
+.hud-clock {
+  position: relative;
+  background:
+    radial-gradient(circle, rgba(255, 140, 26, 0.10) 0.8px, transparent 1.2px) 0 0 / 4px 4px,
+    linear-gradient(180deg, #121316, #060708);
+  border: 2px solid #2b2e33;
+  border-radius: 0;
+  padding: 2px 34px 12px;
+  clip-path: polygon(14px 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%, 0 14px);
+  box-shadow: inset 0 0 0 1px #000, inset 0 0 24px rgba(0, 0, 0, 0.9);
+}
+.hud-clock::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: var(--hazard); }
+.clock-time {
+  font: 600 64px/1 var(--display);
+  letter-spacing: 0.06em;
+  color: #ffb21e;
+  text-shadow: 0 0 8px rgba(255, 150, 20, 0.85), 0 0 22px rgba(255, 110, 10, 0.45);
+  margin-top: 4px;
+}
+.clock-time.urgent { color: #ff3b2e; text-shadow: 0 0 8px rgba(255, 59, 46, 0.9), 0 0 24px rgba(255, 30, 20, 0.5); }
+.clock-phase { font: 700 12px/1 var(--cond); letter-spacing: 0.3em; color: #a49f94; margin-top: -2px; }
+
+/* ---------------------------------------------------------------- banners and the count */
+.hud-banner {
+  font: italic 700 64px/1 var(--display);
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  padding: 10px 40px 4px;
+  background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.75) 15%, rgba(0, 0, 0, 0.75) 85%, transparent);
+  text-shadow: 0 4px 0 #000, 0 0 30px rgba(255, 200, 30, 0.45);
+  white-space: nowrap;
+}
+.hud-banner::before, .hud-banner::after { content: ""; position: absolute; left: 15%; right: 15%; height: 4px; background: var(--hazard); }
+.hud-banner::before { top: 0; } .hud-banner::after { bottom: 0; }
+.count-n { font: italic 700 150px/0.85 var(--display); color: #fff; text-shadow: 0 6px 0 #000, 0 0 40px rgba(255, 255, 255, 0.35); }
+.hud-count.final .count-n { color: #ff3b2e; text-shadow: 0 6px 0 #000, 0 0 40px rgba(255, 59, 46, 0.6); }
+.count-who { font: 700 16px/1 var(--cond); letter-spacing: 0.24em; }
+
+/* ---------------------------------------------------------------- tale of the tape */
+.hud-intro { gap: 0; }
+.intro-card {
+  border: 0; border-radius: 0; min-width: 0; max-width: 34vw; padding: 14px 22px 12px;
+  background: var(--bolts), linear-gradient(180deg, rgba(30, 33, 38, 0.94), rgba(14, 15, 18, 0.96));
+}
+.intro-card.red  { border-top: 0; box-shadow: inset 0 6px 0 #e5281f, inset 0 0 50px rgba(229, 40, 31, 0.22); clip-path: polygon(0 0, 100% 0, calc(100% - 26px) 100%, 0 100%); padding-right: 46px; }
+.intro-card.blue { border-top: 0; box-shadow: inset 0 6px 0 #2e86ff, inset 0 0 50px rgba(46, 134, 255, 0.22); clip-path: polygon(26px 0, 100% 0, 100% 100%, 0 100%); padding-left: 46px; text-align: right; }
+.intro-corner { font: 700 13px/1 var(--cond); letter-spacing: 0.3em; }
+.intro-name { font: italic 600 clamp(28px, 3.3vw, 46px)/0.9 var(--display); white-space: nowrap; text-transform: uppercase; letter-spacing: 0.02em; margin: 8px 0 8px; text-shadow: 0 3px 0 #000; }
+.intro-name .num { font-size: 0.55em; color: var(--accent); }
+.intro-line { font-family: var(--cond); font-size: clamp(12px, 1.1vw, 15px); letter-spacing: 0.04em; }
+.intro-vs {
+  font: italic 700 clamp(56px, 6.5vw, 92px)/0.8 var(--display); margin: 0 -10px; z-index: 1;
+  background: linear-gradient(180deg, #fff 0%, #ffd84a 40%, #ff7a1a 62%, #9b2a0a 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 4px 0 #000) drop-shadow(0 0 22px rgba(255, 122, 26, 0.55));
+}
+.intro-where { font: 700 16px/1 var(--cond); letter-spacing: 0.3em; bottom: -40px; }
+.intro-story { font: italic 600 28px/1 var(--display); letter-spacing: 0.14em; top: -50px; }
+.intro-story span { font-family: var(--cond); }
+
+/* ---------------------------------------------------------------- the result */
+.hud-results {
+  background: var(--bolts), linear-gradient(180deg, rgba(30, 33, 38, 0.95), rgba(12, 13, 16, 0.97));
+  border: 0; border-radius: 0; padding: 26px 34px 20px;
+  clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px);
+  box-shadow: inset 0 6px 0 var(--accent);
+}
+.res-label { font: 700 14px/1 var(--cond); letter-spacing: 0.4em; color: var(--hot); }
+.res-winner { font: italic 600 74px/0.9 var(--display); text-transform: uppercase; text-shadow: 0 4px 0 #000; margin: 8px 0 6px; }
+.res-how { font: 600 18px/1.2 var(--cond); letter-spacing: 0.1em; text-transform: uppercase; }
+.cards { font-family: var(--cond); font-size: 15px; }
+.cards th { font-size: 12px; letter-spacing: 0.16em; }
+.cards td:not(.cat) { font-family: var(--mono); font-size: 13px; }
+.res-keys b { font-family: var(--mono); color: var(--accent); }
+
+.hud-replay { border-radius: 0; font: 700 13px/1 var(--cond); letter-spacing: 0.3em; clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%); }
+
+/* the commentary booth */
+.booth-who { font: 700 13px/1 var(--cond); letter-spacing: 0.2em; }
+.booth-text { font: 600 20px/1.25 var(--cond); letter-spacing: 0.01em; }
+.booth { border-top: 2px solid rgba(255, 200, 30, 0.6); }
+
+/* the pause overlay and the boot screen */
+.po-card { border-radius: 0; font-family: var(--cond); background: var(--bolts), linear-gradient(180deg, #23262b, #121418); clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px); }
+.po-title { font: italic 600 40px/1 var(--display); letter-spacing: 0.08em; color: var(--accent); }
+.settings .set-label { font-size: 16px; }
+.settings .set-choice, .settings .set-switch span, .settings .set-switch span::before { border-radius: 0; }
+.settings .set-group { color: var(--hot); font-weight: 700; letter-spacing: 0.2em; }
+#boot h1 { font: italic 700 92px/0.9 var(--display); letter-spacing: 0.04em; color: #e9e7e1; }
+#boot #boot-status { font-family: var(--cond); letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent); }
+
+/* Two players on one keyboard: each half of the controls in its corner's colour. */
+.keys .keys-p { padding: 2px 0 2px 6px; margin: 2px 0; }
+.keys .keys-p.p1 { box-shadow: inset 3px 0 0 #e5281f; }
+.keys .keys-p.p2 { box-shadow: inset 3px 0 0 #2e86ff; }
+
+/* The scouting tape's label, under the clock. */
+.hud-tag { margin-top: 8px; text-align: center; font-family: var(--cond, "Barlow Condensed", sans-serif); background: rgba(10, 12, 16, 0.78); border-left: 4px solid #f0c419; padding: 4px 12px; max-width: 70vw; }
+.hud-tag b { display: block; letter-spacing: 0.12em; font-size: 14px; color: #f0c419; }
+.hud-tag span { display: block; font-size: 13px; color: #c8cfda; }

@@ -1,0 +1,58 @@
+{
+  "schema": "robot/1",
+  "id": "rabid_haberdasher",
+  "name": "Rabid Haberdasher",
+  "number": 40,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "elite",
+  "rating": 71,
+  "personality": "aggressive",
+  "team": "Static Labs",
+  "inspiredBy": "Mad Catter",
+  "livery": {
+    "primary": "#6a1b9a",
+    "secondary": "#76ff03",
+    "accent": "#ffffff",
+    "pattern": "tiger"
+  },
+  "body": {
+    "template": "hex",
+    "params": {
+      "chamferFront": 0.3,
+      "corner": 0.25,
+      "endWidth": 0.55
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "stack",
+        "heightIn": 6,
+        "radiusIn": 3
+      },
+      {
+        "type": "eyes"
+      },
+      {
+        "type": "ears",
+        "heightIn": 4,
+        "x": 0.05,
+        "spread": 0.36
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_v_disc",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_top"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "robot/1",
+  "id": "vinaigrette",
+  "name": "Vinaigrette",
+  "number": 79,
+  "origin": "parody",
+  "archetype": "drum",
+  "league": "pro",
+  "rating": 48,
+  "personality": "aggressive",
+  "team": "Flux Engineering",
+  "inspiredBy": "Emulsifier",
+  "livery": {
+    "primary": "#827717",
+    "secondary": "#b71c1c",
+    "accent": "#fff9c4",
+    "pattern": "spots"
+  },
+  "body": {
+    "template": "hex",
+    "params": {
+      "chamferFront": 0.3,
+      "corner": 0.22
+    },
+    "mount": "front",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "drum_eggbeater",
+    "armor": [
+      "armor_ar500_front",
+      "armor_poly_top",
+      "armor_uhmw_rear"
+    ]
+  }
+}

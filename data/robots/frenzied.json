@@ -1,0 +1,46 @@
+{
+  "schema": "robot/1",
+  "id": "frenzied",
+  "name": "Frenzied",
+  "number": 119,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "rookie",
+  "rating": 25,
+  "personality": "defensive",
+  "team": "Static Foundry",
+  "inspiredBy": "Frenzy",
+  "livery": {
+    "primary": "#d84315",
+    "secondary": "#ffab00",
+    "accent": "#111111",
+    "pattern": "bolt"
+  },
+  "body": {
+    "template": "hex",
+    "params": {
+      "slope": 0.6,
+      "corner": 0.2,
+      "chamferFront": 0.4
+    },
+    "mount": "front",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "spinner_v_small",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_top",
+      "armor_ti_side",
+      "armor_ti_side",
+      "armor_uhmw_rear"
+    ]
+  }
+}

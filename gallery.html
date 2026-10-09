@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ROBO LEAGUE - Robot Gallery</title>
+<link rel="stylesheet" href="css/menu.css">
+<!--
+  Design review: robots ten at a time, rendered with the game's real materials
+  and lighting (tools/gallery.sh is the GPU-free version, shapes only).
+    gallery.html            batch 1 (robots #0-9 by roster number; #0 is yours)
+    gallery.html?batch=4    robots #30-39
+    gallery.html?ids=a,b,c  any robots by id
+    &yaw=200                view angle in degrees; &spin=1 turns them;
+    &cols=2                 fewer, bigger cells
+-->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/"
+  }
+}
+</script>
+<style>
+  html, body { overflow: auto; }
+  #gallery { display: flex; flex-direction: column; height: 100%; }
+  #bar { display: flex; gap: 10px; align-items: center; padding: 10px 16px; border-bottom: 1px solid var(--line); flex-wrap: wrap; }
+  #bar h1 { font-size: 16px; margin: 0 12px 0 0; letter-spacing: 0.06em; }
+  #bar button { background: var(--bg2); border: 1px solid var(--line); border-radius: 4px; padding: 4px 10px; }
+  #bar button.on { border-color: var(--accent); color: var(--accent); }
+  #wrap { position: relative; flex: 1; min-height: 520px; }
+  #view { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  #labels { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(5, 1fr); grid-auto-rows: 1fr; pointer-events: none; }
+  #labels div { padding: 8px 10px; border: 1px solid var(--line); }
+  #labels b { display: block; font-size: 13px; }
+  #labels span { font-size: 11px; color: var(--dim); }
+</style>
+</head>
+<body>
+  <div id="gallery">
+    <div id="bar"><h1>ROBOT GALLERY</h1><span id="status" class="muted">loading...</span></div>
+    <div id="wrap"><canvas id="view"></canvas><div id="labels"></div></div>
+  </div>
+  <script type="module" src="js/menu/gallery.js"></script>
+</body>
+</html>

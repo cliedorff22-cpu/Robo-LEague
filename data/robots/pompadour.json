@@ -1,0 +1,51 @@
+{
+  "schema": "robot/1",
+  "id": "pompadour",
+  "name": "Pompadour",
+  "number": 82,
+  "origin": "parody",
+  "archetype": "drum",
+  "league": "pro",
+  "rating": 46,
+  "personality": "aggressive",
+  "team": "Iron Garage",
+  "inspiredBy": "Mohawk",
+  "livery": {
+    "primary": "#121212",
+    "secondary": "#ff4081",
+    "accent": "#e0e0e0",
+    "pattern": "split"
+  },
+  "body": {
+    "template": "tent",
+    "params": {
+      "slope": 0.6,
+      "ridge": 0.15,
+      "chamferFront": 0.5
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "fin",
+        "heightIn": 6,
+        "length": 0.55
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_long",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "drum_wide",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top",
+      "armor_uhmw_side",
+      "armor_uhmw_rear"
+    ]
+  }
+}

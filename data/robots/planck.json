@@ -1,0 +1,46 @@
+{
+  "schema": "robot/1",
+  "id": "planck",
+  "name": "Planck",
+  "number": 50,
+  "origin": "parody",
+  "archetype": "flipper",
+  "league": "elite",
+  "rating": 63,
+  "personality": "opportunistic",
+  "team": "Torque Syndicate",
+  "inspiredBy": "Quantum",
+  "livery": {
+    "primary": "#5e35b1",
+    "secondary": "#00bfa5",
+    "accent": "#ffffff",
+    "pattern": "bolt"
+  },
+  "body": {
+    "template": "wedge",
+    "params": {
+      "slope": 0.7
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "cage",
+        "heightIn": 3
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_long",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_light",
+    "weapon": "flipper_pneumatic",
+    "armor": [
+      "armor_ti_front",
+      "armor_ti_side"
+    ]
+  }
+}

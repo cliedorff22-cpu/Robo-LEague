@@ -1,0 +1,47 @@
+{
+  "schema": "robot/1",
+  "id": "splinter_group",
+  "name": "Splinter Group",
+  "number": 55,
+  "origin": "parody",
+  "archetype": "hammer",
+  "league": "elite",
+  "rating": 59,
+  "personality": "aggressive",
+  "team": "Ratchet Labs",
+  "inspiredBy": "Shatter",
+  "livery": {
+    "primary": "#00838f",
+    "secondary": "#cfd8dc",
+    "accent": "#263238",
+    "pattern": "pixels"
+  },
+  "body": {
+    "template": "hex",
+    "params": {
+      "chamferFront": 0.3,
+      "corner": 0.22
+    },
+    "mount": "top",
+    "extras": [
+      {
+        "type": "forks",
+        "count": 2,
+        "lengthIn": 6
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_tall_box",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_light",
+    "weapon": "hammer_sledge",
+    "armor": [
+      "armor_ti_front"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "robot/1",
+  "id": "payline",
+  "name": "Payline",
+  "number": 31,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "elite",
+  "rating": 78,
+  "personality": "aggressive",
+  "team": "Rivet Works",
+  "inspiredBy": "Jackpot",
+  "livery": {
+    "primary": "#d4af37",
+    "secondary": "#b71c1c",
+    "accent": "#ffffff",
+    "pattern": "band"
+  },
+  "body": {
+    "template": "hex",
+    "params": {
+      "slope": 0.4,
+      "corner": 0.2,
+      "height": 1
+    },
+    "mount": "low",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_wide",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_heavy",
+    "weapon": "spinner_h_undercutter",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top"
+    ]
+  }
+}

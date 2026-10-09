@@ -1,0 +1,49 @@
+{
+  "schema": "robot/1",
+  "id": "cadmium",
+  "name": "Cadmium",
+  "number": 37,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "elite",
+  "rating": 73,
+  "personality": "aggressive",
+  "team": "Arc Garage",
+  "inspiredBy": "Cobalt",
+  "livery": {
+    "primary": "#ffc400",
+    "secondary": "#1a1a1a",
+    "accent": "#ff3d00",
+    "pattern": "stripes"
+  },
+  "body": {
+    "template": "bullet",
+    "params": {
+      "slope": 0.6,
+      "roundness": 0.4,
+      "noseDrop": 0.35
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "forks",
+        "count": 2,
+        "lengthIn": 5
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_v_disc",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_top"
+    ]
+  }
+}

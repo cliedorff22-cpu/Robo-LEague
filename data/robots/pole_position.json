@@ -1,0 +1,49 @@
+{
+  "schema": "robot/1",
+  "id": "pole_position",
+  "name": "Pole Position",
+  "number": 46,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "elite",
+  "rating": 66,
+  "personality": "aggressive",
+  "team": "Bent Works",
+  "inspiredBy": "P1",
+  "livery": {
+    "primary": "#d50000",
+    "secondary": "#ffffff",
+    "accent": "#212121",
+    "pattern": "checker"
+  },
+  "body": {
+    "template": "dart",
+    "params": {
+      "slope": 0.85,
+      "rearHeight": 0.85,
+      "noseWidth": 0.35
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "wings",
+        "reachIn": 4,
+        "length": 0.4
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_fast",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_heavy",
+    "weapon": "spinner_v_disc",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top"
+    ]
+  }
+}

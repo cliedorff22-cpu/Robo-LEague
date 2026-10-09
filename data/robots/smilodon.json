@@ -1,0 +1,48 @@
+{
+  "schema": "robot/1",
+  "id": "smilodon",
+  "name": "Smilodon",
+  "number": 24,
+  "origin": "parody",
+  "archetype": "drum",
+  "league": "world",
+  "rating": 77,
+  "personality": "defensive",
+  "team": "Night Heavy Industries",
+  "inspiredBy": "Sabertooth",
+  "livery": {
+    "primary": "#ef6c00",
+    "secondary": "#141414",
+    "accent": "#fff3e0",
+    "pattern": "tiger"
+  },
+  "body": {
+    "template": "hex",
+    "params": {
+      "slope": 0.6,
+      "corner": 0.2,
+      "chamferFront": 0.45
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "spikes",
+        "count": 2,
+        "lengthIn": 4
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "drum_kinetic",
+    "armor": [
+      "armor_ti_front"
+    ]
+  }
+}

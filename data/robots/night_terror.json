@@ -1,0 +1,47 @@
+{
+  "schema": "robot/1",
+  "id": "night_terror",
+  "name": "Night Terror",
+  "number": 71,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "pro",
+  "rating": 53,
+  "personality": "opportunistic",
+  "team": "Rivet Combat",
+  "inspiredBy": "Nightmare",
+  "livery": {
+    "primary": "#111111",
+    "secondary": "#6a1b9a",
+    "accent": "#b388ff",
+    "pattern": "teeth"
+  },
+  "body": {
+    "template": "twin",
+    "params": {
+      "chamferFront": 0.5,
+      "topWidth": 0.75,
+      "pod": 0.25,
+      "bridge": 0.6,
+      "weaponBay": 0,
+      "podLength": 1.15
+    },
+    "mount": "front",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_tall_box",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_v_big",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top",
+      "armor_uhmw_side"
+    ]
+  }
+}

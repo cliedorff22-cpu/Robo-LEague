@@ -1,0 +1,52 @@
+{
+  "schema": "robot/1",
+  "id": "ironmonger",
+  "name": "Ironmonger",
+  "number": 3,
+  "origin": "original",
+  "archetype": "crusher",
+  "league": "world",
+  "rating": 93,
+  "personality": "defensive",
+  "team": "Copper Brigade",
+  "livery": {
+    "primary": "#3d4249",
+    "secondary": "#e0661b",
+    "accent": "#f2c200",
+    "pattern": "hazard"
+  },
+  "body": {
+    "template": "hex",
+    "params": {
+      "chamferFront": 0.3,
+      "height": 1.0,
+      "corner": 0.2,
+      "endWidth": 0.7
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "hump",
+        "heightIn": 3
+      },
+      {
+        "type": "wheelGuards",
+        "height": 0.9
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_tall_box",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_light",
+    "weapon": "crusher_beak",
+    "srimech": "srimech_pneumatic",
+    "armor": [
+      "armor_ti_front"
+    ]
+  }
+}

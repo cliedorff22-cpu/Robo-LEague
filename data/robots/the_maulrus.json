@@ -1,0 +1,52 @@
+{
+  "schema": "robot/1",
+  "id": "the_maulrus",
+  "name": "The Maulrus",
+  "number": 62,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "pro",
+  "rating": 59,
+  "personality": "opportunistic",
+  "team": "Iron Motorworks",
+  "inspiredBy": "Mauler 51-50",
+  "livery": {
+    "primary": "#795548",
+    "secondary": "#f5f5f5",
+    "accent": "#3e2723",
+    "pattern": "band"
+  },
+  "body": {
+    "template": "round",
+    "params": {
+      "sides": 8,
+      "wall": 0.4
+    },
+    "mount": "shell",
+    "extras": [
+      {
+        "type": "dome",
+        "size": 0.35,
+        "heightIn": 3
+      }
+    ],
+    "look": {
+      "shell": "cone",
+      "teeth": 2
+    }
+  },
+  "build": {
+    "chassis": "chassis_round",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_brute",
+    "weapon": "spinner_h_shell",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top"
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "robot/1",
+  "id": "cassius",
+  "name": "Cassius",
+  "number": 60,
+  "origin": "parody",
+  "archetype": "crusher",
+  "league": "elite",
+  "rating": 55,
+  "personality": "defensive",
+  "team": "Static Foundry",
+  "inspiredBy": "Brutus",
+  "livery": {
+    "primary": "#b71c1c",
+    "secondary": "#ffc107",
+    "accent": "#1a1a1a",
+    "pattern": "band"
+  },
+  "body": {
+    "template": "hex",
+    "params": {
+      "chamferFront": 0.35,
+      "corner": 0.2
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "dome",
+        "size": 0.2,
+        "heightIn": 2
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_tall_box",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_light",
+    "weapon": "crusher_jaw",
+    "armor": [
+      "armor_ti_front"
+    ]
+  }
+}

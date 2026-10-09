@@ -1,0 +1,48 @@
+{
+  "schema": "robot/1",
+  "id": "gnash",
+  "name": "Gnash",
+  "number": 58,
+  "origin": "parody",
+  "archetype": "hammer",
+  "league": "elite",
+  "rating": 57,
+  "personality": "aggressive",
+  "team": "Tungsten Machine Shop",
+  "inspiredBy": "Chomp",
+  "livery": {
+    "primary": "#f5f5f5",
+    "secondary": "#121212",
+    "accent": "#e53935",
+    "pattern": "teeth"
+  },
+  "body": {
+    "template": "tent",
+    "params": {
+      "chamferFront": 0.25,
+      "topWidth": 0.8,
+      "ridge": 0.45
+    },
+    "mount": "top",
+    "extras": [
+      {
+        "type": "eyes",
+        "radiusIn": 2
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_tall_box",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_light",
+    "weapon": "hammer_axe",
+    "armor": [
+      "armor_ti_front",
+      "armor_ti_top"
+    ]
+  }
+}

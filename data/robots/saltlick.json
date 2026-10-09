@@ -1,0 +1,49 @@
+{
+  "schema": "robot/1",
+  "id": "saltlick",
+  "name": "Saltlick",
+  "number": 57,
+  "origin": "original",
+  "archetype": "wedge",
+  "league": "elite",
+  "rating": 57,
+  "personality": "defensive",
+  "team": "Arc Collective",
+  "livery": {
+    "primary": "#fafafa",
+    "secondary": "#ff8a65",
+    "accent": "#5d4037",
+    "pattern": "spots"
+  },
+  "body": {
+    "template": "wedge",
+    "params": {
+      "slope": 0.5,
+      "rearHeight": 0.8
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "plow",
+        "lengthIn": 5,
+        "overhangIn": 2
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_low_wedge",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weapon": "wedge_long",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_side",
+      "armor_ti_side",
+      "armor_poly_top"
+    ],
+    "srimech": "srimech_arm"
+  }
+}

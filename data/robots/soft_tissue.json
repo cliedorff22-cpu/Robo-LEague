@@ -1,0 +1,49 @@
+{
+  "schema": "robot/1",
+  "id": "soft_tissue",
+  "name": "Soft Tissue",
+  "number": 26,
+  "origin": "parody",
+  "archetype": "lifter",
+  "league": "world",
+  "rating": 75,
+  "personality": "opportunistic",
+  "team": "Bent Combat",
+  "inspiredBy": "Whiplash",
+  "livery": {
+    "primary": "#1565c0",
+    "secondary": "#f5f5f5",
+    "accent": "#ff5252",
+    "pattern": "stripes"
+  },
+  "body": {
+    "template": "bullet",
+    "params": {
+      "chamferFront": 0.3,
+      "roundness": 0.3,
+      "noseDrop": 0.25
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "forks",
+        "count": 2,
+        "lengthIn": 6
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_light",
+    "weapon": "lifter_arm",
+    "armor": [
+      "armor_hardox_front",
+      "armor_ti_side"
+    ]
+  }
+}

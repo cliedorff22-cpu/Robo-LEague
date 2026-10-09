@@ -1,0 +1,49 @@
+{
+  "schema": "robot/1",
+  "id": "whammo",
+  "name": "Whammo",
+  "number": 83,
+  "origin": "parody",
+  "archetype": "drum",
+  "league": "pro",
+  "rating": 45,
+  "personality": "opportunistic",
+  "team": "Copper Fabrication",
+  "inspiredBy": "Slammo!",
+  "livery": {
+    "primary": "#ff6f00",
+    "secondary": "#1565c0",
+    "accent": "#ffffff",
+    "pattern": "bolt"
+  },
+  "body": {
+    "template": "cab",
+    "params": {
+      "chamferFront": 0.4,
+      "deck": 0.6,
+      "cabLength": 0.45
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "spikes",
+        "count": 3,
+        "lengthIn": 2.5
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_long",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "drum_kinetic",
+    "armor": [
+      "armor_ar500_front",
+      "armor_poly_top"
+    ]
+  }
+}

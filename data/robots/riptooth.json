@@ -1,0 +1,51 @@
+{
+  "schema": "robot/1",
+  "id": "riptooth",
+  "name": "Riptooth",
+  "number": 5,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "world",
+  "rating": 92,
+  "personality": "opportunistic",
+  "team": "Voltage Syndicate",
+  "inspiredBy": "Riptide",
+  "livery": {
+    "primary": "#1f8a99",
+    "secondary": "#0d2a40",
+    "accent": "#e8f6f8",
+    "pattern": "split"
+  },
+  "body": {
+    "template": "bullet",
+    "params": {
+      "height": 0.8,
+      "chamferFront": 0.5,
+      "roundness": 0.4,
+      "noseDrop": 0.2
+    },
+    "mount": "low",
+    "extras": [
+      {
+        "type": "forks",
+        "count": 2,
+        "lengthIn": 4,
+        "spread": 0.85
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_wide",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_heavy",
+    "weapon": "spinner_h_undercutter",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_top"
+    ]
+  }
+}

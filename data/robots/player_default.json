@@ -1,0 +1,23 @@
+{
+  "schema": "robot/1",
+  "id": "player_default",
+  "name": "Test Mule",
+  "number": 0,
+  "origin": "original",
+  "archetype": "wedge",
+  "league": "rookie",
+  "rating": 50,
+  "personality": "opportunistic",
+  "team": "Player",
+  "livery": { "primary": "#d8232a", "secondary": "#181a1f", "accent": "#f0c419" },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weapon": "wedge_static",
+    "armor": ["armor_ar500_front", "armor_uhmw_side", "armor_uhmw_side"]
+  }
+}

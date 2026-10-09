@@ -1,0 +1,44 @@
+{
+  "schema": "robot/1",
+  "id": "cottonmouth",
+  "name": "Cottonmouth",
+  "number": 23,
+  "origin": "parody",
+  "archetype": "drum",
+  "league": "world",
+  "rating": 78,
+  "personality": "opportunistic",
+  "team": "Copper Fabrication",
+  "inspiredBy": "Copperhead",
+  "livery": {
+    "primary": "#b87333",
+    "secondary": "#1b1b1b",
+    "accent": "#f3e5ab",
+    "pattern": "scales"
+  },
+  "body": {
+    "template": "dart",
+    "params": {
+      "height": 0.85,
+      "chamferFront": 0.35,
+      "slope": 0.5,
+      "noseWidth": 0.6,
+      "rearHeight": 0.85
+    },
+    "mount": "front",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_long",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "drum_wide",
+    "armor": [
+      "armor_ti_front"
+    ]
+  }
+}

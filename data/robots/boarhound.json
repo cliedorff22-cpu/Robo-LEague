@@ -1,0 +1,60 @@
+{
+  "schema": "robot/1",
+  "id": "boarhound",
+  "name": "Boarhound",
+  "number": 112,
+  "origin": "parody",
+  "archetype": "crusher",
+  "league": "rookie",
+  "rating": 31,
+  "personality": "aggressive",
+  "team": "Shrapnel Garage",
+  "inspiredBy": "Razorback",
+  "livery": {
+    "primary": "#5d4037",
+    "secondary": "#111111",
+    "accent": "#ff7043",
+    "pattern": "camo"
+  },
+  "body": {
+    "template": "tent",
+    "params": {
+      "slope": 0.6,
+      "ridge": 0.25,
+      "chamferFront": 0.45
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "spikes",
+        "count": 2,
+        "lengthIn": 4
+      },
+      {
+        "type": "spines",
+        "count": 4,
+        "heightIn": 3,
+        "length": 0.7,
+        "role": "trim"
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "grabber_claw",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_uhmw_side",
+      "armor_uhmw_side",
+      "armor_poly_top",
+      "armor_uhmw_rear"
+    ],
+    "srimech": "srimech_arm"
+  }
+}

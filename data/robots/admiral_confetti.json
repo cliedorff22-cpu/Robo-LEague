@@ -1,0 +1,52 @@
+{
+  "schema": "robot/1",
+  "id": "admiral_confetti",
+  "name": "Admiral Confetti",
+  "number": 35,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "elite",
+  "rating": 75,
+  "personality": "opportunistic",
+  "team": "Ratchet Syndicate",
+  "inspiredBy": "Captain Shrederator",
+  "livery": {
+    "primary": "#e91e8c",
+    "secondary": "#ffde03",
+    "accent": "#00b8d4",
+    "pattern": "spots"
+  },
+  "body": {
+    "template": "round",
+    "params": {
+      "sides": 12,
+      "wall": 0.45
+    },
+    "mount": "shell",
+    "extras": [
+      {
+        "type": "dome",
+        "size": 0.3,
+        "heightIn": 2
+      }
+    ],
+    "look": {
+      "shell": "drum",
+      "teeth": 3
+    }
+  },
+  "build": {
+    "chassis": "chassis_round",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_brute",
+    "weapon": "spinner_h_shell",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top"
+    ]
+  }
+}

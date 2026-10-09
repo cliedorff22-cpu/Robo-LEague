@@ -1,0 +1,46 @@
+{
+  "schema": "robot/1",
+  "id": "meridian",
+  "name": "Meridian",
+  "number": 51,
+  "origin": "original",
+  "archetype": "flipper",
+  "league": "elite",
+  "rating": 62,
+  "personality": "defensive",
+  "team": "Rivet Racing",
+  "livery": {
+    "primary": "#0b2545",
+    "secondary": "#d4af37",
+    "accent": "#8da9c4",
+    "pattern": "stripes"
+  },
+  "body": {
+    "template": "slab",
+    "params": {
+      "chamfer": 0.35
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "wings",
+        "reachIn": 3,
+        "length": 0.5
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_slab_ti",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_8_foam",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_light",
+    "weapon": "flipper_electric",
+    "armor": [
+      "armor_ti_front",
+      "armor_ti_side"
+    ]
+  }
+}

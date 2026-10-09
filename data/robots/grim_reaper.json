@@ -1,0 +1,50 @@
+{
+  "schema": "robot/1",
+  "id": "grim_reaper",
+  "name": "Grim Reaper",
+  "number": 1,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "world",
+  "rating": 95,
+  "personality": "aggressive",
+  "team": "Rust Works",
+  "inspiredBy": "Tombstone",
+  "livery": {
+    "primary": "#16171a",
+    "secondary": "#b3121b",
+    "accent": "#ff6a1a",
+    "pattern": "flames"
+  },
+  "body": {
+    "template": "box",
+    "params": {
+      "chamferFront": 0.0,
+      "chamferRear": 0.2
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "pod"
+      },
+      {
+        "type": "bumper",
+        "height": 0.5
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_wide",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_heavy",
+    "weapon": "spinner_h_bar",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top"
+    ]
+  }
+}

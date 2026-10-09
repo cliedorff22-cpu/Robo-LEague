@@ -1,0 +1,44 @@
+{
+  "schema": "robot/1",
+  "id": "venial_sin",
+  "name": "Venial Sin",
+  "number": 92,
+  "origin": "parody",
+  "archetype": "wedge",
+  "league": "rookie",
+  "rating": 44,
+  "personality": "opportunistic",
+  "team": "Shrapnel Motorworks",
+  "inspiredBy": "Original Sin",
+  "livery": {
+    "primary": "#b71c1c",
+    "secondary": "#111111",
+    "accent": "#ffcdd2",
+    "pattern": "flames"
+  },
+  "body": {
+    "template": "wedge",
+    "params": {
+      "slope": 1.0
+    },
+    "mount": "front",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_low_wedge",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weapon": "wedge_long",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_side",
+      "armor_ti_side",
+      "armor_ti_top",
+      "armor_ti_rear"
+    ],
+    "srimech": "srimech_arm"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "robot/1",
+  "id": "lemon_squeezer",
+  "name": "Lemon Squeezer",
+  "number": 104,
+  "origin": "original",
+  "archetype": "crusher",
+  "league": "rookie",
+  "rating": 36,
+  "personality": "opportunistic",
+  "team": "Night Robotics",
+  "livery": {
+    "primary": "#fff176",
+    "secondary": "#558b2f",
+    "accent": "#212121",
+    "pattern": "spots"
+  },
+  "body": {
+    "template": "bullet",
+    "params": {
+      "chamferFront": 0.4,
+      "topWidth": 0.85,
+      "roundness": 0.35,
+      "tailRound": 0.35
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "dome",
+        "size": 0.22,
+        "heightIn": 2
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_tall_box",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "crusher_jaw",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_uhmw_side",
+      "armor_uhmw_side",
+      "armor_poly_top"
+    ]
+  }
+}

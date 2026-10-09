@@ -1,0 +1,23 @@
+{
+  "schema": "robot/1",
+  "id": "sparring_dummy",
+  "name": "Crash Test",
+  "number": 99,
+  "origin": "original",
+  "archetype": "wedge",
+  "league": "rookie",
+  "rating": 40,
+  "personality": "defensive",
+  "team": "House Bot",
+  "livery": { "primary": "#2f6fd0", "secondary": "#141821", "accent": "#e8eef7" },
+  "build": {
+    "chassis": "chassis_low_wedge",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_8_foam",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weapon": "wedge_static",
+    "armor": ["armor_ar500_front", "armor_uhmw_side", "armor_uhmw_side", "armor_poly_top"]
+  }
+}

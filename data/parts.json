@@ -1,0 +1,2431 @@
+{
+  "schema": "parts/1",
+  "units": {
+    "weight": "lb",
+    "length": "in",
+    "cost": "usd",
+    "time": "min"
+  },
+  "comment": "Stage 2 library. Every robot is assembled from these ids - no robot ever hard-codes stats. Weapon damage output is DERIVED (rotor inertia + tip speed -> energy; weapon-motor power -> spin-up time), never stated. Stage 6 (workshop) reads the chassis `attach` points; Stage 7 reads hp/repair fields.",
+  "categories": [
+    "chassis",
+    "drive",
+    "wheel",
+    "motor",
+    "battery",
+    "electronics",
+    "armor",
+    "weaponMotor",
+    "weapon",
+    "srimech"
+  ],
+  "armorSlots": [
+    "front",
+    "side",
+    "top",
+    "rear"
+  ],
+  "parts": [
+    {
+      "id": "chassis_mid_steel",
+      "category": "chassis",
+      "name": "Mid Box (4130 Steel)",
+      "tier": 1,
+      "weight": 48,
+      "cost": 2400,
+      "hp": 900,
+      "repairCostPerHp": 1.4,
+      "repairMinPerHp": 0.05,
+      "spec": {
+        "sizeIn": [
+          30,
+          8,
+          26
+        ],
+        "comLocalIn": [
+          -1.0,
+          0.5,
+          0
+        ],
+        "groundClearanceIn": 0.75,
+        "armorSlots": {
+          "front": 1,
+          "side": 2,
+          "top": 1,
+          "rear": 1
+        },
+        "attach": [
+          {
+            "id": "weapon_front",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              15,
+              1.5,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "weapon_top",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              2,
+              4.5,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "drive_bay",
+            "accepts": [
+              "drive"
+            ],
+            "posIn": [
+              0,
+              -2.5,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "power_bay",
+            "accepts": [
+              "battery",
+              "electronics"
+            ],
+            "posIn": [
+              -9,
+              0,
+              0
+            ],
+            "dirDeg": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "chassis_low_wedge",
+      "category": "chassis",
+      "name": "Low Wedge (7075 Alu)",
+      "tier": 2,
+      "weight": 36,
+      "cost": 3600,
+      "hp": 700,
+      "repairCostPerHp": 2.1,
+      "repairMinPerHp": 0.05,
+      "spec": {
+        "sizeIn": [
+          32,
+          5.5,
+          25
+        ],
+        "comLocalIn": [
+          -2.0,
+          -0.5,
+          0
+        ],
+        "groundClearanceIn": 0.5,
+        "armorSlots": {
+          "front": 1,
+          "side": 2,
+          "top": 1,
+          "rear": 1
+        },
+        "attach": [
+          {
+            "id": "weapon_front",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              16,
+              0.5,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "drive_bay",
+            "accepts": [
+              "drive"
+            ],
+            "posIn": [
+              0,
+              -1.5,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "power_bay",
+            "accepts": [
+              "battery",
+              "electronics"
+            ],
+            "posIn": [
+              -10,
+              0,
+              0
+            ],
+            "dirDeg": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "drive_4wd_direct",
+      "category": "drive",
+      "name": "4WD Direct Drive",
+      "tier": 1,
+      "weight": 14,
+      "cost": 1100,
+      "hp": 320,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.08,
+      "spec": {
+        "wheelCount": 4,
+        "driveType": "direct",
+        "gearRatio": 20,
+        "efficiency": 0.86,
+        "motorSlots": 4,
+        "steering": "skid",
+        "maxYawRateDegS": 420
+      }
+    },
+    {
+      "id": "drive_2wd_belt",
+      "category": "drive",
+      "name": "2WD Belt Drive",
+      "tier": 1,
+      "weight": 9,
+      "cost": 700,
+      "hp": 240,
+      "repairCostPerHp": 1.8,
+      "repairMinPerHp": 0.08,
+      "spec": {
+        "wheelCount": 2,
+        "driveType": "belt",
+        "gearRatio": 16,
+        "efficiency": 0.78,
+        "motorSlots": 2,
+        "steering": "skid",
+        "maxYawRateDegS": 300
+      }
+    },
+    {
+      "id": "wheel_6_grip",
+      "category": "wheel",
+      "name": "6\" Grip Wheels (set)",
+      "tier": 1,
+      "weight": 22,
+      "cost": 480,
+      "hp": 180,
+      "repairCostPerHp": 1.1,
+      "repairMinPerHp": 0.04,
+      "spec": {
+        "diameterIn": 6,
+        "widthIn": 2.5,
+        "grip": 1.05,
+        "count": 4,
+        "suspensionTravelIn": 0.5,
+        "lateralGripFactor": 0.85
+      }
+    },
+    {
+      "id": "wheel_8_foam",
+      "category": "wheel",
+      "name": "8\" Foam-Filled Wheels (set)",
+      "tier": 2,
+      "weight": 30,
+      "cost": 760,
+      "hp": 230,
+      "repairCostPerHp": 1.3,
+      "repairMinPerHp": 0.04,
+      "spec": {
+        "diameterIn": 8,
+        "widthIn": 3.0,
+        "grip": 0.92,
+        "count": 4,
+        "suspensionTravelIn": 0.7,
+        "lateralGripFactor": 0.8
+      }
+    },
+    {
+      "id": "motor_drive_mid",
+      "category": "motor",
+      "name": "Drive Motors - Mid (set)",
+      "tier": 1,
+      "weight": 26,
+      "cost": 1600,
+      "hp": 260,
+      "repairCostPerHp": 3.0,
+      "repairMinPerHp": 0.1,
+      "spec": {
+        "role": "drive",
+        "count": 4,
+        "maxTorqueNm": 0.95,
+        "maxRpm": 16000,
+        "stallCurrentA": 110
+      }
+    },
+    {
+      "id": "motor_drive_heavy",
+      "category": "motor",
+      "name": "Drive Motors - Heavy (set)",
+      "tier": 2,
+      "weight": 34,
+      "cost": 2900,
+      "hp": 330,
+      "repairCostPerHp": 3.4,
+      "repairMinPerHp": 0.1,
+      "spec": {
+        "role": "drive",
+        "count": 4,
+        "maxTorqueNm": 1.45,
+        "maxRpm": 18000,
+        "stallCurrentA": 160
+      }
+    },
+    {
+      "id": "batt_6s_lipo",
+      "category": "battery",
+      "name": "6S LiPo Pack",
+      "tier": 1,
+      "weight": 14,
+      "cost": 520,
+      "hp": 120,
+      "repairCostPerHp": 2.6,
+      "repairMinPerHp": 0.03,
+      "spec": {
+        "cells": 6,
+        "nominalV": 22.2,
+        "capacityWh": 310,
+        "maxDischargeC": 65
+      }
+    },
+    {
+      "id": "batt_8s_lipo",
+      "category": "battery",
+      "name": "8S LiPo Pack",
+      "tier": 2,
+      "weight": 19,
+      "cost": 820,
+      "hp": 140,
+      "repairCostPerHp": 2.8,
+      "repairMinPerHp": 0.03,
+      "spec": {
+        "cells": 8,
+        "nominalV": 29.6,
+        "capacityWh": 430,
+        "maxDischargeC": 70
+      }
+    },
+    {
+      "id": "ecu_basic",
+      "category": "electronics",
+      "name": "Basic ESC + Receiver",
+      "tier": 1,
+      "weight": 8,
+      "cost": 640,
+      "hp": 90,
+      "repairCostPerHp": 4.0,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "reliability": 0.9,
+        "hasRemovableLink": true,
+        "hasPowerSwitch": true,
+        "failsafe": true
+      }
+    },
+    {
+      "id": "ecu_hardened",
+      "category": "electronics",
+      "name": "Shock-Mounted ESC + Receiver",
+      "tier": 2,
+      "weight": 11,
+      "cost": 1450,
+      "hp": 150,
+      "repairCostPerHp": 4.4,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "reliability": 0.97,
+        "hasRemovableLink": true,
+        "hasPowerSwitch": true,
+        "failsafe": true
+      }
+    },
+    {
+      "id": "armor_ar500_front",
+      "category": "armor",
+      "name": "AR500 Front Plate",
+      "tier": 1,
+      "weight": 42,
+      "cost": 900,
+      "hp": 820,
+      "repairCostPerHp": 1.0,
+      "repairMinPerHp": 0.03,
+      "spec": {
+        "slot": "front",
+        "material": "ar500_steel",
+        "thicknessIn": 0.25,
+        "hardness": 1.35,
+        "deflection": 0.9
+      }
+    },
+    {
+      "id": "armor_uhmw_side",
+      "category": "armor",
+      "name": "UHMW Side Panel",
+      "tier": 1,
+      "weight": 11,
+      "cost": 180,
+      "hp": 340,
+      "repairCostPerHp": 0.5,
+      "repairMinPerHp": 0.02,
+      "spec": {
+        "slot": "side",
+        "material": "uhmw",
+        "thicknessIn": 0.75,
+        "hardness": 0.6,
+        "deflection": 1.4
+      }
+    },
+    {
+      "id": "armor_ti_side",
+      "category": "armor",
+      "name": "Titanium Side Panel",
+      "tier": 2,
+      "weight": 17,
+      "cost": 1250,
+      "hp": 560,
+      "repairCostPerHp": 3.2,
+      "repairMinPerHp": 0.04,
+      "spec": {
+        "slot": "side",
+        "material": "grade5_ti",
+        "thicknessIn": 0.19,
+        "hardness": 1.15,
+        "deflection": 1.0
+      }
+    },
+    {
+      "id": "armor_poly_top",
+      "category": "armor",
+      "name": "Polycarbonate Lid",
+      "tier": 1,
+      "weight": 7,
+      "cost": 140,
+      "hp": 200,
+      "repairCostPerHp": 0.4,
+      "repairMinPerHp": 0.02,
+      "spec": {
+        "slot": "top",
+        "material": "polycarbonate",
+        "thicknessIn": 0.375,
+        "hardness": 0.45,
+        "deflection": 1.5
+      }
+    },
+    {
+      "id": "wmotor_light",
+      "category": "weaponMotor",
+      "name": "Weapon Motor - Light",
+      "tier": 1,
+      "weight": 12,
+      "cost": 900,
+      "hp": 180,
+      "repairCostPerHp": 3.2,
+      "repairMinPerHp": 0.09,
+      "spec": {
+        "powerW": 2200,
+        "efficiency": 0.82,
+        "maxEnergyJ": 16000
+      }
+    },
+    {
+      "id": "wmotor_heavy",
+      "category": "weaponMotor",
+      "name": "Weapon Motor - Heavy",
+      "tier": 2,
+      "weight": 21,
+      "cost": 2600,
+      "hp": 260,
+      "repairCostPerHp": 3.8,
+      "repairMinPerHp": 0.09,
+      "spec": {
+        "powerW": 4200,
+        "efficiency": 0.86,
+        "maxEnergyJ": 34000
+      }
+    },
+    {
+      "id": "wmotor_brute",
+      "category": "weaponMotor",
+      "name": "Weapon Motor - Brute",
+      "tier": 3,
+      "weight": 29,
+      "cost": 4900,
+      "hp": 300,
+      "repairCostPerHp": 4.4,
+      "repairMinPerHp": 0.09,
+      "spec": {
+        "powerW": 6000,
+        "efficiency": 0.88,
+        "maxEnergyJ": 44000
+      }
+    },
+    {
+      "id": "spinner_h_bar",
+      "category": "weapon",
+      "name": "34\" Horizontal Bar",
+      "tier": 2,
+      "weight": 68,
+      "cost": 5200,
+      "hp": 640,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "spinner_h",
+        "powered": true,
+        "rotorInertiaKgM2": 0.55,
+        "radiusIn": 17,
+        "maxTipSpeedMps": 150,
+        "concentration": 1.0,
+        "selfDamageFraction": 0.3,
+        "gyroEffect": 0.9,
+        "sizeIn": [
+          34,
+          3,
+          6
+        ]
+      }
+    },
+    {
+      "id": "spinner_h_disc",
+      "category": "weapon",
+      "name": "24\" Horizontal Disc",
+      "tier": 1,
+      "weight": 48,
+      "cost": 2900,
+      "hp": 500,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "spinner_h",
+        "powered": true,
+        "rotorInertiaKgM2": 0.2,
+        "radiusIn": 12,
+        "maxTipSpeedMps": 120,
+        "concentration": 1.1,
+        "selfDamageFraction": 0.26,
+        "gyroEffect": 0.6,
+        "sizeIn": [
+          24,
+          2,
+          24
+        ]
+      }
+    },
+    {
+      "id": "spinner_v_disc",
+      "category": "weapon",
+      "name": "Vertical Disc",
+      "tier": 2,
+      "weight": 54,
+      "cost": 4100,
+      "hp": 560,
+      "repairCostPerHp": 2.2,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "spinner_v",
+        "powered": true,
+        "rotorInertiaKgM2": 0.16,
+        "radiusIn": 11,
+        "maxTipSpeedMps": 135,
+        "concentration": 1.3,
+        "selfDamageFraction": 0.22,
+        "gyroEffect": 0.5,
+        "sizeIn": [
+          22,
+          22,
+          4
+        ]
+      }
+    },
+    {
+      "id": "drum_kinetic",
+      "category": "weapon",
+      "name": "Kinetic Drum",
+      "tier": 1,
+      "weight": 52,
+      "cost": 3400,
+      "hp": 600,
+      "repairCostPerHp": 1.9,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "class": "drum",
+        "powered": true,
+        "rotorInertiaKgM2": 0.028,
+        "radiusIn": 5,
+        "maxTipSpeedMps": 95,
+        "concentration": 1.5,
+        "selfDamageFraction": 0.16,
+        "gyroEffect": 0.25,
+        "sizeIn": [
+          10,
+          10,
+          20
+        ]
+      }
+    },
+    {
+      "id": "hammer_axe",
+      "category": "weapon",
+      "name": "Pneumatic Axe",
+      "tier": 1,
+      "weight": 38,
+      "cost": 2100,
+      "hp": 420,
+      "repairCostPerHp": 1.6,
+      "repairMinPerHp": 0.05,
+      "spec": {
+        "class": "hammer",
+        "powered": true,
+        "impactEnergyJ": 1680.0,
+        "concentration": 4.2,
+        "selfDamageFraction": 0.1,
+        "cycleS": 1.65,
+        "swingS": 0.18,
+        "reachIn": 26,
+        "sizeIn": [
+          28,
+          16,
+          6
+        ]
+      }
+    },
+    {
+      "id": "crusher_jaw",
+      "category": "weapon",
+      "name": "Hydraulic Jaw",
+      "tier": 2,
+      "weight": 58,
+      "cost": 4600,
+      "hp": 540,
+      "repairCostPerHp": 2.6,
+      "repairMinPerHp": 0.08,
+      "spec": {
+        "class": "crusher",
+        "powered": true,
+        "crushForceN": 62000,
+        "concentration": 4.5,
+        "selfDamageFraction": 0.05,
+        "cycleS": 3.4,
+        "closeS": 0.66,
+        "reachIn": 18,
+        "sizeIn": [
+          24,
+          12,
+          10
+        ],
+        "strokeIn": 1.2,
+        "biteIntervalS": 1.04
+      }
+    },
+    {
+      "id": "flipper_pneumatic",
+      "category": "weapon",
+      "name": "Pneumatic Flipper",
+      "tier": 1,
+      "weight": 44,
+      "cost": 3100,
+      "hp": 480,
+      "repairCostPerHp": 1.7,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "class": "flipper",
+        "powered": true,
+        "impulseNs": 820,
+        "charges": 14,
+        "impactEnergyJ": 260,
+        "concentration": 0.3,
+        "selfDamageFraction": 0.04,
+        "cycleS": 1.6,
+        "fireS": 0.12,
+        "sizeIn": [
+          22,
+          4,
+          22
+        ],
+        "biteIntervalS": 0.0
+      }
+    },
+    {
+      "id": "lifter_fork",
+      "category": "weapon",
+      "name": "Lifting Forks",
+      "tier": 1,
+      "weight": 30,
+      "cost": 1400,
+      "hp": 440,
+      "repairCostPerHp": 1.2,
+      "repairMinPerHp": 0.04,
+      "spec": {
+        "class": "lifter",
+        "powered": true,
+        "liftForceN": 2400,
+        "impactEnergyJ": 90,
+        "concentration": 0.5,
+        "selfDamageFraction": 0.03,
+        "cycleS": 1.2,
+        "fireS": 0.5,
+        "sizeIn": [
+          20,
+          6,
+          22
+        ]
+      }
+    },
+    {
+      "id": "wedge_static",
+      "category": "weapon",
+      "name": "Static Wedge",
+      "tier": 1,
+      "weight": 34,
+      "cost": 760,
+      "hp": 520,
+      "repairCostPerHp": 1.2,
+      "repairMinPerHp": 0.03,
+      "spec": {
+        "class": "static",
+        "powered": false,
+        "sizeIn": [
+          14,
+          5,
+          24
+        ],
+        "rampAngleDeg": 18,
+        "concentration": 1.0,
+        "selfDamageFraction": 0.02,
+        "comment": "Unpowered. Damages only through ram energy, but it is the cheapest way to control an opponent."
+      }
+    },
+    {
+      "id": "chassis_slab_ti",
+      "category": "chassis",
+      "name": "Low Slab (Titanium)",
+      "tier": 3,
+      "weight": 40,
+      "cost": 5200,
+      "hp": 820,
+      "repairCostPerHp": 1.4,
+      "repairMinPerHp": 0.05,
+      "spec": {
+        "sizeIn": [
+          30,
+          4.5,
+          28
+        ],
+        "comLocalIn": [
+          -1,
+          0,
+          0
+        ],
+        "groundClearanceIn": 0.5,
+        "armorSlots": {
+          "front": 1,
+          "side": 2,
+          "top": 1,
+          "rear": 1
+        },
+        "attach": [
+          {
+            "id": "weapon_front",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              15.0,
+              1.0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "weapon_top",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              0,
+              2.75,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "drive_bay",
+            "accepts": [
+              "drive"
+            ],
+            "posIn": [
+              0,
+              -0.75,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "power_bay",
+            "accepts": [
+              "battery",
+              "electronics"
+            ],
+            "posIn": [
+              -10.0,
+              0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "srimech_bay",
+            "accepts": [
+              "srimech"
+            ],
+            "posIn": [
+              -7.5,
+              1.25,
+              0
+            ],
+            "dirDeg": 0
+          }
+        ],
+        "comment": "Low and flat: on 8in or bigger wheels the tyres stand proud top and bottom, so it drives inverted."
+      }
+    },
+    {
+      "id": "chassis_tall_box",
+      "category": "chassis",
+      "name": "Tall Box (4130 Steel)",
+      "tier": 1,
+      "weight": 50,
+      "cost": 2600,
+      "hp": 950,
+      "repairCostPerHp": 1.4,
+      "repairMinPerHp": 0.05,
+      "spec": {
+        "sizeIn": [
+          28,
+          11,
+          24
+        ],
+        "comLocalIn": [
+          -1.5,
+          0.5,
+          0
+        ],
+        "groundClearanceIn": 0.75,
+        "armorSlots": {
+          "front": 1,
+          "side": 2,
+          "top": 1,
+          "rear": 1
+        },
+        "attach": [
+          {
+            "id": "weapon_front",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              14.0,
+              1.0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "weapon_top",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              0,
+              6.0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "drive_bay",
+            "accepts": [
+              "drive"
+            ],
+            "posIn": [
+              0,
+              -4.0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "power_bay",
+            "accepts": [
+              "battery",
+              "electronics"
+            ],
+            "posIn": [
+              -9.333333333333334,
+              0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "srimech_bay",
+            "accepts": [
+              "srimech"
+            ],
+            "posIn": [
+              -7.0,
+              4.5,
+              0
+            ],
+            "dirDeg": 0
+          }
+        ],
+        "comment": "Room for a hammer or crusher actuator inside."
+      }
+    },
+    {
+      "id": "chassis_long",
+      "category": "chassis",
+      "name": "Long Frame (Aluminium)",
+      "tier": 2,
+      "weight": 44,
+      "cost": 3400,
+      "hp": 780,
+      "repairCostPerHp": 1.4,
+      "repairMinPerHp": 0.05,
+      "spec": {
+        "sizeIn": [
+          36,
+          7,
+          24
+        ],
+        "comLocalIn": [
+          -3,
+          0,
+          0
+        ],
+        "groundClearanceIn": 0.6,
+        "armorSlots": {
+          "front": 1,
+          "side": 2,
+          "top": 1,
+          "rear": 1
+        },
+        "attach": [
+          {
+            "id": "weapon_front",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              18.0,
+              1.0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "weapon_top",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              0,
+              4.0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "drive_bay",
+            "accepts": [
+              "drive"
+            ],
+            "posIn": [
+              0,
+              -2.0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "power_bay",
+            "accepts": [
+              "battery",
+              "electronics"
+            ],
+            "posIn": [
+              -12.0,
+              0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "srimech_bay",
+            "accepts": [
+              "srimech"
+            ],
+            "posIn": [
+              -9.0,
+              2.5,
+              0
+            ],
+            "dirDeg": 0
+          }
+        ],
+        "comment": "Long wheelbase: stable for flippers and drums."
+      }
+    },
+    {
+      "id": "chassis_wide",
+      "category": "chassis",
+      "name": "Wide Frame (4130 Steel)",
+      "tier": 2,
+      "weight": 46,
+      "cost": 3300,
+      "hp": 880,
+      "repairCostPerHp": 1.4,
+      "repairMinPerHp": 0.05,
+      "spec": {
+        "sizeIn": [
+          26,
+          7,
+          32
+        ],
+        "comLocalIn": [
+          -1,
+          0,
+          0
+        ],
+        "groundClearanceIn": 0.6,
+        "armorSlots": {
+          "front": 1,
+          "side": 2,
+          "top": 1,
+          "rear": 1
+        },
+        "attach": [
+          {
+            "id": "weapon_front",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              13.0,
+              1.0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "weapon_top",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              0,
+              4.0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "drive_bay",
+            "accepts": [
+              "drive"
+            ],
+            "posIn": [
+              0,
+              -2.0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "power_bay",
+            "accepts": [
+              "battery",
+              "electronics"
+            ],
+            "posIn": [
+              -8.666666666666666,
+              0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "srimech_bay",
+            "accepts": [
+              "srimech"
+            ],
+            "posIn": [
+              -6.5,
+              2.5,
+              0
+            ],
+            "dirDeg": 0
+          }
+        ],
+        "comment": "Short and wide: a stable platform for a big horizontal weapon."
+      }
+    },
+    {
+      "id": "chassis_round",
+      "category": "chassis",
+      "name": "Round Base (Aluminium)",
+      "tier": 2,
+      "weight": 42,
+      "cost": 3900,
+      "hp": 760,
+      "repairCostPerHp": 1.4,
+      "repairMinPerHp": 0.05,
+      "spec": {
+        "sizeIn": [
+          28,
+          7,
+          28
+        ],
+        "comLocalIn": [
+          0,
+          0,
+          0
+        ],
+        "groundClearanceIn": 0.6,
+        "armorSlots": {
+          "front": 1,
+          "side": 2,
+          "top": 1,
+          "rear": 1
+        },
+        "attach": [
+          {
+            "id": "weapon_front",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              14.0,
+              1.0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "weapon_top",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              0,
+              4.0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "drive_bay",
+            "accepts": [
+              "drive"
+            ],
+            "posIn": [
+              0,
+              -2.0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "power_bay",
+            "accepts": [
+              "battery",
+              "electronics"
+            ],
+            "posIn": [
+              -9.333333333333334,
+              0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "srimech_bay",
+            "accepts": [
+              "srimech"
+            ],
+            "posIn": [
+              -7.0,
+              2.5,
+              0
+            ],
+            "dirDeg": 0
+          }
+        ],
+        "comment": "A drum-shaped base for shells, domes and turrets."
+      }
+    },
+    {
+      "id": "chassis_compact",
+      "category": "chassis",
+      "name": "Compact Box (Aluminium)",
+      "tier": 1,
+      "weight": 30,
+      "cost": 1700,
+      "hp": 600,
+      "repairCostPerHp": 1.4,
+      "repairMinPerHp": 0.05,
+      "spec": {
+        "sizeIn": [
+          22,
+          6,
+          20
+        ],
+        "comLocalIn": [
+          -0.5,
+          0,
+          0
+        ],
+        "groundClearanceIn": 0.6,
+        "armorSlots": {
+          "front": 1,
+          "side": 2,
+          "top": 1,
+          "rear": 1
+        },
+        "attach": [
+          {
+            "id": "weapon_front",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              11.0,
+              1.0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "weapon_top",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              0,
+              3.5,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "drive_bay",
+            "accepts": [
+              "drive"
+            ],
+            "posIn": [
+              0,
+              -1.5,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "power_bay",
+            "accepts": [
+              "battery",
+              "electronics"
+            ],
+            "posIn": [
+              -7.333333333333333,
+              0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "srimech_bay",
+            "accepts": [
+              "srimech"
+            ],
+            "posIn": [
+              -5.5,
+              2.0,
+              0
+            ],
+            "dirDeg": 0
+          }
+        ],
+        "comment": "Small and light - leaves weight for a big weapon, or for a second robot."
+      }
+    },
+    {
+      "id": "chassis_ar500_box",
+      "category": "chassis",
+      "name": "Armoured Box (AR500)",
+      "tier": 3,
+      "weight": 54,
+      "cost": 6200,
+      "hp": 1300,
+      "repairCostPerHp": 1.4,
+      "repairMinPerHp": 0.05,
+      "spec": {
+        "sizeIn": [
+          30,
+          8,
+          26
+        ],
+        "comLocalIn": [
+          -1,
+          0.5,
+          0
+        ],
+        "groundClearanceIn": 0.75,
+        "armorSlots": {
+          "front": 1,
+          "side": 2,
+          "top": 1,
+          "rear": 1
+        },
+        "attach": [
+          {
+            "id": "weapon_front",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              15.0,
+              1.0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "weapon_top",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              0,
+              4.5,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "drive_bay",
+            "accepts": [
+              "drive"
+            ],
+            "posIn": [
+              0,
+              -2.5,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "power_bay",
+            "accepts": [
+              "battery",
+              "electronics"
+            ],
+            "posIn": [
+              -10.0,
+              0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "srimech_bay",
+            "accepts": [
+              "srimech"
+            ],
+            "posIn": [
+              -7.5,
+              3.0,
+              0
+            ],
+            "dirDeg": 0
+          }
+        ],
+        "comment": "The same envelope as the mid box, in hardened steel."
+      }
+    },
+    {
+      "id": "drive_4wd_geared",
+      "category": "drive",
+      "name": "4WD Geared (Pusher)",
+      "tier": 2,
+      "weight": 16,
+      "cost": 1600,
+      "hp": 340,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "wheelCount": 4,
+        "driveType": "geared",
+        "gearRatio": 26,
+        "efficiency": 0.84,
+        "motorSlots": 4,
+        "steering": "skid",
+        "maxYawRateDegS": 380
+      }
+    },
+    {
+      "id": "drive_4wd_fast",
+      "category": "drive",
+      "name": "4WD Direct (Fast)",
+      "tier": 2,
+      "weight": 14,
+      "cost": 1500,
+      "hp": 300,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "wheelCount": 4,
+        "driveType": "direct",
+        "gearRatio": 15,
+        "efficiency": 0.88,
+        "motorSlots": 4,
+        "steering": "skid",
+        "maxYawRateDegS": 460
+      }
+    },
+    {
+      "id": "drive_4wd_comp",
+      "category": "drive",
+      "name": "4WD Competition Gearbox",
+      "tier": 3,
+      "weight": 15,
+      "cost": 3200,
+      "hp": 380,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "wheelCount": 4,
+        "driveType": "geared",
+        "gearRatio": 20,
+        "efficiency": 0.92,
+        "motorSlots": 4,
+        "steering": "skid",
+        "maxYawRateDegS": 480
+      }
+    },
+    {
+      "id": "wheel_5_solid",
+      "category": "wheel",
+      "name": "5in Solid Polyurethane",
+      "tier": 1,
+      "weight": 18,
+      "cost": 360,
+      "hp": 170,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "diameterIn": 5,
+        "widthIn": 2.0,
+        "grip": 1.0,
+        "count": 4,
+        "suspensionTravelIn": 0.35,
+        "lateralGripFactor": 0.85
+      }
+    },
+    {
+      "id": "wheel_10_pneumatic",
+      "category": "wheel",
+      "name": "10in Pneumatic",
+      "tier": 2,
+      "weight": 36,
+      "cost": 980,
+      "hp": 240,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "diameterIn": 10,
+        "widthIn": 3.5,
+        "grip": 0.95,
+        "count": 4,
+        "suspensionTravelIn": 0.55,
+        "lateralGripFactor": 0.8
+      }
+    },
+    {
+      "id": "wheel_7_comp",
+      "category": "wheel",
+      "name": "7in Competition Tread",
+      "tier": 3,
+      "weight": 24,
+      "cost": 1400,
+      "hp": 220,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "diameterIn": 7,
+        "widthIn": 2.5,
+        "grip": 1.12,
+        "count": 4,
+        "suspensionTravelIn": 0.45,
+        "lateralGripFactor": 0.86
+      }
+    },
+    {
+      "id": "motor_drive_light",
+      "category": "motor",
+      "name": "Light Drive Motors (x4)",
+      "tier": 1,
+      "weight": 20,
+      "cost": 1100,
+      "hp": 200,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "role": "drive",
+        "count": 4,
+        "maxTorqueNm": 0.75,
+        "maxRpm": 15000,
+        "stallCurrentA": 90
+      }
+    },
+    {
+      "id": "motor_drive_brushless",
+      "category": "motor",
+      "name": "Brushless Drive Motors (x4)",
+      "tier": 3,
+      "weight": 28,
+      "cost": 4200,
+      "hp": 320,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "role": "drive",
+        "count": 4,
+        "maxTorqueNm": 1.3,
+        "maxRpm": 19000,
+        "stallCurrentA": 140
+      }
+    },
+    {
+      "id": "batt_10s_lipo",
+      "category": "battery",
+      "name": "10S LiPo Pack",
+      "tier": 3,
+      "weight": 24,
+      "cost": 1300,
+      "hp": 160,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "cells": 10,
+        "nominalV": 37.0,
+        "capacityWh": 560,
+        "maxDischargeC": 75
+      }
+    },
+    {
+      "id": "ecu_pro",
+      "category": "electronics",
+      "name": "Competition ESCs + Dual Receiver",
+      "tier": 3,
+      "weight": 9,
+      "cost": 2600,
+      "hp": 170,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "reliability": 0.985,
+        "hasRemovableLink": true,
+        "hasPowerSwitch": true,
+        "failsafe": true
+      }
+    },
+    {
+      "id": "armor_hardox_front",
+      "category": "armor",
+      "name": "Hardox Front Plate",
+      "tier": 3,
+      "weight": 34,
+      "cost": 1800,
+      "hp": 820,
+      "repairCostPerHp": 1.6,
+      "repairMinPerHp": 0.04,
+      "spec": {
+        "slot": "front",
+        "material": "hardox",
+        "thicknessIn": 0.25,
+        "hardness": 1.5,
+        "deflection": 0.85
+      }
+    },
+    {
+      "id": "armor_ti_front",
+      "category": "armor",
+      "name": "Titanium Front Plate",
+      "tier": 2,
+      "weight": 28,
+      "cost": 1500,
+      "hp": 640,
+      "repairCostPerHp": 1.6,
+      "repairMinPerHp": 0.04,
+      "spec": {
+        "slot": "front",
+        "material": "grade5_ti",
+        "thicknessIn": 0.25,
+        "hardness": 1.15,
+        "deflection": 1.0
+      }
+    },
+    {
+      "id": "armor_uhmw_front",
+      "category": "armor",
+      "name": "UHMW Front Plate",
+      "tier": 1,
+      "weight": 14,
+      "cost": 260,
+      "hp": 420,
+      "repairCostPerHp": 1.6,
+      "repairMinPerHp": 0.04,
+      "spec": {
+        "slot": "front",
+        "material": "uhmw",
+        "thicknessIn": 1.0,
+        "hardness": 0.6,
+        "deflection": 1.4
+      }
+    },
+    {
+      "id": "armor_ar500_side",
+      "category": "armor",
+      "name": "AR500 Side Plate",
+      "tier": 2,
+      "weight": 24,
+      "cost": 700,
+      "hp": 560,
+      "repairCostPerHp": 1.6,
+      "repairMinPerHp": 0.04,
+      "spec": {
+        "slot": "side",
+        "material": "ar500_steel",
+        "thicknessIn": 0.19,
+        "hardness": 1.35,
+        "deflection": 0.9
+      }
+    },
+    {
+      "id": "armor_ti_top",
+      "category": "armor",
+      "name": "Titanium Top Plate",
+      "tier": 2,
+      "weight": 13,
+      "cost": 900,
+      "hp": 380,
+      "repairCostPerHp": 1.6,
+      "repairMinPerHp": 0.04,
+      "spec": {
+        "slot": "top",
+        "material": "grade5_ti",
+        "thicknessIn": 0.19,
+        "hardness": 1.15,
+        "deflection": 1.0
+      }
+    },
+    {
+      "id": "armor_ar500_top",
+      "category": "armor",
+      "name": "AR500 Top Plate",
+      "tier": 2,
+      "weight": 20,
+      "cost": 640,
+      "hp": 460,
+      "repairCostPerHp": 1.6,
+      "repairMinPerHp": 0.04,
+      "spec": {
+        "slot": "top",
+        "material": "ar500_steel",
+        "thicknessIn": 0.19,
+        "hardness": 1.35,
+        "deflection": 0.9
+      }
+    },
+    {
+      "id": "armor_uhmw_rear",
+      "category": "armor",
+      "name": "UHMW Rear Plate",
+      "tier": 1,
+      "weight": 8,
+      "cost": 150,
+      "hp": 260,
+      "repairCostPerHp": 1.6,
+      "repairMinPerHp": 0.04,
+      "spec": {
+        "slot": "rear",
+        "material": "uhmw",
+        "thicknessIn": 0.75,
+        "hardness": 0.6,
+        "deflection": 1.4
+      }
+    },
+    {
+      "id": "armor_ti_rear",
+      "category": "armor",
+      "name": "Titanium Rear Plate",
+      "tier": 2,
+      "weight": 12,
+      "cost": 800,
+      "hp": 330,
+      "repairCostPerHp": 1.6,
+      "repairMinPerHp": 0.04,
+      "spec": {
+        "slot": "rear",
+        "material": "grade5_ti",
+        "thicknessIn": 0.19,
+        "hardness": 1.15,
+        "deflection": 1.0
+      }
+    },
+    {
+      "id": "wmotor_mid",
+      "category": "weaponMotor",
+      "name": "Mid Weapon Motor",
+      "tier": 2,
+      "weight": 16,
+      "cost": 1700,
+      "hp": 220,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "powerW": 3200,
+        "efficiency": 0.84,
+        "maxEnergyJ": 26000
+      }
+    },
+    {
+      "id": "spinner_h_bar_small",
+      "category": "weapon",
+      "name": "26\" Horizontal Bar",
+      "tier": 2,
+      "weight": 50,
+      "cost": 3600,
+      "hp": 520,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "spinner_h",
+        "powered": true,
+        "rotorInertiaKgM2": 0.28,
+        "radiusIn": 13,
+        "maxTipSpeedMps": 135,
+        "concentration": 1.05,
+        "selfDamageFraction": 0.28,
+        "gyroEffect": 0.7,
+        "sizeIn": [
+          26,
+          2.5,
+          5
+        ]
+      }
+    },
+    {
+      "id": "spinner_h_undercutter",
+      "category": "weapon",
+      "name": "28\" Undercutter Bar",
+      "tier": 2,
+      "weight": 55,
+      "cost": 4100,
+      "hp": 560,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "spinner_h",
+        "powered": true,
+        "rotorInertiaKgM2": 0.35,
+        "radiusIn": 14,
+        "maxTipSpeedMps": 140,
+        "concentration": 1.1,
+        "selfDamageFraction": 0.3,
+        "gyroEffect": 0.75,
+        "sizeIn": [
+          28,
+          2,
+          5
+        ]
+      }
+    },
+    {
+      "id": "spinner_h_tri",
+      "category": "weapon",
+      "name": "30\" Three-Hammer Rotor",
+      "tier": 3,
+      "weight": 62,
+      "cost": 5600,
+      "hp": 620,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "spinner_h",
+        "powered": true,
+        "rotorInertiaKgM2": 0.5,
+        "radiusIn": 15,
+        "maxTipSpeedMps": 125,
+        "concentration": 1.3,
+        "selfDamageFraction": 0.25,
+        "gyroEffect": 0.85,
+        "sizeIn": [
+          30,
+          4,
+          30
+        ],
+        "style": "tri"
+      }
+    },
+    {
+      "id": "spinner_h_shell",
+      "category": "weapon",
+      "name": "30\" Full-Body Shell",
+      "tier": 3,
+      "weight": 72,
+      "cost": 6400,
+      "hp": 900,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "spinner_h",
+        "powered": true,
+        "rotorInertiaKgM2": 0.9,
+        "radiusIn": 15.5,
+        "maxTipSpeedMps": 110,
+        "concentration": 0.9,
+        "selfDamageFraction": 0.22,
+        "gyroEffect": 1.2,
+        "sizeIn": [
+          31,
+          6,
+          31
+        ],
+        "style": "shell",
+        "comment": "The whole shell is the weapon: mount it with body mount \"shell\"."
+      }
+    },
+    {
+      "id": "spinner_v_big",
+      "category": "weapon",
+      "name": "28\" Vertical Disc",
+      "tier": 3,
+      "weight": 64,
+      "cost": 5400,
+      "hp": 620,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "spinner_v",
+        "powered": true,
+        "rotorInertiaKgM2": 0.32,
+        "radiusIn": 14,
+        "maxTipSpeedMps": 140,
+        "concentration": 1.35,
+        "selfDamageFraction": 0.24,
+        "gyroEffect": 0.65,
+        "sizeIn": [
+          28,
+          28,
+          4
+        ]
+      }
+    },
+    {
+      "id": "spinner_v_bar",
+      "category": "weapon",
+      "name": "24\" Vertical Bar",
+      "tier": 2,
+      "weight": 50,
+      "cost": 3800,
+      "hp": 560,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "spinner_v",
+        "powered": true,
+        "rotorInertiaKgM2": 0.18,
+        "radiusIn": 12,
+        "maxTipSpeedMps": 140,
+        "concentration": 1.4,
+        "selfDamageFraction": 0.24,
+        "gyroEffect": 0.5,
+        "sizeIn": [
+          24,
+          24,
+          3
+        ],
+        "style": "bar"
+      }
+    },
+    {
+      "id": "spinner_v_small",
+      "category": "weapon",
+      "name": "16\" Vertical Disc",
+      "tier": 1,
+      "weight": 40,
+      "cost": 2300,
+      "hp": 440,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "spinner_v",
+        "powered": true,
+        "rotorInertiaKgM2": 0.07,
+        "radiusIn": 8,
+        "maxTipSpeedMps": 120,
+        "concentration": 1.25,
+        "selfDamageFraction": 0.2,
+        "gyroEffect": 0.35,
+        "sizeIn": [
+          16,
+          16,
+          3
+        ]
+      }
+    },
+    {
+      "id": "drum_eggbeater",
+      "category": "weapon",
+      "name": "Eggbeater",
+      "tier": 2,
+      "weight": 46,
+      "cost": 3100,
+      "hp": 480,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "drum",
+        "powered": true,
+        "rotorInertiaKgM2": 0.04,
+        "radiusIn": 6,
+        "maxTipSpeedMps": 100,
+        "concentration": 1.6,
+        "selfDamageFraction": 0.18,
+        "gyroEffect": 0.3,
+        "sizeIn": [
+          12,
+          12,
+          14
+        ],
+        "style": "eggbeater"
+      }
+    },
+    {
+      "id": "drum_wide",
+      "category": "weapon",
+      "name": "Full-Width Drum",
+      "tier": 3,
+      "weight": 60,
+      "cost": 4300,
+      "hp": 620,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "drum",
+        "powered": true,
+        "rotorInertiaKgM2": 0.05,
+        "radiusIn": 5.5,
+        "maxTipSpeedMps": 100,
+        "concentration": 1.45,
+        "selfDamageFraction": 0.15,
+        "gyroEffect": 0.3,
+        "sizeIn": [
+          11,
+          11,
+          26
+        ]
+      }
+    },
+    {
+      "id": "hammer_saw",
+      "category": "weapon",
+      "name": "Hammer Saw",
+      "tier": 2,
+      "weight": 42,
+      "cost": 2900,
+      "hp": 420,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "hammer",
+        "powered": true,
+        "impactEnergyJ": 1330.0,
+        "concentration": 4.6,
+        "selfDamageFraction": 0.1,
+        "cycleS": 1.5,
+        "swingS": 0.2,
+        "reachIn": 24,
+        "sizeIn": [
+          20,
+          14,
+          4
+        ],
+        "style": "saw"
+      }
+    },
+    {
+      "id": "hammer_spike",
+      "category": "weapon",
+      "name": "Pneumatic Spike",
+      "tier": 2,
+      "weight": 40,
+      "cost": 2600,
+      "hp": 400,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "hammer",
+        "powered": true,
+        "impactEnergyJ": 2100.0,
+        "concentration": 5.0,
+        "selfDamageFraction": 0.1,
+        "cycleS": 1.95,
+        "swingS": 0.16,
+        "reachIn": 26,
+        "sizeIn": [
+          18,
+          14,
+          4
+        ],
+        "style": "spike"
+      }
+    },
+    {
+      "id": "hammer_sledge",
+      "category": "weapon",
+      "name": "Sledgehammer",
+      "tier": 3,
+      "weight": 50,
+      "cost": 3600,
+      "hp": 520,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "hammer",
+        "powered": true,
+        "impactEnergyJ": 2800.0,
+        "concentration": 3.2,
+        "selfDamageFraction": 0.12,
+        "cycleS": 2.25,
+        "swingS": 0.22,
+        "reachIn": 30,
+        "sizeIn": [
+          30,
+          18,
+          8
+        ]
+      }
+    },
+    {
+      "id": "flipper_lid",
+      "category": "weapon",
+      "name": "Lid Flipper",
+      "tier": 3,
+      "weight": 52,
+      "cost": 4200,
+      "hp": 560,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "flipper",
+        "powered": true,
+        "impulseNs": 1000,
+        "charges": 18,
+        "impactEnergyJ": 300,
+        "concentration": 0.3,
+        "selfDamageFraction": 0.04,
+        "cycleS": 1.6,
+        "fireS": 0.12,
+        "sizeIn": [
+          26,
+          4,
+          24
+        ],
+        "biteIntervalS": 0.0
+      }
+    },
+    {
+      "id": "flipper_electric",
+      "category": "weapon",
+      "name": "Electric Flipper",
+      "tier": 1,
+      "weight": 36,
+      "cost": 2200,
+      "hp": 400,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "flipper",
+        "powered": true,
+        "impulseNs": 600,
+        "charges": 40,
+        "impactEnergyJ": 180,
+        "concentration": 0.3,
+        "selfDamageFraction": 0.04,
+        "cycleS": 1.3,
+        "fireS": 0.18,
+        "sizeIn": [
+          20,
+          4,
+          20
+        ],
+        "biteIntervalS": 0.0
+      }
+    },
+    {
+      "id": "lifter_clamp",
+      "category": "weapon",
+      "name": "Clamp Lifter",
+      "tier": 3,
+      "weight": 40,
+      "cost": 2700,
+      "hp": 460,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "lifter",
+        "powered": true,
+        "liftForceN": 3200,
+        "impactEnergyJ": 120,
+        "concentration": 0.6,
+        "selfDamageFraction": 0.03,
+        "cycleS": 1.3,
+        "fireS": 0.5,
+        "sizeIn": [
+          22,
+          8,
+          22
+        ],
+        "style": "clamp"
+      }
+    },
+    {
+      "id": "lifter_arm",
+      "category": "weapon",
+      "name": "Long Lifting Arm",
+      "tier": 2,
+      "weight": 36,
+      "cost": 2000,
+      "hp": 420,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "lifter",
+        "powered": true,
+        "liftForceN": 2800,
+        "impactEnergyJ": 100,
+        "concentration": 0.5,
+        "selfDamageFraction": 0.03,
+        "cycleS": 1.2,
+        "fireS": 0.5,
+        "sizeIn": [
+          26,
+          6,
+          16
+        ]
+      }
+    },
+    {
+      "id": "crusher_beak",
+      "category": "weapon",
+      "name": "Crushing Beak",
+      "tier": 3,
+      "weight": 64,
+      "cost": 5200,
+      "hp": 700,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "crusher",
+        "powered": true,
+        "crushForceN": 80000,
+        "concentration": 4.8,
+        "selfDamageFraction": 0.05,
+        "cycleS": 3.2,
+        "closeS": 0.6,
+        "reachIn": 20,
+        "sizeIn": [
+          24,
+          14,
+          10
+        ],
+        "strokeIn": 1.3,
+        "biteIntervalS": 0.975
+      }
+    },
+    {
+      "id": "grabber_claw",
+      "category": "weapon",
+      "name": "Grabber Claw",
+      "tier": 1,
+      "weight": 46,
+      "cost": 2500,
+      "hp": 480,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "crusher",
+        "powered": true,
+        "crushForceN": 36000,
+        "concentration": 2.5,
+        "selfDamageFraction": 0.05,
+        "cycleS": 3.0,
+        "closeS": 0.72,
+        "reachIn": 20,
+        "sizeIn": [
+          24,
+          10,
+          16
+        ],
+        "strokeIn": 1.5,
+        "biteIntervalS": 1.17,
+        "style": "claw"
+      }
+    },
+    {
+      "id": "wedge_long",
+      "category": "weapon",
+      "name": "Long Wedge",
+      "tier": 2,
+      "weight": 40,
+      "cost": 1100,
+      "hp": 520,
+      "repairCostPerHp": 2.4,
+      "repairMinPerHp": 0.07,
+      "spec": {
+        "class": "static",
+        "powered": false,
+        "sizeIn": [
+          20,
+          5,
+          26
+        ],
+        "rampAngleDeg": 14,
+        "concentration": 1.0,
+        "selfDamageFraction": 0.02
+      }
+    },
+    {
+      "id": "srimech_arm",
+      "category": "srimech",
+      "name": "Self-Righting Arm",
+      "tier": 1,
+      "weight": 9,
+      "cost": 700,
+      "hp": 120,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.05,
+      "spec": {
+        "impulseNs": 420,
+        "cooldownS": 2.5,
+        "comment": "Pushes off the floor to roll the robot back onto its wheels."
+      }
+    },
+    {
+      "id": "srimech_pneumatic",
+      "category": "srimech",
+      "name": "Pneumatic Self-Righter",
+      "tier": 2,
+      "weight": 12,
+      "cost": 1500,
+      "hp": 140,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.05,
+      "spec": {
+        "impulseNs": 520,
+        "cooldownS": 1.6
+      }
+    },
+    {
+      "id": "chassis_mini",
+      "category": "chassis",
+      "name": "Minibot Frame (Aluminium)",
+      "tier": 1,
+      "weight": 18,
+      "cost": 1100,
+      "hp": 380,
+      "repairCostPerHp": 1.4,
+      "repairMinPerHp": 0.05,
+      "spec": {
+        "sizeIn": [
+          18,
+          5,
+          16
+        ],
+        "comLocalIn": [
+          -0.5,
+          0,
+          0
+        ],
+        "groundClearanceIn": 0.5,
+        "armorSlots": {
+          "front": 1,
+          "side": 2,
+          "top": 1,
+          "rear": 1
+        },
+        "attach": [
+          {
+            "id": "weapon_front",
+            "accepts": [
+              "weapon"
+            ],
+            "posIn": [
+              9.0,
+              1.0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "drive_bay",
+            "accepts": [
+              "drive"
+            ],
+            "posIn": [
+              0,
+              -1.0,
+              0
+            ],
+            "dirDeg": 0
+          },
+          {
+            "id": "power_bay",
+            "accepts": [
+              "battery",
+              "electronics"
+            ],
+            "posIn": [
+              -6.0,
+              0,
+              0
+            ],
+            "dirDeg": 0
+          }
+        ],
+        "comment": "The small half of a multibot.",
+        "minibot": true
+      }
+    },
+    {
+      "id": "wheel_4_mini",
+      "category": "wheel",
+      "name": "4in Minibot Wheels",
+      "tier": 1,
+      "weight": 10,
+      "cost": 240,
+      "hp": 110,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "diameterIn": 4,
+        "widthIn": 1.5,
+        "grip": 1.0,
+        "count": 4,
+        "suspensionTravelIn": 0.3,
+        "lateralGripFactor": 0.85,
+        "minibot": true
+      }
+    },
+    {
+      "id": "motor_drive_mini",
+      "category": "motor",
+      "name": "Minibot Drive Motors (x2)",
+      "tier": 1,
+      "weight": 10,
+      "cost": 600,
+      "hp": 120,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "role": "drive",
+        "count": 2,
+        "maxTorqueNm": 0.7,
+        "maxRpm": 14000,
+        "stallCurrentA": 70,
+        "minibot": true
+      }
+    },
+    {
+      "id": "batt_4s_lipo",
+      "category": "battery",
+      "name": "4S LiPo Pack",
+      "tier": 1,
+      "weight": 8,
+      "cost": 260,
+      "hp": 80,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "cells": 4,
+        "nominalV": 14.8,
+        "capacityWh": 150,
+        "maxDischargeC": 60
+      }
+    },
+    {
+      "id": "ecu_mini",
+      "category": "electronics",
+      "name": "Minibot ESC + Receiver",
+      "tier": 1,
+      "weight": 5,
+      "cost": 380,
+      "hp": 60,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "reliability": 0.9,
+        "hasRemovableLink": true,
+        "hasPowerSwitch": true,
+        "failsafe": true,
+        "minibot": true
+      }
+    },
+    {
+      "id": "wedge_mini",
+      "category": "weapon",
+      "name": "Minibot Wedge",
+      "tier": 1,
+      "weight": 14,
+      "cost": 380,
+      "hp": 260,
+      "repairCostPerHp": 2.0,
+      "repairMinPerHp": 0.06,
+      "spec": {
+        "class": "static",
+        "powered": false,
+        "sizeIn": [
+          9,
+          3,
+          15
+        ],
+        "rampAngleDeg": 16,
+        "concentration": 1.0,
+        "selfDamageFraction": 0.02,
+        "minibot": true
+      }
+    }
+  ]
+}

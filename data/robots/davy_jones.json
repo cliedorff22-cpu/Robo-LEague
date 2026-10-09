@@ -1,0 +1,47 @@
+{
+  "schema": "robot/1",
+  "id": "davy_jones",
+  "name": "Davy Jones",
+  "number": 38,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "elite",
+  "rating": 72,
+  "personality": "opportunistic",
+  "team": "Tungsten Fabrication",
+  "inspiredBy": "Deep Six",
+  "livery": {
+    "primary": "#0d2c54",
+    "secondary": "#00897b",
+    "accent": "#e0f2f1",
+    "pattern": "chevron"
+  },
+  "body": {
+    "template": "hex",
+    "params": {
+      "chamferFront": 0.35,
+      "corner": 0.18
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "fin",
+        "heightIn": 4
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_heavy",
+    "weapon": "spinner_v_bar",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top"
+    ]
+  }
+}

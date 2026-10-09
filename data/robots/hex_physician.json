@@ -1,0 +1,56 @@
+{
+  "schema": "robot/1",
+  "id": "hex_physician",
+  "name": "Hex Physician",
+  "number": 13,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "world",
+  "rating": 85,
+  "personality": "aggressive",
+  "team": "Cinder Machine Shop",
+  "inspiredBy": "Witch Doctor",
+  "livery": {
+    "primary": "#76c043",
+    "secondary": "#5b2a86",
+    "accent": "#f5e663",
+    "pattern": "split"
+  },
+  "body": {
+    "template": "twin",
+    "params": {
+      "weaponBay": 0.32,
+      "chamferFront": 0.3,
+      "pod": 0.26,
+      "bridge": 0.55
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "forks",
+        "count": 2,
+        "lengthIn": 6,
+        "spread": 0.6
+      },
+      {
+        "type": "eyes",
+        "radiusIn": 1.8
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_v_disc",
+    "srimech": "srimech_pneumatic",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top"
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "schema": "robot/1",
+  "id": "brass_tacks",
+  "name": "Brass Tacks",
+  "number": 44,
+  "origin": "original",
+  "archetype": "lifter",
+  "league": "elite",
+  "rating": 68,
+  "personality": "opportunistic",
+  "team": "Night Robotics",
+  "livery": {
+    "primary": "#b08d57",
+    "secondary": "#141414",
+    "accent": "#e8d5b5",
+    "pattern": "band"
+  },
+  "body": {
+    "template": "cab",
+    "params": {
+      "chamferFront": 0.25,
+      "deck": 0.55,
+      "cabLength": 0.45,
+      "cabWidth": 0.8
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "plow",
+        "lengthIn": 6,
+        "overhangIn": 2
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_light",
+    "weapon": "lifter_clamp",
+    "armor": [
+      "armor_ti_front",
+      "armor_ti_side"
+    ]
+  }
+}

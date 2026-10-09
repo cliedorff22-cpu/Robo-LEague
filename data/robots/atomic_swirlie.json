@@ -1,0 +1,50 @@
+{
+  "schema": "robot/1",
+  "id": "atomic_swirlie",
+  "name": "Atomic Swirlie",
+  "number": 95,
+  "origin": "parody",
+  "archetype": "wedge",
+  "league": "rookie",
+  "rating": 42,
+  "personality": "opportunistic",
+  "team": "Ratchet Syndicate",
+  "inspiredBy": "Atomic Wedgie",
+  "livery": {
+    "primary": "#1e88e5",
+    "secondary": "#ffffff",
+    "accent": "#ffeb3b",
+    "pattern": "bolt"
+  },
+  "body": {
+    "template": "dart",
+    "params": {
+      "slope": 0.8,
+      "noseWidth": 0.5
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "fin",
+        "heightIn": 3
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_low_wedge",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weapon": "wedge_static",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_side",
+      "armor_ti_side",
+      "armor_ar500_top",
+      "armor_ti_rear"
+    ],
+    "srimech": "srimech_arm"
+  }
+}

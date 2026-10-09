@@ -1,0 +1,69 @@
+{
+  "schema": "robot/1",
+  "id": "hodgepodge",
+  "name": "Hodgepodge",
+  "number": 99,
+  "origin": "original",
+  "archetype": "multibot",
+  "league": "rookie",
+  "rating": 39,
+  "personality": "defensive",
+  "team": "Flux Heavy Industries",
+  "livery": {
+    "primary": "#8e24aa",
+    "secondary": "#ffb300",
+    "accent": "#212121",
+    "pattern": "pixels"
+  },
+  "unitName": "Hodge",
+  "body": {
+    "template": "cab",
+    "params": {
+      "chamferFront": 0.3,
+      "deck": 0.6,
+      "cabLength": 0.5
+    },
+    "mount": "top",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_compact",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_5_solid",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "hammer_axe",
+    "armor": []
+  },
+  "partner": {
+    "name": "Podge",
+    "body": {
+      "template": "round",
+      "params": {
+        "sides": 8
+      },
+      "mount": "front",
+      "extras": [
+        {
+          "type": "dome",
+          "size": 0.3,
+          "heightIn": 2
+        }
+      ]
+    },
+    "build": {
+      "chassis": "chassis_mini",
+      "drive": "drive_2wd_belt",
+      "wheel": "wheel_4_mini",
+      "motor": "motor_drive_mini",
+      "battery": "batt_4s_lipo",
+      "electronics": "ecu_mini",
+      "weapon": "wedge_mini",
+      "armor": [
+        "armor_uhmw_front"
+      ]
+    }
+  }
+}

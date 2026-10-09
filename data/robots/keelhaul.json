@@ -1,0 +1,48 @@
+{
+  "schema": "robot/1",
+  "id": "keelhaul",
+  "name": "Keelhaul",
+  "number": 63,
+  "origin": "original",
+  "archetype": "flipper",
+  "league": "pro",
+  "rating": 59,
+  "personality": "defensive",
+  "team": "Copper Brigade",
+  "livery": {
+    "primary": "#0d1b2a",
+    "secondary": "#c1121f",
+    "accent": "#fdf0d5",
+    "pattern": "stripes"
+  },
+  "body": {
+    "template": "dart",
+    "params": {
+      "slope": 0.8,
+      "topWidth": 0.7,
+      "noseWidth": 0.45
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "fin",
+        "heightIn": 4,
+        "length": 0.7
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_long",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "flipper_pneumatic",
+    "armor": [
+      "armor_ar500_front",
+      "armor_uhmw_side"
+    ]
+  }
+}

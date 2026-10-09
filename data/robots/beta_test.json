@@ -1,0 +1,42 @@
+{
+  "schema": "robot/1",
+  "id": "beta_test",
+  "name": "Beta Test",
+  "number": 59,
+  "origin": "parody",
+  "archetype": "hammer",
+  "league": "elite",
+  "rating": 56,
+  "personality": "opportunistic",
+  "team": "Flux Robotics",
+  "inspiredBy": "Beta",
+  "livery": {
+    "primary": "#757575",
+    "secondary": "#ffeb3b",
+    "accent": "#212121",
+    "pattern": "hazard"
+  },
+  "body": {
+    "template": "box",
+    "params": {
+      "chamferFront": 0.4,
+      "height": 0.85
+    },
+    "mount": "top",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_long",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_light",
+    "weapon": "hammer_sledge",
+    "armor": [
+      "armor_ti_front",
+      "armor_poly_top"
+    ]
+  }
+}

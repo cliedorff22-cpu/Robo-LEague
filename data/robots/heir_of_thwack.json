@@ -1,0 +1,47 @@
+{
+  "schema": "robot/1",
+  "id": "heir_of_thwack",
+  "name": "Heir of Thwack",
+  "number": 11,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "world",
+  "rating": 87,
+  "personality": "opportunistic",
+  "team": "Rivet Combat",
+  "inspiredBy": "Son of Whyachi",
+  "livery": {
+    "primary": "#2e7d32",
+    "secondary": "#c9a227",
+    "accent": "#101010",
+    "pattern": "scales"
+  },
+  "body": {
+    "template": "round",
+    "params": {
+      "sides": 6,
+      "wall": 0.85,
+      "radius": 0.62
+    },
+    "mount": "shell",
+    "extras": [
+      {
+        "type": "legs"
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_round",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_heavy",
+    "weapon": "spinner_h_tri",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top"
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "robot/1",
+  "id": "enormous",
+  "name": "ENORMOUS",
+  "number": 19,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "world",
+  "rating": 81,
+  "personality": "aggressive",
+  "team": "Flux Engineering",
+  "inspiredBy": "HUGE",
+  "livery": {
+    "primary": "#f5f5f5",
+    "secondary": "#2e7d32",
+    "accent": "#111111",
+    "pattern": "band"
+  },
+  "body": {
+    "template": "twin",
+    "params": {
+      "chamfer": 0.15,
+      "pod": 0.3,
+      "bridge": 0.4,
+      "weaponBay": 0,
+      "podLength": 1.15
+    },
+    "mount": "front",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_slab_ti",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_10_pneumatic",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_v_disc",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_top"
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "schema": "robot/1",
+  "id": "mastodon",
+  "name": "Mastodon",
+  "number": 118,
+  "origin": "parody",
+  "archetype": "lifter",
+  "league": "rookie",
+  "rating": 26,
+  "personality": "opportunistic",
+  "team": "Flux Robotics",
+  "inspiredBy": "Mammoth",
+  "livery": {
+    "primary": "#6d4c41",
+    "secondary": "#9e9e9e",
+    "accent": "#fff8e1",
+    "pattern": "band"
+  },
+  "body": {
+    "template": "cab",
+    "params": {
+      "chamferFront": 0.3,
+      "topWidth": 0.85,
+      "deck": 0.6,
+      "cabLength": 0.55,
+      "cabWidth": 0.9
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "spikes",
+        "count": 2,
+        "lengthIn": 4
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_tall_box",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "lifter_arm",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_side",
+      "armor_ti_side",
+      "armor_ti_top",
+      "armor_uhmw_rear"
+    ]
+  }
+}

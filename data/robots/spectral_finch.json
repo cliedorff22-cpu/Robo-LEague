@@ -1,0 +1,51 @@
+{
+  "schema": "robot/1",
+  "id": "spectral_finch",
+  "name": "Spectral Finch",
+  "number": 65,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "pro",
+  "rating": 57,
+  "personality": "opportunistic",
+  "team": "Voltage Syndicate",
+  "inspiredBy": "Ghost Raptor",
+  "livery": {
+    "primary": "#eceff1",
+    "secondary": "#90a4ae",
+    "accent": "#7c4dff",
+    "pattern": "scales"
+  },
+  "body": {
+    "template": "dart",
+    "params": {
+      "chamferFront": 0.3,
+      "slope": 0.5,
+      "noseWidth": 0.55
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "fin",
+        "heightIn": 3
+      },
+      {
+        "type": "pod"
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_wide",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_h_bar_small",
+    "armor": [
+      "armor_ar500_front",
+      "armor_poly_top"
+    ]
+  }
+}

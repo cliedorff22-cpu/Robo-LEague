@@ -1,0 +1,42 @@
+{
+  "schema": "robot/1",
+  "id": "quietus",
+  "name": "Quietus",
+  "number": 39,
+  "origin": "original",
+  "archetype": "spinner_v",
+  "league": "elite",
+  "rating": 72,
+  "personality": "defensive",
+  "team": "Flux Heavy Industries",
+  "livery": {
+    "primary": "#606770",
+    "secondary": "#26c6da",
+    "accent": "#eceff1",
+    "pattern": "split"
+  },
+  "body": {
+    "template": "twin",
+    "params": {
+      "weaponBay": 0.25,
+      "pod": 0.24,
+      "bridge": 0.55
+    },
+    "mount": "front",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_slab_ti",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_8_foam",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_v_small",
+    "armor": [
+      "armor_ti_front",
+      "armor_ti_top"
+    ]
+  }
+}

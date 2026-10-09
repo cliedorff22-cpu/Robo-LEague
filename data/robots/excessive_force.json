@@ -1,0 +1,42 @@
+{
+  "schema": "robot/1",
+  "id": "excessive_force",
+  "name": "Excessive Force",
+  "number": 67,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "pro",
+  "rating": 56,
+  "personality": "aggressive",
+  "team": "Garage Garage",
+  "inspiredBy": "Overkill",
+  "livery": {
+    "primary": "#c62828",
+    "secondary": "#111111",
+    "accent": "#ffcdd2",
+    "pattern": "flames"
+  },
+  "body": {
+    "template": "tent",
+    "params": {
+      "chamferFront": 0.3,
+      "ridge": 0.35
+    },
+    "mount": "overhead",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_wide",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_h_bar_small",
+    "armor": [
+      "armor_ar500_front",
+      "armor_poly_top"
+    ]
+  }
+}

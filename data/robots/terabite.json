@@ -1,0 +1,46 @@
+{
+  "schema": "robot/1",
+  "id": "terabite",
+  "name": "Terabite",
+  "number": 34,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "elite",
+  "rating": 76,
+  "personality": "aggressive",
+  "team": "Hex Engineering",
+  "inspiredBy": "Gigabyte",
+  "livery": {
+    "primary": "#1e3a8a",
+    "secondary": "#c0c4cc",
+    "accent": "#38bdf8",
+    "pattern": "pixels"
+  },
+  "body": {
+    "template": "round",
+    "params": {
+      "sides": 10,
+      "wall": 0.6
+    },
+    "mount": "shell",
+    "extras": [],
+    "look": {
+      "shell": "bowl",
+      "teeth": 2
+    }
+  },
+  "build": {
+    "chassis": "chassis_round",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_brute",
+    "weapon": "spinner_h_shell",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top"
+    ]
+  }
+}

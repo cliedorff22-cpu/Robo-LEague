@@ -1,0 +1,277 @@
+{
+  "schema": "economy/1",
+  "comment": "Money. All of it in data so the economy is tuned here, never in code. Amounts are dollars. Tuned with tools/seasons.js over long careers: a robot that wins half its fights slowly loses money in Rookie and Pro, and only winning, finals runs and promotion get you ahead. Repairs run about $1,500 a fight in Rookie and $3,500-4,000 at the top.",
+  "startingCash": 20000,
+  "repairs": {
+    "_comment": "Until the Stage 7 pit, the robot is repaired in full after every fight and the bill paid automatically. labourMultiplier scales parts.json repairCostPerHp: parts plus a crew's time.",
+    "labourMultiplier": 3.0
+  },
+  "league": {
+    "rookie": {
+      "appearance": 500,
+      "win": 1500,
+      "koBonus": 750,
+      "finals": [
+        1000,
+        2500,
+        5000,
+        9000,
+        20000
+      ],
+      "promotionBonus": 7500
+    },
+    "pro": {
+      "appearance": 1000,
+      "win": 3000,
+      "koBonus": 1500,
+      "finals": [
+        2000,
+        5000,
+        9000,
+        16000,
+        35000
+      ],
+      "promotionBonus": 15000
+    },
+    "elite": {
+      "appearance": 1800,
+      "win": 5500,
+      "koBonus": 2500,
+      "finals": [
+        4000,
+        9000,
+        16000,
+        30000,
+        60000
+      ],
+      "promotionBonus": 30000
+    },
+    "world": {
+      "appearance": 3000,
+      "win": 9000,
+      "koBonus": 4000,
+      "finals": [
+        8000,
+        16000,
+        30000,
+        55000,
+        120000
+      ],
+      "promotionBonus": 0
+    },
+    "_finals": "Paid for how far you got in the 16-robot finals: lost in the round of 16, quarters, semis, the final, champion."
+  },
+  "giantNut": {
+    "_comment": "Its own pool, separate from the leagues, and big enough that it is worth it from the bottom league.",
+    "appearance": 500,
+    "groupWin": 1200,
+    "koBonus": 1000,
+    "rounds": [
+      0,
+      4000,
+      8000,
+      15000,
+      30000,
+      60000,
+      120000
+    ],
+    "_rounds": "Paid for how far you got in the 64 bracket: did not qualify, lost in the round of 64, 32, 16, quarters, semis, the final; then champion.",
+    "champion": 300000
+  },
+  "shop": {
+    "_comment": "The Stage 6 parts shop (js/logic/garage.js). A part's tier (parts.json) unlocks with the best league the player has reached; prices carry the career's parts discount; a spare part sells back at `resale` of its list price.",
+    "tierFromLeague": {
+      "rookie": 1,
+      "pro": 2,
+      "elite": 3,
+      "world": 3
+    },
+    "resale": 0.5
+  },
+  "sponsors": [
+    {
+      "id": "boltworks",
+      "name": "Boltworks Hardware",
+      "kind": "league",
+      "requires": {
+        "wins": 3
+      },
+      "retainer": 1500,
+      "perWin": 200,
+      "blurb": "Fasteners for people who hit things. Wants 3 wins a season."
+    },
+    {
+      "id": "rapidcell",
+      "name": "RapidCell Batteries",
+      "kind": "league",
+      "requires": {
+        "league": "pro"
+      },
+      "retainer": 3000,
+      "perWin": 500,
+      "blurb": "Volts you can trust in the box."
+    },
+    {
+      "id": "hexplate",
+      "name": "HexPlate Armour",
+      "kind": "league",
+      "requires": {
+        "kos": 3
+      },
+      "retainer": 2500,
+      "perWin": 300,
+      "partsDiscount": 0.05,
+      "blurb": "Five percent off armour, for 3 knockouts a season."
+    },
+    {
+      "id": "torquemax",
+      "name": "TorqueMax Motors",
+      "kind": "league",
+      "requires": {
+        "league": "elite"
+      },
+      "retainer": 9000,
+      "perWin": 1200,
+      "blurb": "Top-flight drive for top-flight teams."
+    },
+    {
+      "id": "summit",
+      "name": "Summit Energy",
+      "kind": "league",
+      "requires": {
+        "league": "world"
+      },
+      "retainer": 25000,
+      "perWin": 4000,
+      "blurb": "The championship's own sponsor."
+    },
+    {
+      "id": "nut_forge",
+      "name": "Nut Forge",
+      "kind": "giantNut",
+      "requires": {
+        "giantNutRound": 1
+      },
+      "bonus": 4000,
+      "partsDiscount": 0.1,
+      "season": true,
+      "blurb": "Make the Giant Nut bracket: $5,000 and 10% off parts for a season."
+    },
+    {
+      "id": "nut_paint",
+      "name": "Gloss Bros. Paint",
+      "kind": "giantNut",
+      "requires": {
+        "giantNutRound": 3
+      },
+      "bonus": 10000,
+      "unlock": "livery_chrome",
+      "blurb": "Reach the sweet 16: $15,000 and a chrome livery."
+    },
+    {
+      "id": "nut_titan",
+      "name": "Titan Bearings",
+      "kind": "giantNut",
+      "requires": {
+        "giantNutRound": 5
+      },
+      "bonus": 35000,
+      "partsDiscount": 0.2,
+      "season": true,
+      "unlock": "trophy_plinth",
+      "blurb": "Make the semifinals: $50,000 and 20% off parts for a season."
+    }
+  ],
+  "_sponsors": "League sponsors sign as soon as you meet their terms and review them at the end of every league season: wins and KOs are per season, a league requirement holds while you are in that league. Giant Nut sponsors pay once, for how far you got.",
+  "crew": {
+    "_comment": "The player's pit crew (Stage 7): base members are free; each one hired adds a full share of crew-minutes in every pit, for a signing fee and a salary every season.",
+    "base": 2,
+    "max": 6,
+    "hireFee": [
+      2500,
+      4000,
+      6500,
+      9500
+    ],
+    "salaryPerSeason": 1800
+  },
+  "startingCashOptions": {
+    "_comment": "The choice on the new-career screen. `custom` allows any amount between the bounds.",
+    "options": [
+      [
+        "shoestring",
+        8000,
+        "Shoestring - one good part and a prayer"
+      ],
+      [
+        "standard",
+        20000,
+        "Standard"
+      ],
+      [
+        "sponsored",
+        50000,
+        "Sponsored"
+      ],
+      [
+        "backed",
+        100000,
+        "Backed by a big sponsor"
+      ]
+    ],
+    "customMin": 2000,
+    "customMax": 500000
+  },
+  "loans": {
+    "_comment": "Bank loans (js/logic/market.js). Each lender lends up to `limit` for the league you are in, in total. At the start of every season the interest (`rate` of what is owed) is added and a payment taken: what is owed divided by the seasons left on the loan, so it is paid off in `seasons` seasons. Payments are taken even if they put you in the red. You can pay any amount off early, with no penalty. Borrowing more from the same lender adds to the loan and starts its term again.",
+    "lenders": [
+      {
+        "id": "credit_union",
+        "name": "Boltworks Credit Union",
+        "rate": 0.08,
+        "seasons": 4,
+        "limit": {
+          "rookie": 10000,
+          "pro": 20000,
+          "elite": 40000,
+          "world": 80000
+        },
+        "blurb": "Members' rates for robot builders. Patient, but it will not lend much."
+      },
+      {
+        "id": "hot_nickel",
+        "name": "Hot Nickel Finance",
+        "rate": 0.22,
+        "seasons": 2,
+        "limit": {
+          "rookie": 30000,
+          "pro": 60000,
+          "elite": 120000,
+          "world": 250000
+        },
+        "blurb": "Big money, no questions, two seasons to pay it back - with interest."
+      }
+    ]
+  },
+  "market": {
+    "_comment": "The paddock market (js/logic/market.js): AI teams sell spare parts and buy yours. Listings change after every fight you fight and at the start of a season. A team sells a part at `sellPrice` of its list price (a team with money in the bank asks the top of the range); it can be up to `tierAbove` tiers above what the shop sells you yet. Teams offer `buyPrice` of list for your spares - the shop only pays the `shop.resale` share. A team buys your whole robot for `robotPrice` of its parts' list price plus its reputation, less its damage; you then fight with a stock kit (the starting robot's parts), bought from the proceeds.",
+    "listings": 6,
+    "sellPrice": [
+      0.6,
+      0.95
+    ],
+    "tierAbove": 1,
+    "offerChance": 0.6,
+    "buyPrice": [
+      0.55,
+      0.85
+    ],
+    "robotPrice": 0.55,
+    "reputation": {
+      "win": 250,
+      "ko": 100,
+      "title": 4000,
+      "max": 40000
+    }
+  }
+}

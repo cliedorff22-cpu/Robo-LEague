@@ -1,0 +1,47 @@
+{
+  "schema": "robot/1",
+  "id": "trounce",
+  "name": "Trounce",
+  "number": 78,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "pro",
+  "rating": 48,
+  "personality": "defensive",
+  "team": "Tungsten Brigade",
+  "inspiredBy": "Vanquish",
+  "livery": {
+    "primary": "#121212",
+    "secondary": "#d4af37",
+    "accent": "#ffffff",
+    "pattern": "chevron"
+  },
+  "body": {
+    "template": "dart",
+    "params": {
+      "slope": 0.7,
+      "noseWidth": 0.45
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "forks",
+        "count": 2,
+        "lengthIn": 6
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_v_disc",
+    "armor": [
+      "armor_ar500_front"
+    ]
+  }
+}

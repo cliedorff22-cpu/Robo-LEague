@@ -1,0 +1,46 @@
+{
+  "schema": "robot/1",
+  "id": "zaggo",
+  "name": "Zaggo",
+  "number": 61,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "pro",
+  "rating": 60,
+  "personality": "aggressive",
+  "team": "Rust Works",
+  "inspiredBy": "Ziggo",
+  "livery": {
+    "primary": "#bdbdbd",
+    "secondary": "#c62828",
+    "accent": "#212121",
+    "pattern": "split"
+  },
+  "body": {
+    "template": "round",
+    "params": {
+      "sides": 10,
+      "wall": 0.5
+    },
+    "mount": "shell",
+    "extras": [],
+    "look": {
+      "shell": "dome",
+      "teeth": 2
+    }
+  },
+  "build": {
+    "chassis": "chassis_round",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_brute",
+    "weapon": "spinner_h_shell",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top"
+    ]
+  }
+}

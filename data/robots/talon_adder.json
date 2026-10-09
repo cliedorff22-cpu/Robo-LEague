@@ -1,0 +1,48 @@
+{
+  "schema": "robot/1",
+  "id": "talon_adder",
+  "name": "Talon Adder",
+  "number": 54,
+  "origin": "parody",
+  "archetype": "lifter",
+  "league": "elite",
+  "rating": 60,
+  "personality": "defensive",
+  "team": "Hex Heavy Industries",
+  "inspiredBy": "Claw Viper",
+  "livery": {
+    "primary": "#33691e",
+    "secondary": "#0d0d0d",
+    "accent": "#c0ca33",
+    "pattern": "scales"
+  },
+  "body": {
+    "template": "dart",
+    "params": {
+      "slope": 0.6,
+      "noseWidth": 0.5
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "spikes",
+        "count": 2,
+        "lengthIn": 5
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_light",
+    "weapon": "lifter_arm",
+    "armor": [
+      "armor_ti_front",
+      "armor_ti_side"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "robot/1",
+  "id": "occupational_hazard",
+  "name": "Occupational Hazard",
+  "number": 66,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "pro",
+  "rating": 57,
+  "personality": "defensive",
+  "team": "Bent Racing",
+  "inspiredBy": "Hazard",
+  "livery": {
+    "primary": "#ffd600",
+    "secondary": "#121212",
+    "accent": "#ff3d00",
+    "pattern": "hazard"
+  },
+  "body": {
+    "template": "slab",
+    "params": {
+      "chamfer": 0.4
+    },
+    "mount": "low",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_slab_ti",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_8_foam",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_heavy",
+    "weapon": "spinner_h_undercutter",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top",
+      "armor_uhmw_side",
+      "armor_uhmw_rear"
+    ]
+  }
+}

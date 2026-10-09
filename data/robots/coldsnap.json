@@ -1,0 +1,43 @@
+{
+  "schema": "robot/1",
+  "id": "coldsnap",
+  "name": "Coldsnap",
+  "number": 4,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "world",
+  "rating": 93,
+  "personality": "aggressive",
+  "team": "Night Engineering",
+  "inspiredBy": "Icewave",
+  "livery": {
+    "primary": "#8fd3ff",
+    "secondary": "#f4fbff",
+    "accent": "#1c4e80",
+    "pattern": "stripes"
+  },
+  "body": {
+    "template": "dart",
+    "params": {
+      "slope": 0.75,
+      "rearHeight": 0.8,
+      "noseWidth": 0.5
+    },
+    "mount": "overhead",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_long",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_heavy",
+    "weapon": "spinner_h_bar",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top"
+    ]
+  }
+}

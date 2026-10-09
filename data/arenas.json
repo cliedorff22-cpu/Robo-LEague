@@ -1,0 +1,174 @@
+{
+  "schema": "arenas/1",
+  "_comment": "Where the fights happen. data/arena.json is the box itself (floor, walls, physics, cameras) and its hazards are the Classic layout. A LAYOUT swaps the hazards; a VENUE is the building round the box - stands, crowd, lights, screens - and which layouts it runs. js/logic/arenas.js puts them together; nothing about either lives in code.",
+
+  "layouts": {
+    "classic": {
+      "name": "The Box",
+      "blurb": "Pulverizers in two corners, a screw on every wall, six killsaws for the last minute.",
+      "_hazards": "No `hazards`: the classic layout is data/arena.json's own list."
+    },
+
+    "hammer_alley": {
+      "name": "Hammer Alley",
+      "blurb": "A pulverizer in every corner and screws behind both starting squares. Stay out of the corners.",
+      "_hazards": "`like` copies a hazard from data/arena.json and overrides what is given, so the tuning stays in one place.",
+      "killsaw": { "activeCount": 2 },
+      "hazards": [
+        { "like": "pulverizer_ne" },
+        { "like": "pulverizer_sw" },
+        { "like": "pulverizer_ne", "id": "pulverizer_nw", "pos": [-18, 0, -18], "yaw": 45 },
+        { "like": "pulverizer_ne", "id": "pulverizer_se", "pos": [18, 0, 18], "yaw": -135 },
+        { "like": "screw_west" },
+        { "like": "screw_east" },
+        { "like": "saw_nw" },
+        { "like": "saw_ne" },
+        { "like": "saw_sw" },
+        { "like": "saw_se" }
+      ]
+    },
+
+    "sawmill": {
+      "name": "The Sawmill",
+      "blurb": "Eight killsaws across the floor, four at a time, from a minute forty out. Two pulverizers on the other diagonal.",
+      "killsaw": { "deployAtRemainingS": 100, "activeCount": 4, "rotateEveryS": 4 },
+      "hazards": [
+        { "like": "pulverizer_ne", "id": "pulverizer_nw", "pos": [-18, 0, -18], "yaw": 45 },
+        { "like": "pulverizer_ne", "id": "pulverizer_se", "pos": [18, 0, 18], "yaw": -135 },
+        { "like": "screw_north" },
+        { "like": "screw_south" },
+        { "like": "saw_nw", "pos": [-10, 0, -10] },
+        { "like": "saw_n" },
+        { "like": "saw_ne", "pos": [10, 0, -10] },
+        { "like": "saw_nw", "id": "saw_w", "pos": [-11, 0, 0], "yaw": 90 },
+        { "like": "saw_nw", "id": "saw_e", "pos": [11, 0, 0], "yaw": 90 },
+        { "like": "saw_sw", "pos": [-10, 0, 10] },
+        { "like": "saw_s" },
+        { "like": "saw_se", "pos": [10, 0, 10] }
+      ]
+    },
+
+    "the_pit": {
+      "name": "The Pit",
+      "blurb": "The middle of the floor drops away with a minute left. Anything that goes in is out.",
+      "hazards": [
+        { "like": "pulverizer_ne" },
+        { "like": "pulverizer_sw" },
+        { "like": "screw_north" },
+        { "like": "screw_south" },
+        {
+          "id": "pit_center", "type": "pit", "enabled": true, "pos": [0, 0, 0], "yaw": 0,
+          "size": [8, 8], "depth": 2.5, "openAtRemainingS": 60, "lowerS": 2.5, "warnS": 4,
+          "note": "A square of deck that sinks to `depth` from `openAtRemainingS` and stays down. Lights round the edge flash for `warnS` first. A robot whose body is below the deck is out on the spot (js/sim/referee.js)."
+        }
+      ]
+    },
+
+    "grinder": {
+      "name": "The Grinder",
+      "blurb": "Two screws on every wall and no hammers. Get shoved anywhere near the edge and it bites.",
+      "killsaw": { "activeCount": 2 },
+      "hazards": [
+        { "like": "screw_west", "id": "screw_west_n", "pos": [-22.3, 0, -10.5] },
+        { "like": "screw_west", "id": "screw_west_s", "pos": [-22.3, 0, 10.5] },
+        { "like": "screw_east", "id": "screw_east_n", "pos": [22.3, 0, -10.5] },
+        { "like": "screw_east", "id": "screw_east_s", "pos": [22.3, 0, 10.5] },
+        { "like": "screw_north", "id": "screw_north_w", "pos": [-10.5, 0, -22.3] },
+        { "like": "screw_north", "id": "screw_north_e", "pos": [10.5, 0, -22.3] },
+        { "like": "screw_south", "id": "screw_south_w", "pos": [-10.5, 0, 22.3] },
+        { "like": "screw_south", "id": "screw_south_e", "pos": [10.5, 0, 22.3] },
+        { "like": "saw_n" },
+        { "like": "saw_s" }
+      ]
+    }
+  },
+
+  "venues": {
+    "_comment": "One per league, plus the Giant Nut. Sizes in feet. `stands.sides` are the walls with seating (n s e w); `tiers` are stacked banks of rows. `crowd.fill` is the share of seats taken; `energy` how lively they are between big moments. `layouts` is the pool a career fight there draws from.",
+
+    "rookie": {
+      "name": "Warehouse 9",
+      "tagline": "Rookie League · folding seats and a roll-up door",
+      "league": "rookie",
+      "layouts": ["classic", "hammer_alley", "grinder"],
+      "style": "warehouse",
+      "hall": { "half": [74, 62], "height": 34, "wall": "#5b6066", "floor": "#3c3f43", "roof": "#2a2d31" },
+      "stands": { "sides": ["n", "s"], "tiers": [{ "rows": 4 }], "gap": 15, "rowDepth": 3.0, "rowRise": 1.3, "length": 52, "color": "#6d7278", "seat": "#2f5f9e" },
+      "crowd": { "fill": 0.75, "energy": 0.3, "palette": ["#c23b2e", "#2f5f9e", "#d9a521", "#3c8c4a", "#e6e6e6", "#333333", "#7b4ea3"] },
+      "lights": { "kind": "fluorescent", "color": "#e8f2ff", "rows": 4, "beams": false },
+      "screens": { "kind": "scoreboard", "color": "#ff9a2e" },
+      "accent": "#ff9a2e",
+      "banners": ["#c23b2e", "#2f5f9e"],
+      "extras": ["garageDoors", "crates", "flags"],
+      "lighting": { "background": "#15171a", "fog": { "color": "#15171a", "near": 70, "far": 260 }, "rigColor": "#eef4ff" }
+    },
+
+    "pro": {
+      "name": "Ironworks Hall",
+      "tagline": "Pro League · an old foundry, packed on fight night",
+      "league": "pro",
+      "layouts": ["classic", "hammer_alley", "sawmill", "grinder"],
+      "style": "hall",
+      "hall": { "half": [92, 84], "height": 52, "wall": "#5a3a30", "floor": "#2c2826", "roof": "#1d1a19" },
+      "stands": { "sides": ["n", "s", "e"], "tiers": [{ "rows": 7 }], "gap": 16, "rowDepth": 3.0, "rowRise": 1.6, "length": 66, "color": "#3d3634", "seat": "#8f2a22" },
+      "crowd": { "fill": 0.72, "energy": 0.4, "palette": ["#b8322a", "#e08a1e", "#f0d36a", "#2b2b2b", "#e8e2d4", "#45618a", "#6a8a3a"] },
+      "lights": { "kind": "truss", "color": "#ffd8a0", "rows": 3, "beams": true, "beamColors": ["#ffb347", "#ffd8a0"] },
+      "screens": { "kind": "ends", "color": "#ff7a2e" },
+      "accent": "#ff7a2e",
+      "banners": ["#b8322a", "#e08a1e", "#2b2b2b"],
+      "extras": ["entranceTunnel", "flags"],
+      "lighting": { "background": "#120d0b", "fog": { "color": "#140f0d", "near": 80, "far": 320 }, "rigColor": "#ffe2b8" }
+    },
+
+    "elite": {
+      "name": "The Forge Arena",
+      "tagline": "Elite League · a proper arena, sold out",
+      "league": "elite",
+      "layouts": ["classic", "hammer_alley", "sawmill", "the_pit", "grinder"],
+      "style": "arena",
+      "hall": { "half": [108, 108], "height": 70, "wall": "#1d2433", "floor": "#1a1d24", "roof": "#0e1118" },
+      "stands": { "sides": ["n", "s", "e", "w"], "tiers": [{ "rows": 11 }], "gap": 16, "rowDepth": 3.0, "rowRise": 1.9, "length": 76, "color": "#262c38", "seat": "#1f4f9e" },
+      "crowd": { "fill": 0.86, "energy": 0.5, "palette": ["#1f6fd0", "#e8e8e8", "#d23a3a", "#1b1b1b", "#f2c230", "#30a0a0", "#7a4ac0"] },
+      "lights": { "kind": "rig", "color": "#dfe9ff", "rows": 4, "beams": true, "beamColors": ["#4aa8ff", "#ffffff", "#b06aff"] },
+      "screens": { "kind": "centre", "color": "#3aa0ff" },
+      "accent": "#3aa0ff",
+      "banners": ["#1f6fd0", "#e8e8e8", "#d23a3a"],
+      "extras": ["entranceTunnel", "ledRibbon"],
+      "lighting": { "background": "#06080d", "fog": { "color": "#070a10", "near": 90, "far": 380 }, "rigColor": "#e8efff" }
+    },
+
+    "world": {
+      "name": "Titan Dome",
+      "tagline": "World League · the biggest stage in the sport",
+      "league": "world",
+      "layouts": ["classic", "hammer_alley", "sawmill", "the_pit", "grinder"],
+      "style": "dome",
+      "hall": { "half": [150, 150], "height": 110, "wall": "#161b26", "floor": "#14161c", "roof": "#0a0c12" },
+      "stands": { "sides": ["n", "s", "e", "w"], "tiers": [{ "rows": 11 }, { "rows": 9, "lift": 10, "back": 6 }], "gap": 16, "rowDepth": 3.0, "rowRise": 2.0, "length": 84, "color": "#20242e", "seat": "#9e1f2a" },
+      "crowd": { "fill": 0.95, "energy": 0.6, "palette": ["#d0202e", "#f0f0f0", "#1b1b1b", "#2050c0", "#f2b020", "#20a060", "#e060a0"] },
+      "lights": { "kind": "rig", "color": "#ffffff", "rows": 5, "beams": true, "beamColors": ["#ff3a4a", "#ffffff", "#3a7aff", "#ffcf3a"] },
+      "screens": { "kind": "centre", "color": "#ff3a4a", "ends": true },
+      "accent": "#ff3a4a",
+      "banners": ["#d0202e", "#f0f0f0", "#2050c0"],
+      "extras": ["entranceTunnel", "ledRibbon", "pyro", "lightTowers"],
+      "lighting": { "background": "#040509", "fog": { "color": "#05060b", "near": 110, "far": 480 }, "rigColor": "#ffffff" }
+    },
+
+    "giantNut": {
+      "name": "The Giant Nut Coliseum",
+      "tagline": "The Giant Nut · every robot in the sport, one trophy",
+      "league": "giantNut",
+      "layouts": ["classic", "hammer_alley", "sawmill", "the_pit", "grinder"],
+      "style": "coliseum",
+      "hall": { "half": [160, 160], "height": 120, "wall": "#1c1426", "floor": "#120e18", "roof": "#08060c" },
+      "stands": { "sides": ["n", "s", "e", "w"], "tiers": [{ "rows": 12 }, { "rows": 10, "lift": 10, "back": 6 }], "gap": 16, "rowDepth": 3.0, "rowRise": 2.0, "length": 88, "color": "#241a30", "seat": "#5a2a8a" },
+      "crowd": { "fill": 1.0, "energy": 0.7, "palette": ["#f2b81e", "#6a2ab0", "#f0f0f0", "#1b1b1b", "#e0402a", "#2a8ad0", "#f07ac0"] },
+      "lights": { "kind": "rig", "color": "#fff1d0", "rows": 5, "beams": true, "beamColors": ["#ffcf3a", "#b05aff", "#ffffff", "#ff6a3a"] },
+      "screens": { "kind": "centre", "color": "#ffcf3a", "ends": true },
+      "accent": "#ffcf3a",
+      "banners": ["#f2b81e", "#6a2ab0", "#f0f0f0"],
+      "extras": ["entranceTunnel", "ledRibbon", "pyro", "lightTowers", "nutStatue"],
+      "lighting": { "background": "#06040a", "fog": { "color": "#07050c", "near": 110, "far": 500 }, "rigColor": "#fff3dc" }
+    }
+  }
+}

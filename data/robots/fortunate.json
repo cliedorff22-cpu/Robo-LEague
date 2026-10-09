@@ -1,0 +1,47 @@
+{
+  "schema": "robot/1",
+  "id": "fortunate",
+  "name": "Fortunate",
+  "number": 88,
+  "origin": "parody",
+  "archetype": "flipper",
+  "league": "pro",
+  "rating": 41,
+  "personality": "aggressive",
+  "team": "Basement Machine Shop",
+  "inspiredBy": "Lucky",
+  "livery": {
+    "primary": "#2e7d32",
+    "secondary": "#ffd700",
+    "accent": "#ffffff",
+    "pattern": "spots"
+  },
+  "body": {
+    "template": "wedge",
+    "params": {
+      "slope": 0.7
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "cage",
+        "heightIn": 2
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "flipper_electric",
+    "armor": [
+      "armor_ar500_front",
+      "armor_uhmw_side",
+      "armor_uhmw_side"
+    ]
+  }
+}

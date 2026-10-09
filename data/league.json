@@ -1,0 +1,99 @@
+{
+  "schema": "league/1",
+  "comment": "Season formats, from the brief. season.js runs these; nothing about the formats lives in code.",
+  "leagues": [
+    "rookie",
+    "pro",
+    "elite",
+    "world"
+  ],
+  "_leagues": "Bottom to top. The player starts in the first.",
+  "cycle": [
+    "league",
+    "league",
+    "giantNut"
+  ],
+  "_cycle": "Two league seasons, then a Giant Nut season, then round again.",
+  "league": {
+    "groups": 6,
+    "groupSize": 5,
+    "_groupStage": "Round robin inside each group: 4 fights each.",
+    "finals": {
+      "size": 16,
+      "perGroup": 2,
+      "wildCards": 4,
+      "_seeding": "Group winners seed 1-6 by record, runners-up 7-12, wild cards 13-16."
+    },
+    "promote": 4,
+    "relegate": 4,
+    "_movement": "The top 4 of the final ranking go up a league, the bottom 4 down. The final ranking is how far a robot got in the finals, then its group record."
+  },
+  "giantNut": {
+    "groups": 10,
+    "groupSize": 12,
+    "fightsEach": 8,
+    "advance": 6,
+    "bracket": 64,
+    "_bracket": "60 qualifiers in a 64 bracket seeded by group performance; the top 4 seeds get first-round byes.",
+    "_effect": "None on the leagues: every robot goes back to the league it was in."
+  },
+  "evolution": {
+    "_comment": "The off-season (js/logic/evolution.js): every AI team works on its robot between seasons. Budget is per season by league plus perWin, saved if not spent; upgrades are real parts, bought only if the team's tests (fast resolver, fixed seeds, both corners, against evalOpponents robots from its league) show at least minGain more wins. A robot under belowWinShare for worstSeasons seasons running may be redesigned around a new weapon (front-weapon bodies only).",
+    "budget": {
+      "rookie": 2500,
+      "pro": 4000,
+      "elite": 6500,
+      "world": 10000
+    },
+    "perWin": 600,
+    "resale": 0.4,
+    "maxUpgrades": 2,
+    "candidates": 5,
+    "evalOpponents": 6,
+    "minGain": 0.05,
+    "rating": {
+      "talent": 12,
+      "learn": 0.3,
+      "perWinShare": 8,
+      "noise": 2,
+      "min": 5,
+      "max": 99,
+      "_rating": "Each driver learns toward a ceiling `talent` above their starting rating, `learn` of the way each season; a season's results (win share - 0.5) x perWinShare and noise move them about it."
+    },
+    "redesign": {
+      "worstSeasons": 2,
+      "belowWinShare": 0.3,
+      "chance": 0.2,
+      "minGain": 0.15,
+      "everySeasons": 6
+    },
+    "bankSeasons": 4
+  },
+
+  "cup": {
+    "_comment": "Tournament mode (js/logic/cup.js): one-off tournaments outside the career. `groupSize` and `advance` are the groups format's; the Giant Nut format uses `giantNut` above. Robots are repaired between fights. Up to `maxPlayers` people can enter, each with a robot.",
+    "formats": [
+      { "id": "knockout", "name": "Knockout", "sizes": [4, 8, 16, 32, 64], "blurb": "One bracket, seeded by driver rating. Lose once and you are out." },
+      { "id": "groups", "name": "Groups, then knockout", "sizes": [8, 16, 32, 64], "blurb": "Groups of four fight a round robin; the top two of each go into a seeded bracket." },
+      { "id": "giantNut", "name": "The Giant Nut", "sizes": [120], "blurb": "All 120 robots: ten groups of twelve, eight fights each, then a 64-robot bracket." }
+    ],
+    "groupSize": 4,
+    "advance": 2,
+    "maxPlayers": 8
+  },
+
+  "rivalry": {
+    "_comment": "Robots with a history against the player (js/logic/rivalry.js). Every meeting adds heat - more for the things fans remember - and heat cools between seasons (`decay` is what is kept). `levels` is the heat for a rivalry, a bitter rivalry and a nemesis. A rival tests `prepOptions` more setups against you per level (only at a difficulty where opponents test at all) and drives `skillPerLevel` sharper; promoters pay `gatePerLevel` of the appearance fee per level. A win over a robot `upsetTiers` leagues above you (or a loss to one below) is an upset. Grudge matches pay the bigger league's purses times the `grudge` factors, `perLevel` more for a hotter rivalry.",
+    "levels": [3, 6, 10],
+    "decay": 0.6,
+    "heat": { "meet": 1, "ko": 1, "split": 1, "playoff": 1, "titleFight": 2, "revenge": 1, "streak": 1, "upset": 1, "giantNut": 0.5, "grudge": 1.5, "ducked": 1, "refused": 0.5 },
+    "upsetTiers": 1,
+    "prepOptions": 1,
+    "skillPerLevel": 0.02,
+    "gatePerLevel": 0.25,
+    "grudge": { "appearanceX": 2, "winX": 1.5, "koX": 1, "perLevel": 0.25, "maxPerSeason": 2 },
+    "accept": { "base": 0.3, "theyLost": 0.4, "perLevel": 0.12 },
+    "callOut": { "base": 0.25, "perLevel": 0.15 },
+    "moments": 8
+  }
+}

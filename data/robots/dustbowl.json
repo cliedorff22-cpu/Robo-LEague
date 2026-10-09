@@ -1,0 +1,43 @@
+{
+  "schema": "robot/1",
+  "id": "dustbowl",
+  "name": "Dustbowl",
+  "number": 33,
+  "origin": "original",
+  "archetype": "spinner_h",
+  "league": "elite",
+  "rating": 76,
+  "personality": "defensive",
+  "team": "Cinder Brigade",
+  "livery": {
+    "primary": "#c2a36b",
+    "secondary": "#5d4037",
+    "accent": "#f5ecd7",
+    "pattern": "camo"
+  },
+  "body": {
+    "template": "cab",
+    "params": {
+      "chamferFront": 0.3,
+      "chamferRear": 0.3,
+      "deck": 0.55,
+      "cabLength": 0.4
+    },
+    "mount": "overhead",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_wide",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_heavy",
+    "weapon": "spinner_h_bar",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top"
+    ]
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "schema": "robot/1",
+  "id": "bricklayer",
+  "name": "Bricklayer",
+  "number": 93,
+  "origin": "original",
+  "archetype": "wedge",
+  "league": "rookie",
+  "rating": 44,
+  "personality": "defensive",
+  "team": "Cinder Brigade",
+  "livery": {
+    "primary": "#a63d2a",
+    "secondary": "#7d7d7d",
+    "accent": "#f5e6c8",
+    "pattern": "bricks"
+  },
+  "body": {
+    "template": "box",
+    "params": {
+      "chamferFront": 0.1,
+      "chamferRear": 0.1
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "plow",
+        "lengthIn": 6,
+        "overhangIn": 2
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weapon": "wedge_static",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_side",
+      "armor_ti_side",
+      "armor_ti_top",
+      "armor_ti_rear"
+    ],
+    "srimech": "srimech_arm"
+  }
+}

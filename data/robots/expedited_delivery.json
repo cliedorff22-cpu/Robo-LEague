@@ -1,0 +1,150 @@
+{
+  "schema": "robot/1",
+  "id": "expedited_delivery",
+  "name": "Expedited Delivery",
+  "number": 90,
+  "origin": "parody",
+  "archetype": "lifter",
+  "league": "pro",
+  "rating": 40,
+  "personality": "defensive",
+  "team": "Torque Foundry",
+  "inspiredBy": "Free Shipping",
+  "livery": {
+    "primary": "#a1887f",
+    "secondary": "#ffcc80",
+    "accent": "#3e2723",
+    "pattern": "band"
+  },
+  "body": {
+    "template": "custom",
+    "params": {
+      "chamferFront": 0.1
+    },
+    "mount": "front",
+    "extras": [],
+    "custom": {
+      "lofts": [
+        {
+          "sections": [
+            [
+              -0.5,
+              -0.5,
+              0.42,
+              0.5
+            ],
+            [
+              0.45,
+              -0.5,
+              0.42,
+              0.5
+            ],
+            [
+              0.5,
+              -0.5,
+              0.36,
+              0.5
+            ]
+          ]
+        },
+        {
+          "sections": [
+            [
+              -0.44,
+              0.4,
+              0.44,
+              0.012,
+              0.012,
+              0.49,
+              0.49
+            ],
+            [
+              0.4,
+              0.4,
+              0.44,
+              0.012,
+              0.012,
+              0.49,
+              0.49
+            ],
+            [
+              0.41,
+              0.4,
+              0.95,
+              0.012,
+              0.012,
+              0.49,
+              0.72
+            ]
+          ],
+          "slot": "top"
+        },
+        {
+          "sections": [
+            [
+              -0.44,
+              0.4,
+              0.44,
+              0.012,
+              0.012,
+              -0.49,
+              -0.49
+            ],
+            [
+              0.4,
+              0.4,
+              0.44,
+              0.012,
+              0.012,
+              -0.49,
+              -0.49
+            ],
+            [
+              0.41,
+              0.4,
+              0.95,
+              0.012,
+              0.012,
+              -0.49,
+              -0.72
+            ]
+          ],
+          "slot": "top"
+        },
+        {
+          "sections": [
+            [
+              -0.6,
+              0.86,
+              0.9,
+              0.44
+            ],
+            [
+              -0.5,
+              0.4,
+              0.44,
+              0.44
+            ]
+          ],
+          "slot": "rear"
+        }
+      ]
+    }
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "lifter_fork",
+    "armor": [
+      "armor_ar500_front",
+      "armor_uhmw_side",
+      "armor_uhmw_side",
+      "armor_poly_top"
+    ]
+  }
+}

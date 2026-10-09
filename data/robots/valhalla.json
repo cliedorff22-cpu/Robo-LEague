@@ -1,0 +1,48 @@
+{
+  "schema": "robot/1",
+  "id": "valhalla",
+  "name": "Valhalla",
+  "number": 6,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "world",
+  "rating": 91,
+  "personality": "defensive",
+  "team": "Bent Racing",
+  "inspiredBy": "Valkyrie",
+  "livery": {
+    "primary": "#d8b23c",
+    "secondary": "#f2efe6",
+    "accent": "#24418f",
+    "pattern": "chevron"
+  },
+  "body": {
+    "template": "slab",
+    "params": {
+      "chamfer": 0.25
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "wheelGuards",
+        "height": 1.0
+      },
+      {
+        "type": "pod"
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_slab_ti",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_8_foam",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_heavy",
+    "weapon": "spinner_h_bar_small",
+    "armor": [
+      "armor_ti_front"
+    ]
+  }
+}

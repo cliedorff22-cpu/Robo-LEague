@@ -1,0 +1,1091 @@
+{
+  "schema": "rosterPlan/1",
+  "comment": "Names-and-slots plan for the 120-bot field. Reviewed before any bot is built. Stage 5 turns each entry into a data/robots/*.json assembly; ratings here are provisional league bands and get finalised per batch.",
+  "targets": {
+    "total": 120,
+    "parody": 100,
+    "original": 20,
+    "perLeague": 30
+  },
+  "ratingBands": {
+    "world": {
+      "min": 72,
+      "max": 95
+    },
+    "elite": {
+      "min": 55,
+      "max": 78
+    },
+    "pro": {
+      "min": 40,
+      "max": 60
+    },
+    "rookie": {
+      "min": 25,
+      "max": 45
+    }
+  },
+  "robots": [
+    {
+      "name": "Grim Reaper",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "world",
+      "rating": 95,
+      "personality": "aggressive",
+      "inspiredBy": "Tombstone"
+    },
+    {
+      "name": "Hyperschlock",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "world",
+      "rating": 94,
+      "personality": "opportunistic",
+      "inspiredBy": "Hypershock"
+    },
+    {
+      "name": "Ironmonger",
+      "origin": "original",
+      "archetype": "crusher",
+      "league": "world",
+      "rating": 93,
+      "personality": "defensive"
+    },
+    {
+      "name": "Coldsnap",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "world",
+      "rating": 93,
+      "personality": "aggressive",
+      "inspiredBy": "Icewave"
+    },
+    {
+      "name": "Riptooth",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "world",
+      "rating": 92,
+      "personality": "opportunistic",
+      "inspiredBy": "Riptide"
+    },
+    {
+      "name": "Valhalla",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "world",
+      "rating": 91,
+      "personality": "defensive",
+      "inspiredBy": "Valkyrie"
+    },
+    {
+      "name": "Kernel Panic",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "world",
+      "rating": 90,
+      "personality": "aggressive",
+      "inspiredBy": "Glitch"
+    },
+    {
+      "name": "Malpractice",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "world",
+      "rating": 89,
+      "personality": "opportunistic",
+      "inspiredBy": "Malice"
+    },
+    {
+      "name": "Null Hypothesis",
+      "origin": "original",
+      "archetype": "spinner_v",
+      "league": "world",
+      "rating": 89,
+      "personality": "defensive"
+    },
+    {
+      "name": "Gyrator",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "world",
+      "rating": 88,
+      "personality": "aggressive",
+      "inspiredBy": "Rotator"
+    },
+    {
+      "name": "Heir of Thwack",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "world",
+      "rating": 87,
+      "personality": "opportunistic",
+      "inspiredBy": "Son of Whyachi"
+    },
+    {
+      "name": "Molar Patrol",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "world",
+      "rating": 86,
+      "personality": "defensive",
+      "inspiredBy": "Bite Force"
+    },
+    {
+      "name": "Hex Physician",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "world",
+      "rating": 85,
+      "personality": "aggressive",
+      "inspiredBy": "Witch Doctor"
+    },
+    {
+      "name": "Cathedral",
+      "origin": "original",
+      "archetype": "wedge",
+      "league": "world",
+      "rating": 85,
+      "personality": "opportunistic"
+    },
+    {
+      "name": "Sudden Death",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "world",
+      "rating": 84,
+      "personality": "defensive",
+      "inspiredBy": "End Game"
+    },
+    {
+      "name": "Obsidian Wyrm",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "world",
+      "rating": 83,
+      "personality": "aggressive",
+      "inspiredBy": "Black Dragon"
+    },
+    {
+      "name": "Haymaker",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "world",
+      "rating": 82,
+      "personality": "opportunistic",
+      "inspiredBy": "Uppercut"
+    },
+    {
+      "name": "Squall Line",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "world",
+      "rating": 82,
+      "personality": "defensive",
+      "inspiredBy": "Monsoon"
+    },
+    {
+      "name": "ENORMOUS",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "world",
+      "rating": 81,
+      "personality": "aggressive",
+      "inspiredBy": "HUGE"
+    },
+    {
+      "name": "Labyrinth",
+      "origin": "parody",
+      "archetype": "drum",
+      "league": "world",
+      "rating": 80,
+      "personality": "opportunistic",
+      "inspiredBy": "Minotaur"
+    },
+    {
+      "name": "Vespertine",
+      "origin": "original",
+      "archetype": "spinner_h",
+      "league": "world",
+      "rating": 79,
+      "personality": "defensive"
+    },
+    {
+      "name": "Conniption",
+      "origin": "parody",
+      "archetype": "drum",
+      "league": "world",
+      "rating": 78,
+      "personality": "aggressive",
+      "inspiredBy": "Tantrum"
+    },
+    {
+      "name": "Cottonmouth",
+      "origin": "parody",
+      "archetype": "drum",
+      "league": "world",
+      "rating": 78,
+      "personality": "opportunistic",
+      "inspiredBy": "Copperhead"
+    },
+    {
+      "name": "Smilodon",
+      "origin": "parody",
+      "archetype": "drum",
+      "league": "world",
+      "rating": 77,
+      "personality": "defensive",
+      "inspiredBy": "Sabertooth"
+    },
+    {
+      "name": "Cerberus",
+      "origin": "parody",
+      "archetype": "flipper",
+      "league": "world",
+      "rating": 76,
+      "personality": "aggressive",
+      "inspiredBy": "Hydra"
+    },
+    {
+      "name": "Soft Tissue",
+      "origin": "parody",
+      "archetype": "lifter",
+      "league": "world",
+      "rating": 75,
+      "personality": "opportunistic",
+      "inspiredBy": "Whiplash"
+    },
+    {
+      "name": "Hollow Point",
+      "origin": "original",
+      "archetype": "drum",
+      "league": "world",
+      "rating": 74,
+      "personality": "defensive"
+    },
+    {
+      "name": "Sawdust",
+      "origin": "parody",
+      "archetype": "hammer",
+      "league": "world",
+      "rating": 74,
+      "personality": "aggressive",
+      "inspiredBy": "SawBlaze"
+    },
+    {
+      "name": "Tetanus",
+      "origin": "parody",
+      "archetype": "crusher",
+      "league": "world",
+      "rating": 73,
+      "personality": "opportunistic",
+      "inspiredBy": "Lock-Jaw"
+    },
+    {
+      "name": "Leviathan",
+      "origin": "parody",
+      "archetype": "crusher",
+      "league": "world",
+      "rating": 72,
+      "personality": "defensive",
+      "inspiredBy": "Kraken"
+    },
+    {
+      "name": "Payline",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "elite",
+      "rating": 78,
+      "personality": "aggressive",
+      "inspiredBy": "Jackpot"
+    },
+    {
+      "name": "Shenanigan",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "elite",
+      "rating": 77,
+      "personality": "opportunistic",
+      "inspiredBy": "Hijinx"
+    },
+    {
+      "name": "Dustbowl",
+      "origin": "original",
+      "archetype": "spinner_h",
+      "league": "elite",
+      "rating": 76,
+      "personality": "defensive"
+    },
+    {
+      "name": "Terabite",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "elite",
+      "rating": 76,
+      "personality": "aggressive",
+      "inspiredBy": "Gigabyte"
+    },
+    {
+      "name": "Admiral Confetti",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "elite",
+      "rating": 75,
+      "personality": "opportunistic",
+      "inspiredBy": "Captain Shrederator"
+    },
+    {
+      "name": "Final Notice",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "elite",
+      "rating": 74,
+      "personality": "defensive",
+      "inspiredBy": "Last Rites"
+    },
+    {
+      "name": "Cadmium",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "elite",
+      "rating": 73,
+      "personality": "aggressive",
+      "inspiredBy": "Cobalt"
+    },
+    {
+      "name": "Davy Jones",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "elite",
+      "rating": 72,
+      "personality": "opportunistic",
+      "inspiredBy": "Deep Six"
+    },
+    {
+      "name": "Quietus",
+      "origin": "original",
+      "archetype": "spinner_v",
+      "league": "elite",
+      "rating": 72,
+      "personality": "defensive"
+    },
+    {
+      "name": "Rabid Haberdasher",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "elite",
+      "rating": 71,
+      "personality": "aggressive",
+      "inspiredBy": "Mad Catter"
+    },
+    {
+      "name": "Croakbot",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "elite",
+      "rating": 70,
+      "personality": "opportunistic",
+      "inspiredBy": "Ribbot"
+    },
+    {
+      "name": "Hairpin",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "elite",
+      "rating": 69,
+      "personality": "defensive",
+      "inspiredBy": "Switchback"
+    },
+    {
+      "name": "Red Dot",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "elite",
+      "rating": 68,
+      "personality": "aggressive",
+      "inspiredBy": "Tracer"
+    },
+    {
+      "name": "Brass Tacks",
+      "origin": "original",
+      "archetype": "lifter",
+      "league": "elite",
+      "rating": 68,
+      "personality": "opportunistic"
+    },
+    {
+      "name": "Moonchild",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "elite",
+      "rating": 67,
+      "personality": "defensive",
+      "inspiredBy": "Starchild"
+    },
+    {
+      "name": "Pole Position",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "elite",
+      "rating": 66,
+      "personality": "aggressive",
+      "inspiredBy": "P1"
+    },
+    {
+      "name": "Stampede",
+      "origin": "parody",
+      "archetype": "drum",
+      "league": "elite",
+      "rating": 65,
+      "personality": "opportunistic",
+      "inspiredBy": "Rampage"
+    },
+    {
+      "name": "Sasquatch",
+      "origin": "parody",
+      "archetype": "drum",
+      "league": "elite",
+      "rating": 65,
+      "personality": "defensive",
+      "inspiredBy": "Yeti"
+    },
+    {
+      "name": "Buckaroo",
+      "origin": "parody",
+      "archetype": "flipper",
+      "league": "elite",
+      "rating": 64,
+      "personality": "aggressive",
+      "inspiredBy": "Bronco"
+    },
+    {
+      "name": "Planck",
+      "origin": "parody",
+      "archetype": "flipper",
+      "league": "elite",
+      "rating": 63,
+      "personality": "opportunistic",
+      "inspiredBy": "Quantum"
+    },
+    {
+      "name": "Meridian",
+      "origin": "original",
+      "archetype": "flipper",
+      "league": "elite",
+      "rating": 62,
+      "personality": "defensive"
+    },
+    {
+      "name": "Three Goats",
+      "origin": "parody",
+      "archetype": "lifter",
+      "league": "elite",
+      "rating": 61,
+      "personality": "aggressive",
+      "inspiredBy": "Gruff"
+    },
+    {
+      "name": "Undertow",
+      "origin": "parody",
+      "archetype": "lifter",
+      "league": "elite",
+      "rating": 61,
+      "personality": "opportunistic",
+      "inspiredBy": "Overhaul"
+    },
+    {
+      "name": "Talon Adder",
+      "origin": "parody",
+      "archetype": "lifter",
+      "league": "elite",
+      "rating": 60,
+      "personality": "defensive",
+      "inspiredBy": "Claw Viper"
+    },
+    {
+      "name": "Splinter Group",
+      "origin": "parody",
+      "archetype": "hammer",
+      "league": "elite",
+      "rating": 59,
+      "personality": "aggressive",
+      "inspiredBy": "Shatter"
+    },
+    {
+      "name": "Farrier",
+      "origin": "parody",
+      "archetype": "hammer",
+      "league": "elite",
+      "rating": 58,
+      "personality": "opportunistic",
+      "inspiredBy": "Blacksmith"
+    },
+    {
+      "name": "Saltlick",
+      "origin": "original",
+      "archetype": "wedge",
+      "league": "elite",
+      "rating": 57,
+      "personality": "defensive"
+    },
+    {
+      "name": "Gnash",
+      "origin": "parody",
+      "archetype": "hammer",
+      "league": "elite",
+      "rating": 57,
+      "personality": "aggressive",
+      "inspiredBy": "Chomp"
+    },
+    {
+      "name": "Beta Test",
+      "origin": "parody",
+      "archetype": "hammer",
+      "league": "elite",
+      "rating": 56,
+      "personality": "opportunistic",
+      "inspiredBy": "Beta"
+    },
+    {
+      "name": "Cassius",
+      "origin": "parody",
+      "archetype": "crusher",
+      "league": "elite",
+      "rating": 55,
+      "personality": "defensive",
+      "inspiredBy": "Brutus"
+    },
+    {
+      "name": "Zaggo",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "pro",
+      "rating": 60,
+      "personality": "aggressive",
+      "inspiredBy": "Ziggo"
+    },
+    {
+      "name": "The Maulrus",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "pro",
+      "rating": 59,
+      "personality": "opportunistic",
+      "inspiredBy": "Mauler 51-50"
+    },
+    {
+      "name": "Keelhaul",
+      "origin": "original",
+      "archetype": "flipper",
+      "league": "pro",
+      "rating": 59,
+      "personality": "defensive"
+    },
+    {
+      "name": "Puree",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "pro",
+      "rating": 58,
+      "personality": "aggressive",
+      "inspiredBy": "Blendo"
+    },
+    {
+      "name": "Spectral Finch",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "pro",
+      "rating": 57,
+      "personality": "opportunistic",
+      "inspiredBy": "Ghost Raptor"
+    },
+    {
+      "name": "Occupational Hazard",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "pro",
+      "rating": 57,
+      "personality": "defensive",
+      "inspiredBy": "Hazard"
+    },
+    {
+      "name": "Excessive Force",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "pro",
+      "rating": 56,
+      "personality": "aggressive",
+      "inspiredBy": "Overkill"
+    },
+    {
+      "name": "Gorefest",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "pro",
+      "rating": 55,
+      "personality": "opportunistic",
+      "inspiredBy": "Bloodsport"
+    },
+    {
+      "name": "Pigeon",
+      "origin": "original",
+      "archetype": "wedge",
+      "league": "pro",
+      "rating": 54,
+      "personality": "defensive"
+    },
+    {
+      "name": "Payload",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "pro",
+      "rating": 54,
+      "personality": "aggressive",
+      "inspiredBy": "Warhead"
+    },
+    {
+      "name": "Night Terror",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "pro",
+      "rating": 53,
+      "personality": "opportunistic",
+      "inspiredBy": "Nightmare"
+    },
+    {
+      "name": "Flawless Firebird",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "pro",
+      "rating": 52,
+      "personality": "defensive",
+      "inspiredBy": "Perfect Phoenix"
+    },
+    {
+      "name": "Nightshade",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "pro",
+      "rating": 52,
+      "personality": "aggressive",
+      "inspiredBy": "Hemlock"
+    },
+    {
+      "name": "Gallowglass",
+      "origin": "original",
+      "archetype": "hammer",
+      "league": "pro",
+      "rating": 51,
+      "personality": "opportunistic"
+    },
+    {
+      "name": "Cold Fusion",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "pro",
+      "rating": 50,
+      "personality": "defensive",
+      "inspiredBy": "Fusion"
+    },
+    {
+      "name": "Wailer",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "pro",
+      "rating": 50,
+      "personality": "aggressive",
+      "inspiredBy": "Banshee"
+    },
+    {
+      "name": "Mercury Rising",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "pro",
+      "rating": 49,
+      "personality": "opportunistic",
+      "inspiredBy": "Retrograde"
+    },
+    {
+      "name": "Trounce",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "pro",
+      "rating": 48,
+      "personality": "defensive",
+      "inspiredBy": "Vanquish"
+    },
+    {
+      "name": "Vinaigrette",
+      "origin": "parody",
+      "archetype": "drum",
+      "league": "pro",
+      "rating": 48,
+      "personality": "aggressive",
+      "inspiredBy": "Emulsifier"
+    },
+    {
+      "name": "Begonia",
+      "origin": "parody",
+      "archetype": "drum",
+      "league": "pro",
+      "rating": 47,
+      "personality": "opportunistic",
+      "inspiredBy": "Petunia"
+    },
+    {
+      "name": "Tin Pan",
+      "origin": "original",
+      "archetype": "drum",
+      "league": "pro",
+      "rating": 46,
+      "personality": "defensive"
+    },
+    {
+      "name": "Pompadour",
+      "origin": "parody",
+      "archetype": "drum",
+      "league": "pro",
+      "rating": 46,
+      "personality": "aggressive",
+      "inspiredBy": "Mohawk"
+    },
+    {
+      "name": "Whammo",
+      "origin": "parody",
+      "archetype": "drum",
+      "league": "pro",
+      "rating": 45,
+      "personality": "opportunistic",
+      "inspiredBy": "Slammo!"
+    },
+    {
+      "name": "Opal",
+      "origin": "parody",
+      "archetype": "drum",
+      "league": "pro",
+      "rating": 44,
+      "personality": "defensive",
+      "inspiredBy": "Jasper"
+    },
+    {
+      "name": "Wind Chill",
+      "origin": "parody",
+      "archetype": "flipper",
+      "league": "pro",
+      "rating": 43,
+      "personality": "aggressive",
+      "inspiredBy": "Subzero"
+    },
+    {
+      "name": "El Torito",
+      "origin": "parody",
+      "archetype": "flipper",
+      "league": "pro",
+      "rating": 43,
+      "personality": "opportunistic",
+      "inspiredBy": "Toro"
+    },
+    {
+      "name": "Ampersand",
+      "origin": "original",
+      "archetype": "multibot",
+      "league": "pro",
+      "rating": 42,
+      "personality": "defensive"
+    },
+    {
+      "name": "Fortunate",
+      "origin": "parody",
+      "archetype": "flipper",
+      "league": "pro",
+      "rating": 41,
+      "personality": "aggressive",
+      "inspiredBy": "Lucky"
+    },
+    {
+      "name": "Toxic Spill",
+      "origin": "parody",
+      "archetype": "lifter",
+      "league": "pro",
+      "rating": 41,
+      "personality": "opportunistic",
+      "inspiredBy": "BioHazard"
+    },
+    {
+      "name": "Expedited Delivery",
+      "origin": "parody",
+      "archetype": "lifter",
+      "league": "pro",
+      "rating": 40,
+      "personality": "defensive",
+      "inspiredBy": "Free Shipping"
+    },
+    {
+      "name": "Mallard",
+      "origin": "parody",
+      "archetype": "wedge",
+      "league": "rookie",
+      "rating": 45,
+      "personality": "aggressive",
+      "inspiredBy": "Duck"
+    },
+    {
+      "name": "Venial Sin",
+      "origin": "parody",
+      "archetype": "wedge",
+      "league": "rookie",
+      "rating": 44,
+      "personality": "opportunistic",
+      "inspiredBy": "Original Sin"
+    },
+    {
+      "name": "Bricklayer",
+      "origin": "original",
+      "archetype": "wedge",
+      "league": "rookie",
+      "rating": 44,
+      "personality": "defensive"
+    },
+    {
+      "name": "Concussive",
+      "origin": "parody",
+      "archetype": "wedge",
+      "league": "rookie",
+      "rating": 43,
+      "personality": "aggressive",
+      "inspiredBy": "Shellshock"
+    },
+    {
+      "name": "Atomic Swirlie",
+      "origin": "parody",
+      "archetype": "wedge",
+      "league": "rookie",
+      "rating": 42,
+      "personality": "opportunistic",
+      "inspiredBy": "Atomic Wedgie"
+    },
+    {
+      "name": "Little Red Caboose",
+      "origin": "parody",
+      "archetype": "wedge",
+      "league": "rookie",
+      "rating": 42,
+      "personality": "defensive",
+      "inspiredBy": "Little Blue Engine That Could"
+    },
+    {
+      "name": "Patina",
+      "origin": "parody",
+      "archetype": "hammer",
+      "league": "rookie",
+      "rating": 41,
+      "personality": "aggressive",
+      "inspiredBy": "Rusty"
+    },
+    {
+      "name": "Great Gherkin",
+      "origin": "parody",
+      "archetype": "hammer",
+      "league": "rookie",
+      "rating": 40,
+      "personality": "opportunistic",
+      "inspiredBy": "Big Dill"
+    },
+    {
+      "name": "Hodgepodge",
+      "origin": "original",
+      "archetype": "multibot",
+      "league": "rookie",
+      "rating": 39,
+      "personality": "defensive"
+    },
+    {
+      "name": "Vlad the Inhaler",
+      "origin": "parody",
+      "archetype": "hammer",
+      "league": "rookie",
+      "rating": 39,
+      "personality": "aggressive",
+      "inspiredBy": "Vlad the Impaler"
+    },
+    {
+      "name": "Dead Weight",
+      "origin": "parody",
+      "archetype": "hammer",
+      "league": "rookie",
+      "rating": 38,
+      "personality": "opportunistic",
+      "inspiredBy": "Deadblow"
+    },
+    {
+      "name": "Quadsector",
+      "origin": "parody",
+      "archetype": "hammer",
+      "league": "rookie",
+      "rating": 37,
+      "personality": "defensive",
+      "inspiredBy": "Diesector"
+    },
+    {
+      "name": "T-Plus",
+      "origin": "parody",
+      "archetype": "hammer",
+      "league": "rookie",
+      "rating": 37,
+      "personality": "aggressive",
+      "inspiredBy": "T-Minus"
+    },
+    {
+      "name": "Lemon Squeezer",
+      "origin": "original",
+      "archetype": "crusher",
+      "league": "rookie",
+      "rating": 36,
+      "personality": "opportunistic"
+    },
+    {
+      "name": "Scorpius",
+      "origin": "parody",
+      "archetype": "hammer",
+      "league": "rookie",
+      "rating": 35,
+      "personality": "defensive",
+      "inspiredBy": "Skorpios"
+    },
+    {
+      "name": "Henchman",
+      "origin": "parody",
+      "archetype": "hammer",
+      "league": "rookie",
+      "rating": 35,
+      "personality": "aggressive",
+      "inspiredBy": "Minion"
+    },
+    {
+      "name": "Tasmania",
+      "origin": "parody",
+      "archetype": "hammer",
+      "league": "rookie",
+      "rating": 34,
+      "personality": "opportunistic",
+      "inspiredBy": "Tazbot"
+    },
+    {
+      "name": "The Arbiter",
+      "origin": "parody",
+      "archetype": "hammer",
+      "league": "rookie",
+      "rating": 33,
+      "personality": "defensive",
+      "inspiredBy": "The Judge"
+    },
+    {
+      "name": "Omega-14",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "rookie",
+      "rating": 33,
+      "personality": "aggressive",
+      "inspiredBy": "Omega-13"
+    },
+    {
+      "name": "Spazmatron",
+      "origin": "parody",
+      "archetype": "spinner_h",
+      "league": "rookie",
+      "rating": 32,
+      "personality": "opportunistic",
+      "inspiredBy": "Spaz"
+    },
+    {
+      "name": "Pennywhistle",
+      "origin": "original",
+      "archetype": "drum",
+      "league": "rookie",
+      "rating": 31,
+      "personality": "defensive"
+    },
+    {
+      "name": "Boarhound",
+      "origin": "parody",
+      "archetype": "crusher",
+      "league": "rookie",
+      "rating": 31,
+      "personality": "aggressive",
+      "inspiredBy": "Razorback"
+    },
+    {
+      "name": "Partial Control",
+      "origin": "parody",
+      "archetype": "crusher",
+      "league": "rookie",
+      "rating": 30,
+      "personality": "opportunistic",
+      "inspiredBy": "Complete Control"
+    },
+    {
+      "name": "Grippy",
+      "origin": "parody",
+      "archetype": "crusher",
+      "league": "rookie",
+      "rating": 29,
+      "personality": "defensive",
+      "inspiredBy": "Grabot"
+    },
+    {
+      "name": "Castor & Pollux",
+      "origin": "parody",
+      "archetype": "multibot",
+      "league": "rookie",
+      "rating": 28,
+      "personality": "aggressive",
+      "inspiredBy": "Gemini"
+    },
+    {
+      "name": "Shrapnel Kit",
+      "origin": "parody",
+      "archetype": "multibot",
+      "league": "rookie",
+      "rating": 28,
+      "personality": "opportunistic",
+      "inspiredBy": "Bombshell"
+    },
+    {
+      "name": "<player>",
+      "origin": "original",
+      "archetype": "wedge",
+      "league": "rookie",
+      "rating": null,
+      "personality": "player",
+      "isPlayer": true
+    },
+    {
+      "name": "Mechanoid",
+      "origin": "parody",
+      "archetype": "multibot",
+      "league": "rookie",
+      "rating": 26,
+      "personality": "aggressive",
+      "inspiredBy": "Mechadon"
+    },
+    {
+      "name": "Mastodon",
+      "origin": "parody",
+      "archetype": "lifter",
+      "league": "rookie",
+      "rating": 26,
+      "personality": "opportunistic",
+      "inspiredBy": "Mammoth"
+    },
+    {
+      "name": "Frenzied",
+      "origin": "parody",
+      "archetype": "spinner_v",
+      "league": "rookie",
+      "rating": 25,
+      "personality": "defensive",
+      "inspiredBy": "Frenzy"
+    }
+  ]
+}

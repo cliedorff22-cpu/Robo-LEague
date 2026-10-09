@@ -1,0 +1,47 @@
+{
+  "schema": "robot/1",
+  "id": "flawless_firebird",
+  "name": "Flawless Firebird",
+  "number": 72,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "pro",
+  "rating": 52,
+  "personality": "defensive",
+  "team": "Shrapnel Collective",
+  "inspiredBy": "Perfect Phoenix",
+  "livery": {
+    "primary": "#ff6d00",
+    "secondary": "#d50000",
+    "accent": "#ffd740",
+    "pattern": "flames"
+  },
+  "body": {
+    "template": "dart",
+    "params": {
+      "slope": 0.7,
+      "noseWidth": 0.4
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "wings",
+        "reachIn": 4
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_v_bar",
+    "armor": [
+      "armor_ar500_front",
+      "armor_poly_top"
+    ]
+  }
+}

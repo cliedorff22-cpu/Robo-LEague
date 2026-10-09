@@ -1,0 +1,51 @@
+{
+  "schema": "robot/1",
+  "id": "haymaker",
+  "name": "Haymaker",
+  "number": 17,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "world",
+  "rating": 82,
+  "personality": "opportunistic",
+  "team": "Arc Motorworks",
+  "inspiredBy": "Uppercut",
+  "livery": {
+    "primary": "#2e7d32",
+    "secondary": "#121212",
+    "accent": "#ffeb3b",
+    "pattern": "stripes"
+  },
+  "body": {
+    "template": "twin",
+    "params": {
+      "chamferFront": 0.4,
+      "pod": 0.27,
+      "bridge": 0.5,
+      "weaponBay": 0,
+      "podLength": 1.15
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "forks",
+        "count": 2,
+        "lengthIn": 5
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_v_big",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top"
+    ]
+  }
+}

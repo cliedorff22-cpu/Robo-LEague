@@ -1,0 +1,49 @@
+{
+  "schema": "robot/1",
+  "id": "omega_14",
+  "name": "Omega-14",
+  "number": 109,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "rookie",
+  "rating": 33,
+  "personality": "aggressive",
+  "team": "Sparkplug Engineering",
+  "inspiredBy": "Omega-13",
+  "livery": {
+    "primary": "#111111",
+    "secondary": "#ff1744",
+    "accent": "#e0e0e0",
+    "pattern": "split"
+  },
+  "body": {
+    "template": "hex",
+    "params": {
+      "chamferFront": 0.3,
+      "corner": 0.2
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "pod"
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_wide",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_h_bar_small",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top",
+      "armor_ti_side",
+      "armor_uhmw_side",
+      "armor_uhmw_rear"
+    ]
+  }
+}

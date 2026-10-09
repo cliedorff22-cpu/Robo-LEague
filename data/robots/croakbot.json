@@ -1,0 +1,52 @@
+{
+  "schema": "robot/1",
+  "id": "croakbot",
+  "name": "Croakbot",
+  "number": 41,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "elite",
+  "rating": 70,
+  "personality": "opportunistic",
+  "team": "Rust Combat",
+  "inspiredBy": "Ribbot",
+  "livery": {
+    "primary": "#43a047",
+    "secondary": "#ffeb3b",
+    "accent": "#1b5e20",
+    "pattern": "spots"
+  },
+  "body": {
+    "template": "twin",
+    "params": {
+      "chamferFront": 0.45,
+      "topWidth": 0.85,
+      "pod": 0.28,
+      "bridge": 0.45,
+      "weaponBay": 0,
+      "podChamfer": 0.6,
+      "podLength": 1.15
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "eyes",
+        "radiusIn": 2.6
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_v_disc",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_top"
+    ]
+  }
+}

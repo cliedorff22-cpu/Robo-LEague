@@ -1,0 +1,47 @@
+{
+  "schema": "robot/1",
+  "id": "buckaroo",
+  "name": "Buckaroo",
+  "number": 49,
+  "origin": "parody",
+  "archetype": "flipper",
+  "league": "elite",
+  "rating": 64,
+  "personality": "aggressive",
+  "team": "Sparkplug Engineering",
+  "inspiredBy": "Bronco",
+  "livery": {
+    "primary": "#8d6e63",
+    "secondary": "#d7b98e",
+    "accent": "#3e2723",
+    "pattern": "spots"
+  },
+  "body": {
+    "template": "box",
+    "params": {
+      "chamferFront": 0.5
+    },
+    "mount": "lid",
+    "extras": [
+      {
+        "type": "forks",
+        "count": 2,
+        "lengthIn": 5
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_long",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_light",
+    "weapon": "flipper_lid",
+    "armor": [
+      "armor_ti_front",
+      "armor_poly_top"
+    ]
+  }
+}

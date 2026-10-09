@@ -1,0 +1,47 @@
+{
+  "schema": "robot/1",
+  "id": "wind_chill",
+  "name": "Wind Chill",
+  "number": 85,
+  "origin": "parody",
+  "archetype": "flipper",
+  "league": "pro",
+  "rating": 43,
+  "personality": "aggressive",
+  "team": "Voltage Labs",
+  "inspiredBy": "Subzero",
+  "livery": {
+    "primary": "#81d4fa",
+    "secondary": "#ffffff",
+    "accent": "#0d47a1",
+    "pattern": "stripes"
+  },
+  "body": {
+    "template": "wedge",
+    "params": {
+      "slope": 0.75
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "plow",
+        "lengthIn": 4,
+        "overhangIn": 2
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_long",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "flipper_pneumatic",
+    "armor": [
+      "armor_ar500_front",
+      "armor_uhmw_side"
+    ]
+  }
+}

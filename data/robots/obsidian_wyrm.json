@@ -1,0 +1,49 @@
+{
+  "schema": "robot/1",
+  "id": "obsidian_wyrm",
+  "name": "Obsidian Wyrm",
+  "number": 16,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "world",
+  "rating": 83,
+  "personality": "aggressive",
+  "team": "Grease Works",
+  "inspiredBy": "Black Dragon",
+  "livery": {
+    "primary": "#0f0f12",
+    "secondary": "#6a1b9a",
+    "accent": "#ff6d00",
+    "pattern": "scales"
+  },
+  "body": {
+    "template": "dart",
+    "params": {
+      "slope": 0.65,
+      "noseWidth": 0.45
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "spines",
+        "count": 5,
+        "heightIn": 3.5,
+        "length": 0.75
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_heavy",
+    "weapon": "spinner_v_disc",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top"
+    ]
+  }
+}

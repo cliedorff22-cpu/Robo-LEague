@@ -1,0 +1,61 @@
+{
+  "schema": "robot/1",
+  "id": "ampersand",
+  "name": "Ampersand",
+  "number": 87,
+  "origin": "original",
+  "archetype": "multibot",
+  "league": "pro",
+  "rating": 42,
+  "personality": "defensive",
+  "team": "Garage Collective",
+  "livery": {
+    "primary": "#ff6f00",
+    "secondary": "#263238",
+    "accent": "#ffffff",
+    "pattern": "split"
+  },
+  "unitName": "Amp",
+  "body": {
+    "template": "wedge",
+    "params": {
+      "slope": 0.6
+    },
+    "mount": "front",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_compact",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_5_solid",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "spinner_v_small",
+    "armor": []
+  },
+  "partner": {
+    "name": "Sand",
+    "body": {
+      "template": "wedge",
+      "params": {
+        "slope": 1.0
+      },
+      "mount": "front",
+      "extras": []
+    },
+    "build": {
+      "chassis": "chassis_mini",
+      "drive": "drive_2wd_belt",
+      "wheel": "wheel_4_mini",
+      "motor": "motor_drive_mini",
+      "battery": "batt_4s_lipo",
+      "electronics": "ecu_mini",
+      "weapon": "wedge_mini",
+      "armor": [
+        "armor_uhmw_front"
+      ]
+    }
+  }
+}

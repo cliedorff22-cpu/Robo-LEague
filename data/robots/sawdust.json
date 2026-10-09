@@ -1,0 +1,50 @@
+{
+  "schema": "robot/1",
+  "id": "sawdust",
+  "name": "Sawdust",
+  "number": 28,
+  "origin": "parody",
+  "archetype": "hammer",
+  "league": "world",
+  "rating": 74,
+  "personality": "aggressive",
+  "team": "Basement Machine Shop",
+  "inspiredBy": "SawBlaze",
+  "livery": {
+    "primary": "#d32f2f",
+    "secondary": "#101010",
+    "accent": "#ffb300",
+    "pattern": "flames"
+  },
+  "body": {
+    "template": "tent",
+    "params": {
+      "slope": 0.45,
+      "rearHeight": 1.0,
+      "ridge": 0.3,
+      "chamferFront": 0.55
+    },
+    "mount": "top",
+    "extras": [
+      {
+        "type": "forks",
+        "count": 2,
+        "lengthIn": 6
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_tall_box",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_light",
+    "weapon": "hammer_saw",
+    "armor": [
+      "armor_hardox_front",
+      "armor_poly_top"
+    ]
+  }
+}

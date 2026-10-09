@@ -1,0 +1,50 @@
+{
+  "schema": "robot/1",
+  "id": "scorpius",
+  "name": "Scorpius",
+  "number": 105,
+  "origin": "parody",
+  "archetype": "hammer",
+  "league": "rookie",
+  "rating": 35,
+  "personality": "defensive",
+  "team": "Voltage Foundry",
+  "inspiredBy": "Skorpios",
+  "livery": {
+    "primary": "#121212",
+    "secondary": "#ffd600",
+    "accent": "#e65100",
+    "pattern": "chevron"
+  },
+  "body": {
+    "template": "dart",
+    "params": {
+      "slope": 0.6,
+      "noseWidth": 0.45
+    },
+    "mount": "top",
+    "extras": [
+      {
+        "type": "tail",
+        "heightIn": 14
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "hammer_axe",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_top",
+      "armor_ti_side",
+      "armor_ti_side",
+      "armor_uhmw_rear"
+    ]
+  }
+}

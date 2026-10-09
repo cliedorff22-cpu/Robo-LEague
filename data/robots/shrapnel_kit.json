@@ -1,0 +1,62 @@
+{
+  "schema": "robot/1",
+  "id": "shrapnel_kit",
+  "name": "Shrapnel Kit",
+  "number": 116,
+  "origin": "parody",
+  "archetype": "multibot",
+  "league": "rookie",
+  "rating": 28,
+  "personality": "opportunistic",
+  "team": "Grease Combat",
+  "inspiredBy": "Bombshell",
+  "livery": {
+    "primary": "#424242",
+    "secondary": "#ff3d00",
+    "accent": "#ffeb3b",
+    "pattern": "hazard"
+  },
+  "unitName": "Shrapnel",
+  "body": {
+    "template": "box",
+    "params": {
+      "chamferFront": 0.3
+    },
+    "mount": "top",
+    "extras": []
+  },
+  "build": {
+    "chassis": "chassis_compact",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_5_solid",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "hammer_spike",
+    "armor": []
+  },
+  "partner": {
+    "name": "Kit",
+    "body": {
+      "template": "wedge",
+      "params": {
+        "slope": 0.9
+      },
+      "mount": "front",
+      "extras": []
+    },
+    "build": {
+      "chassis": "chassis_mini",
+      "drive": "drive_2wd_belt",
+      "wheel": "wheel_4_mini",
+      "motor": "motor_drive_mini",
+      "battery": "batt_4s_lipo",
+      "electronics": "ecu_mini",
+      "weapon": "wedge_mini",
+      "armor": [
+        "armor_uhmw_front"
+      ]
+    }
+  }
+}

@@ -1,0 +1,486 @@
+{
+  "schema": "arena/1",
+  "id": "the_box",
+  "name": "The Box",
+  "units": {
+    "length": "ft",
+    "angle": "deg",
+    "mass": "lb"
+  },
+  "floor": {
+    "size": [
+      48,
+      48
+    ],
+    "material": "steel",
+    "thickness": 1.0,
+    "friction": 1.0,
+    "restitution": 0.02
+  },
+  "walls": {
+    "height": 8.0,
+    "kickplate": {
+      "height": 1.25,
+      "angleFromVertical": 12.0,
+      "material": "steel",
+      "_comment": "Was 35. At 35 the plate was a ramp: any bot that drove square into a wall climbed it nose-first, ended up leaning like a ladder with every wheel in the air, and could never drive off again (tools/beach.js). 12 still deflects but nobody beaches. Re-run tools/beach.js before changing this."
+    },
+    "lexan": {
+      "thickness": 0.2,
+      "material": "polycarbonate"
+    },
+    "friction": 0.25,
+    "restitution": 0.35,
+    "containment": {
+      "_comment": "A solid shell behind the lexan. Belt and braces: if anything ever tunnels through a panel it still cannot leave the building.",
+      "enabled": true,
+      "thickness": 1.0
+    }
+  },
+  "spawns": [
+    {
+      "id": "red",
+      "pos": [
+        -16,
+        0,
+        0
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "blue",
+      "pos": [
+        16,
+        0,
+        0
+      ],
+      "yaw": 180
+    }
+  ],
+  "hazards": [
+    {
+      "id": "pulverizer_ne",
+      "type": "pulverizer",
+      "enabled": true,
+      "mount": "corner",
+      "pos": [
+        18,
+        0,
+        -18
+      ],
+      "yaw": -45,
+      "armLength": 4.6,
+      "headSize": [
+        1.9,
+        1.3,
+        2.2
+      ],
+      "headMass": 110,
+      "pivotHeight": 1.75,
+      "restAngle": 168,
+      "strikeAngle": 270,
+      "swingTimeS": 0.22,
+      "retractTimeS": 0.9,
+      "cooldownS": 3.0,
+      "triggerRadius": 4.5,
+      "impactEnergyJ": 4200,
+      "concentration": 3.4,
+      "note": "`pos` is where the HEAD LANDS. The pedestal and hinge sit armLength behind it, toward the corner. Angles: 180 = arm straight up, 270 = arm flat on the floor. It rests leaning back (168) and slams forward over the top to 270.",
+      "armWidth": 0.42,
+      "armThickness": 0.5,
+      "baseSize": [
+        2.2,
+        1.5,
+        1.6
+      ]
+    },
+    {
+      "id": "pulverizer_sw",
+      "type": "pulverizer",
+      "enabled": true,
+      "mount": "corner",
+      "pos": [
+        -18,
+        0,
+        18
+      ],
+      "yaw": 135,
+      "armLength": 4.6,
+      "headSize": [
+        1.9,
+        1.3,
+        2.2
+      ],
+      "headMass": 110,
+      "pivotHeight": 1.75,
+      "restAngle": 168,
+      "strikeAngle": 270,
+      "swingTimeS": 0.22,
+      "retractTimeS": 0.9,
+      "cooldownS": 3.0,
+      "triggerRadius": 4.5,
+      "impactEnergyJ": 4200,
+      "concentration": 3.4,
+      "note": "`pos` is where the HEAD LANDS. The pedestal and hinge sit armLength behind it, toward the corner. Angles: 180 = arm straight up, 270 = arm flat on the floor. It rests leaning back (168) and slams forward over the top to 270.",
+      "armWidth": 0.42,
+      "armThickness": 0.5,
+      "baseSize": [
+        2.2,
+        1.5,
+        1.6
+      ]
+    },
+    {
+      "id": "screw_west",
+      "type": "screw",
+      "enabled": true,
+      "mount": "wall",
+      "pos": [
+        -22.3,
+        0,
+        0
+      ],
+      "yaw": 0,
+      "length": 9.0,
+      "radius": 0.42,
+      "axisHeight": 0.35,
+      "augerCount": 2,
+      "augerSpacing": 0.95,
+      "impactEnergyJ": 450,
+      "concentration": 1.8,
+      "biteIntervalS": 0.5,
+      "rpm": 120,
+      "note": "One per wall, mid-wall, tight to the kickplate. A pair of augers standing proud of the deck, half-sunk in a steel cradle that runs back to the wall. axisHeight is the auger axis above the deck (the cradle comes up to it), so the crown stands axisHeight + radius tall - taller than most bots, so they get rammed or thrown into it rather than driving over it."
+    },
+    {
+      "id": "screw_east",
+      "type": "screw",
+      "enabled": true,
+      "mount": "wall",
+      "pos": [
+        22.3,
+        0,
+        0
+      ],
+      "yaw": 0,
+      "length": 9.0,
+      "radius": 0.42,
+      "axisHeight": 0.35,
+      "augerCount": 2,
+      "augerSpacing": 0.95,
+      "impactEnergyJ": 450,
+      "concentration": 1.8,
+      "biteIntervalS": 0.5,
+      "rpm": -120
+    },
+    {
+      "id": "screw_north",
+      "type": "screw",
+      "enabled": true,
+      "mount": "wall",
+      "pos": [
+        0,
+        0,
+        -22.3
+      ],
+      "yaw": 90,
+      "length": 9.0,
+      "radius": 0.42,
+      "axisHeight": 0.35,
+      "augerCount": 2,
+      "augerSpacing": 0.95,
+      "impactEnergyJ": 450,
+      "concentration": 1.8,
+      "biteIntervalS": 0.5,
+      "rpm": 120
+    },
+    {
+      "id": "screw_south",
+      "type": "screw",
+      "enabled": true,
+      "mount": "wall",
+      "pos": [
+        0,
+        0,
+        22.3
+      ],
+      "yaw": 90,
+      "length": 9.0,
+      "radius": 0.42,
+      "axisHeight": 0.35,
+      "augerCount": 2,
+      "augerSpacing": 0.95,
+      "impactEnergyJ": 450,
+      "concentration": 1.8,
+      "biteIntervalS": 0.5,
+      "rpm": -120
+    },
+    {
+      "id": "saw_nw",
+      "type": "killsaw",
+      "enabled": true,
+      "pos": [
+        -10,
+        0,
+        -8
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "saw_n",
+      "type": "killsaw",
+      "enabled": true,
+      "pos": [
+        0,
+        0,
+        -11
+      ],
+      "yaw": 90
+    },
+    {
+      "id": "saw_ne",
+      "type": "killsaw",
+      "enabled": true,
+      "pos": [
+        10,
+        0,
+        -8
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "saw_sw",
+      "type": "killsaw",
+      "enabled": true,
+      "pos": [
+        -10,
+        0,
+        8
+      ],
+      "yaw": 0
+    },
+    {
+      "id": "saw_s",
+      "type": "killsaw",
+      "enabled": true,
+      "pos": [
+        0,
+        0,
+        11
+      ],
+      "yaw": 90
+    },
+    {
+      "id": "saw_se",
+      "type": "killsaw",
+      "enabled": true,
+      "pos": [
+        10,
+        0,
+        8
+      ],
+      "yaw": 0
+    }
+  ],
+  "cameras": [
+    {
+      "id": "chase",
+      "label": "Chase",
+      "type": "chase",
+      "distance": 14,
+      "height": 6,
+      "lag": 0.12,
+      "fov": 62
+    },
+    {
+      "id": "overhead",
+      "label": "Overhead",
+      "type": "overhead",
+      "height": 52,
+      "fov": 55
+    },
+    {
+      "id": "arena_a",
+      "label": "Arena Cam",
+      "type": "fixed",
+      "pos": [
+        34,
+        20,
+        34
+      ],
+      "lookAt": [
+        0,
+        2,
+        0
+      ],
+      "fov": 42
+    },
+    {
+      "id": "arena_b",
+      "label": "Corner Cam",
+      "type": "fixed",
+      "pos": [
+        -30,
+        9,
+        0
+      ],
+      "lookAt": [
+        0,
+        2,
+        0
+      ],
+      "fov": 48
+    },
+    {
+      "id": "versus",
+      "label": "Versus",
+      "type": "versus",
+      "distance": 12,
+      "height": 8,
+      "spread": 0.8,
+      "rise": 0.3,
+      "limit": 32,
+      "fov": 52
+    },
+    {
+      "id": "replay",
+      "label": "Replay",
+      "type": "replay",
+      "distance": 11,
+      "height": 4.5,
+      "orbitRpm": 7,
+      "fov": 50
+    }
+  ],
+  "comment_lighting": "Grimy industrial: dim cold ambient, one hard key for shadows, warm sodium practicals overhead. Low fill so the floor grime reads in relief.",
+  "lighting": {
+    "_comment": "Deliberately restrained. The arena should read as a lit TV set, not a furnace. If it looks flat, raise `key.intensity` first.",
+    "ambient": {
+      "color": "#3a4252",
+      "intensity": 0.75
+    },
+    "key": {
+      "color": "#fff6e6",
+      "intensity": 1.0,
+      "pos": [
+        20,
+        40,
+        14
+      ]
+    },
+    "fill": {
+      "color": "#7d93b8",
+      "intensity": 0.45,
+      "pos": [
+        -24,
+        26,
+        -18
+      ]
+    },
+    "rigs": [
+      {
+        "pos": [
+          -13,
+          22,
+          -13
+        ],
+        "color": "#ffe8c4",
+        "intensity": 190,
+        "distance": 50
+      },
+      {
+        "pos": [
+          13,
+          22,
+          -13
+        ],
+        "color": "#ffe8c4",
+        "intensity": 190,
+        "distance": 50
+      },
+      {
+        "pos": [
+          -13,
+          22,
+          13
+        ],
+        "color": "#ffe8c4",
+        "intensity": 190,
+        "distance": 50
+      },
+      {
+        "pos": [
+          13,
+          22,
+          13
+        ],
+        "color": "#ffe8c4",
+        "intensity": 190,
+        "distance": 50
+      }
+    ],
+    "fog": {
+      "color": "#12161d",
+      "near": 34,
+      "far": 110
+    },
+    "background": "#0d1016",
+    "exposure": 0.92
+  },
+  "physics": {
+    "gravityMps2": -9.81,
+    "fixedStepS": 0.008333333,
+    "maxSubsteps": 5
+  },
+  "post": {
+    "_comment": "Set enabled:false to render straight to the canvas with no composer.",
+    "enabled": true,
+    "bloom": {
+      "_comment": "Threshold above 1.0 so only the practicals and sparks glow. Strength was 0.55 and blew the whole arena out.",
+      "strength": 0.22,
+      "radius": 0.45,
+      "threshold": 1.15
+    },
+    "vignette": {
+      "enabled": true,
+      "offset": 1.15,
+      "darkness": 1.1
+    }
+  },
+  "comment_hazards": "Layout per the user's reference (toy BattleBox + floor photo): two pulverizers on pedestals in opposite corners (the real box has four), one twin-auger screw mid-wall on EVERY wall, six floor killsaws that rotate in random sets of three every 5 s for the last minute (real box: proximity). All data - add corners, change activeCount, or set deploy to \"proximity\".",
+  "killsaw": {
+    "_comment": "Defaults for every hazard of type killsaw. deploy:\"rotating\" (default) brings up `activeCount` randomly chosen saws from deployAtRemainingS, and swaps in a fresh random set every `rotateEveryS`; \"timed\" brings them ALL up and leaves them up; \"proximity\" is the real-arena behaviour (up only when a bot is close).",
+    "deploy": "rotating",
+    "deployAtRemainingS": 60,
+    "rotateEveryS": 5,
+    "activeCount": 3,
+    "bladeRadius": 1.1,
+    "bladeThickness": 0.08,
+    "bladeCount": 2,
+    "bladeSpacing": 1.1,
+    "slotLength": 3.0,
+    "rpm": 1400,
+    "riseS": 0.45,
+    "stowedDepth": 1.3,
+    "deployedHeight": 0.55,
+    "triggerRadius": 4.0,
+    "impactEnergyJ": 1500,
+    "concentration": 3.8,
+    "biteIntervalS": 0.45
+  },
+  "spikeStrips": {
+    "_comment": "Static spikes around the wall base, as in the real box. No moving parts.",
+    "enabled": true,
+    "spikeHeight": 0.75,
+    "spikeWidth": 0.35,
+    "spacingFt": 3.0,
+    "inset": 0.4
+  },
+  "style": {
+    "_comment": "Lower = cleaner and flatter. 0 would be factory-new; 1 was the old photoreal grime pass. Floor wear is the one that was far too busy.",
+    "floorWear": 0.22,
+    "metalWear": 0.3,
+    "normalStrength": 0.35,
+    "stylised": true
+  }
+}

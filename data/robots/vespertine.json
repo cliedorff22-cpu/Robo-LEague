@@ -1,0 +1,45 @@
+{
+  "schema": "robot/1",
+  "id": "vespertine",
+  "name": "Vespertine",
+  "number": 21,
+  "origin": "original",
+  "archetype": "spinner_h",
+  "league": "world",
+  "rating": 79,
+  "personality": "defensive",
+  "team": "Rust Racing",
+  "livery": {
+    "primary": "#4b2a6b",
+    "secondary": "#f28c28",
+    "accent": "#ffe0b2",
+    "pattern": "chevron"
+  },
+  "body": {
+    "template": "round",
+    "params": {
+      "sides": 12,
+      "wall": 0.5
+    },
+    "mount": "shell",
+    "extras": [],
+    "look": {
+      "shell": "saucer",
+      "teeth": 2
+    }
+  },
+  "build": {
+    "chassis": "chassis_round",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_5_solid",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_brute",
+    "weapon": "spinner_h_shell",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_poly_top"
+    ]
+  }
+}

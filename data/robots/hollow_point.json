@@ -1,0 +1,47 @@
+{
+  "schema": "robot/1",
+  "id": "hollow_point",
+  "name": "Hollow Point",
+  "number": 27,
+  "origin": "original",
+  "archetype": "drum",
+  "league": "world",
+  "rating": 74,
+  "personality": "defensive",
+  "team": "Garage Collective",
+  "livery": {
+    "primary": "#b5a642",
+    "secondary": "#1a1a1a",
+    "accent": "#d9d9d9",
+    "pattern": "band"
+  },
+  "body": {
+    "template": "bullet",
+    "params": {
+      "chamfer": 0.25,
+      "roundness": 0.45,
+      "noseDrop": 0.15
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "cage",
+        "heightIn": 1.5
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_slab_ti",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_8_foam",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "drum_wide",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_top"
+    ]
+  }
+}

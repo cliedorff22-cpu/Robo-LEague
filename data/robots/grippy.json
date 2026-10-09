@@ -1,0 +1,53 @@
+{
+  "schema": "robot/1",
+  "id": "grippy",
+  "name": "Grippy",
+  "number": 114,
+  "origin": "parody",
+  "archetype": "crusher",
+  "league": "rookie",
+  "rating": 29,
+  "personality": "defensive",
+  "team": "Hex Heavy Industries",
+  "inspiredBy": "Grabot",
+  "livery": {
+    "primary": "#7cb342",
+    "secondary": "#90a4ae",
+    "accent": "#212121",
+    "pattern": "pixels"
+  },
+  "body": {
+    "template": "cab",
+    "params": {
+      "chamferFront": 0.3,
+      "topWidth": 0.85,
+      "deck": 0.6,
+      "cabLength": 0.45
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "eyes",
+        "radiusIn": 2
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "grabber_claw",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_uhmw_side",
+      "armor_uhmw_side",
+      "armor_poly_top",
+      "armor_uhmw_rear"
+    ],
+    "srimech": "srimech_arm"
+  }
+}

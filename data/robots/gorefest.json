@@ -1,0 +1,49 @@
+{
+  "schema": "robot/1",
+  "id": "gorefest",
+  "name": "Gorefest",
+  "number": 68,
+  "origin": "parody",
+  "archetype": "spinner_h",
+  "league": "pro",
+  "rating": 55,
+  "personality": "opportunistic",
+  "team": "Basement Fabrication",
+  "inspiredBy": "Bloodsport",
+  "livery": {
+    "primary": "#8b0000",
+    "secondary": "#1a1a1a",
+    "accent": "#ff5252",
+    "pattern": "split"
+  },
+  "body": {
+    "template": "box",
+    "params": {
+      "chamferFront": 0.2
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "uprights",
+        "heightIn": 3
+      },
+      {
+        "type": "pod"
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_wide",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_h_bar_small",
+    "armor": [
+      "armor_ar500_front",
+      "armor_poly_top"
+    ]
+  }
+}

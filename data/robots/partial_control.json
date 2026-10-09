@@ -1,0 +1,51 @@
+{
+  "schema": "robot/1",
+  "id": "partial_control",
+  "name": "Partial Control",
+  "number": 113,
+  "origin": "parody",
+  "archetype": "crusher",
+  "league": "rookie",
+  "rating": 30,
+  "personality": "opportunistic",
+  "team": "Cinder Fabrication",
+  "inspiredBy": "Complete Control",
+  "livery": {
+    "primary": "#d32f2f",
+    "secondary": "#fafafa",
+    "accent": "#212121",
+    "pattern": "split"
+  },
+  "body": {
+    "template": "box",
+    "params": {
+      "chamferFront": 0.3
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "plow",
+        "lengthIn": 5,
+        "overhangIn": 2
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "grabber_claw",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_uhmw_side",
+      "armor_uhmw_side",
+      "armor_poly_top",
+      "armor_uhmw_rear"
+    ],
+    "srimech": "srimech_arm"
+  }
+}

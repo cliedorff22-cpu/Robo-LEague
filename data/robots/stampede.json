@@ -1,0 +1,47 @@
+{
+  "schema": "robot/1",
+  "id": "stampede",
+  "name": "Stampede",
+  "number": 47,
+  "origin": "parody",
+  "archetype": "drum",
+  "league": "elite",
+  "rating": 65,
+  "personality": "opportunistic",
+  "team": "Garage Motorworks",
+  "inspiredBy": "Rampage",
+  "livery": {
+    "primary": "#2e7d32",
+    "secondary": "#111111",
+    "accent": "#c6ff00",
+    "pattern": "camo"
+  },
+  "body": {
+    "template": "hex",
+    "params": {
+      "chamferFront": 0.4,
+      "corner": 0.15
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "spikes",
+        "count": 2,
+        "lengthIn": 3
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_long",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "drum_wide",
+    "armor": [
+      "armor_ti_front"
+    ]
+  }
+}

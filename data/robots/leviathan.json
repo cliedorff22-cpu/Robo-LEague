@@ -1,0 +1,54 @@
+{
+  "schema": "robot/1",
+  "id": "leviathan",
+  "name": "Leviathan",
+  "number": 30,
+  "origin": "parody",
+  "archetype": "crusher",
+  "league": "world",
+  "rating": 72,
+  "personality": "defensive",
+  "team": "Torque Foundry",
+  "inspiredBy": "Kraken",
+  "livery": {
+    "primary": "#00695c",
+    "secondary": "#0b1416",
+    "accent": "#80cbc4",
+    "pattern": "spots"
+  },
+  "body": {
+    "template": "bullet",
+    "params": {
+      "chamferFront": 0.5,
+      "topWidth": 0.8,
+      "roundness": 0.3,
+      "noseDrop": 0.0
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "dome",
+        "size": 0.25,
+        "heightIn": 3
+      },
+      {
+        "type": "tail",
+        "heightIn": 8
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_tall_box",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_light",
+    "weapon": "crusher_beak",
+    "srimech": "srimech_pneumatic",
+    "armor": [
+      "armor_ti_front"
+    ]
+  }
+}

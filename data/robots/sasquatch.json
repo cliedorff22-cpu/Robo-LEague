@@ -1,0 +1,49 @@
+{
+  "schema": "robot/1",
+  "id": "sasquatch",
+  "name": "Sasquatch",
+  "number": 48,
+  "origin": "parody",
+  "archetype": "drum",
+  "league": "elite",
+  "rating": 65,
+  "personality": "defensive",
+  "team": "Basement Brigade",
+  "inspiredBy": "Yeti",
+  "livery": {
+    "primary": "#f5f5f5",
+    "secondary": "#4fc3f7",
+    "accent": "#263238",
+    "pattern": "camo"
+  },
+  "body": {
+    "template": "hex",
+    "params": {
+      "chamferFront": 0.3,
+      "topWidth": 0.85,
+      "corner": 0.2,
+      "endWidth": 0.75
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "hump",
+        "heightIn": 3
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "drum_eggbeater",
+    "armor": [
+      "armor_ti_front",
+      "armor_poly_top"
+    ]
+  }
+}

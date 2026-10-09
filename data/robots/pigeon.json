@@ -1,0 +1,55 @@
+{
+  "schema": "robot/1",
+  "id": "pigeon",
+  "name": "Pigeon",
+  "number": 69,
+  "origin": "original",
+  "archetype": "wedge",
+  "league": "pro",
+  "rating": 54,
+  "personality": "defensive",
+  "team": "Sparkplug Heavy Industries",
+  "livery": {
+    "primary": "#9e9e9e",
+    "secondary": "#7b1fa2",
+    "accent": "#ff9100",
+    "pattern": "scales"
+  },
+  "body": {
+    "template": "bullet",
+    "params": {
+      "slope": 0.6,
+      "topWidth": 0.8,
+      "roundness": 0.4,
+      "noseDrop": 0.4
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "hump",
+        "heightIn": 4
+      },
+      {
+        "type": "eyes",
+        "radiusIn": 1.6
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weapon": "wedge_static",
+    "armor": [
+      "armor_ti_front",
+      "armor_uhmw_side",
+      "armor_uhmw_side",
+      "armor_poly_top",
+      "armor_uhmw_rear"
+    ],
+    "srimech": "srimech_arm"
+  }
+}

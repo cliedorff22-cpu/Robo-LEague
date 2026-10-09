@@ -1,0 +1,48 @@
+{
+  "schema": "robot/1",
+  "id": "cold_fusion",
+  "name": "Cold Fusion",
+  "number": 75,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "pro",
+  "rating": 50,
+  "personality": "defensive",
+  "team": "Ratchet Foundry",
+  "inspiredBy": "Fusion",
+  "livery": {
+    "primary": "#1e88e5",
+    "secondary": "#ffffff",
+    "accent": "#00e5ff",
+    "pattern": "bolt"
+  },
+  "body": {
+    "template": "bullet",
+    "params": {
+      "chamferFront": 0.4,
+      "roundness": 0.35,
+      "noseDrop": 0.3
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "dome",
+        "size": 0.22,
+        "heightIn": 3
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "spinner_v_disc",
+    "armor": [
+      "armor_ar500_front"
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema": "robot/1",
+  "id": "conniption",
+  "name": "Conniption",
+  "number": 22,
+  "origin": "parody",
+  "archetype": "drum",
+  "league": "world",
+  "rating": 78,
+  "personality": "aggressive",
+  "team": "Iron Garage",
+  "inspiredBy": "Tantrum",
+  "livery": {
+    "primary": "#e91e63",
+    "secondary": "#121212",
+    "accent": "#ffffff",
+    "pattern": "bolt"
+  },
+  "body": {
+    "template": "bullet",
+    "params": {
+      "slope": 0.55,
+      "roundness": 0.35
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "tail",
+        "heightIn": 12
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_long",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_mid",
+    "weapon": "drum_kinetic",
+    "armor": [
+      "armor_hardox_front"
+    ]
+  }
+}

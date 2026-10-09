@@ -1,0 +1,51 @@
+{
+  "schema": "robot/1",
+  "id": "tasmania",
+  "name": "Tasmania",
+  "number": 107,
+  "origin": "parody",
+  "archetype": "hammer",
+  "league": "rookie",
+  "rating": 34,
+  "personality": "opportunistic",
+  "team": "Garage Motorworks",
+  "inspiredBy": "Tazbot",
+  "livery": {
+    "primary": "#6d4c41",
+    "secondary": "#ff6f00",
+    "accent": "#ffe0b2",
+    "pattern": "split"
+  },
+  "body": {
+    "template": "round",
+    "params": {
+      "sides": 8,
+      "wall": 0.55
+    },
+    "mount": "top",
+    "extras": [
+      {
+        "type": "dome",
+        "size": 0.32,
+        "heightIn": 3
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_round",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_light",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "hammer_spike",
+    "armor": [
+      "armor_uhmw_front",
+      "armor_ti_side",
+      "armor_ti_side",
+      "armor_ti_top",
+      "armor_ti_rear"
+    ]
+  }
+}

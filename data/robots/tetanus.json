@@ -1,0 +1,46 @@
+{
+  "schema": "robot/1",
+  "id": "tetanus",
+  "name": "Tetanus",
+  "number": 29,
+  "origin": "parody",
+  "archetype": "crusher",
+  "league": "world",
+  "rating": 73,
+  "personality": "opportunistic",
+  "team": "Sparkplug Robotics",
+  "inspiredBy": "Lock-Jaw",
+  "livery": {
+    "primary": "#a84300",
+    "secondary": "#1c1c1c",
+    "accent": "#cfd8dc",
+    "pattern": "camo"
+  },
+  "body": {
+    "template": "box",
+    "params": {
+      "chamferFront": 0.2
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "spikes",
+        "count": 3,
+        "lengthIn": 3
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_tall_box",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_light",
+    "weapon": "crusher_jaw",
+    "armor": [
+      "armor_hardox_front"
+    ]
+  }
+}

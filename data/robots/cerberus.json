@@ -1,0 +1,46 @@
+{
+  "schema": "robot/1",
+  "id": "cerberus",
+  "name": "Cerberus",
+  "number": 25,
+  "origin": "parody",
+  "archetype": "flipper",
+  "league": "world",
+  "rating": 76,
+  "personality": "aggressive",
+  "team": "Voltage Labs",
+  "inspiredBy": "Hydra",
+  "livery": {
+    "primary": "#c62828",
+    "secondary": "#1b5e20",
+    "accent": "#ffd600",
+    "pattern": "teeth"
+  },
+  "body": {
+    "template": "wedge",
+    "params": {
+      "slope": 0.75
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "eyes",
+        "radiusIn": 1.8
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_long",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_light",
+    "weapon": "flipper_pneumatic",
+    "armor": [
+      "armor_hardox_front",
+      "armor_uhmw_side"
+    ]
+  }
+}

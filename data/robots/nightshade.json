@@ -1,0 +1,49 @@
+{
+  "schema": "robot/1",
+  "id": "nightshade",
+  "name": "Nightshade",
+  "number": 73,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "pro",
+  "rating": 52,
+  "personality": "aggressive",
+  "team": "Cinder Machine Shop",
+  "inspiredBy": "Hemlock",
+  "livery": {
+    "primary": "#4a148c",
+    "secondary": "#2e7d32",
+    "accent": "#e1bee7",
+    "pattern": "camo"
+  },
+  "body": {
+    "template": "hex",
+    "params": {
+      "chamferFront": 0.35,
+      "corner": 0.2
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "spikes",
+        "count": 2,
+        "lengthIn": 3
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_direct",
+    "wheel": "wheel_6_grip",
+    "motor": "motor_drive_mid",
+    "battery": "batt_6s_lipo",
+    "electronics": "ecu_basic",
+    "weaponMotor": "wmotor_light",
+    "weapon": "spinner_v_small",
+    "armor": [
+      "armor_ar500_front",
+      "armor_poly_top",
+      "armor_uhmw_side"
+    ]
+  }
+}

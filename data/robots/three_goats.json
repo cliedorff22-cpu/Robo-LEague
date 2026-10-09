@@ -1,0 +1,58 @@
+{
+  "schema": "robot/1",
+  "id": "three_goats",
+  "name": "Three Goats",
+  "number": 52,
+  "origin": "parody",
+  "archetype": "lifter",
+  "league": "elite",
+  "rating": 61,
+  "personality": "aggressive",
+  "team": "Shrapnel Garage",
+  "inspiredBy": "Gruff",
+  "livery": {
+    "primary": "#6d4c41",
+    "secondary": "#9e9e9e",
+    "accent": "#fff8e1",
+    "pattern": "band"
+  },
+  "body": {
+    "template": "cab",
+    "params": {
+      "chamferFront": 0.35,
+      "deck": 0.55,
+      "cabLength": 0.45
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "spikes",
+        "count": 3,
+        "lengthIn": 4
+      },
+      {
+        "type": "horns",
+        "heightIn": 5,
+        "backIn": 7,
+        "forwardIn": -2,
+        "outIn": 3,
+        "spread": 0.3
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_mid_steel",
+    "drive": "drive_4wd_geared",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_heavy",
+    "battery": "batt_8s_lipo",
+    "electronics": "ecu_hardened",
+    "weaponMotor": "wmotor_light",
+    "weapon": "lifter_fork",
+    "armor": [
+      "armor_ti_front",
+      "armor_ti_side",
+      "armor_poly_top"
+    ]
+  }
+}

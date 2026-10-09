@@ -1,0 +1,46 @@
+{
+  "schema": "robot/1",
+  "id": "squall_line",
+  "name": "Squall Line",
+  "number": 18,
+  "origin": "parody",
+  "archetype": "spinner_v",
+  "league": "world",
+  "rating": 82,
+  "personality": "defensive",
+  "team": "Tungsten Brigade",
+  "inspiredBy": "Monsoon",
+  "livery": {
+    "primary": "#5f6b7a",
+    "secondary": "#ffd600",
+    "accent": "#e3f2fd",
+    "pattern": "hazard"
+  },
+  "body": {
+    "template": "dart",
+    "params": {
+      "slope": 0.6,
+      "noseWidth": 0.55
+    },
+    "mount": "front",
+    "extras": [
+      {
+        "type": "wings",
+        "reachIn": 3
+      }
+    ]
+  },
+  "build": {
+    "chassis": "chassis_long",
+    "drive": "drive_4wd_comp",
+    "wheel": "wheel_7_comp",
+    "motor": "motor_drive_brushless",
+    "battery": "batt_10s_lipo",
+    "electronics": "ecu_pro",
+    "weaponMotor": "wmotor_heavy",
+    "weapon": "spinner_v_bar",
+    "armor": [
+      "armor_hardox_front"
+    ]
+  }
+}
